@@ -1,0 +1,84 @@
+/* 기본 지면 스타일. 색·글꼴은 content.json의 config로 덮어쓴다. */
+@page{size:A4;margin:0}
+:root{--ink:#1a1a1a;--g1:#f2f2f2;--g2:#e3e3e3;--g3:#bdbdbd;--g4:#7a7a7a;--sans:"Noto Sans CJK KR","Malgun Gothic",sans-serif;--serif:"Noto Serif CJK KR","Batang",serif}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--sans);color:var(--ink);font-size:10.0pt;line-height:1.42;background:#fff}
+.page{width:210mm;height:297mm;padding:11mm 12mm 9mm;position:relative;page-break-after:always;overflow:hidden}
+.page:last-child{page-break-after:auto}
+.serif{font-family:var(--serif)}
+b,strong{font-weight:700}
+u{text-decoration:underline;text-underline-offset:2px}
+/* header */
+.evhead{display:flex;border:1.2px solid var(--ink);margin-bottom:2.97mm}
+.evhead .lab{background:var(--g2);font-weight:900;font-size:12.2pt;padding:2.70mm 4.73mm;display:flex;align-items:center;white-space:nowrap;border-right:1.2px solid var(--ink)}
+.evhead .txt{padding:2.16mm 4.05mm;font-size:11.1pt;font-weight:500;display:flex;align-items:center}
+.bp{display:flex;align-items:stretch;border:1px solid var(--g3);margin-bottom:3.51mm}
+.bp .lab{background:var(--g4);color:#fff;font-weight:900;font-size:11.6pt;line-height:1.05;padding:2.03mm 4.05mm;display:flex;flex-direction:column;justify-content:center;text-align:center}
+.bp .lab small{font-size:7.2pt;font-weight:500;letter-spacing:.5px}
+.bp ul{list-style:none;padding:1.89mm 4.05mm;font-size:10.2pt;font-weight:500}
+.bp b{font-weight:900}
+/* section title */
+.sec{display:flex;align-items:center;background:var(--g1);border-top:2px solid var(--ink);border-bottom:1px solid var(--ink);margin:3.24mm 0 2.70mm}
+.sec .no{background:var(--ink);color:#fff;font-weight:900;font-size:15.1pt;width:9mm;text-align:center;padding:1.08mm 0}
+.sec .tt{flex:1;font-weight:900;font-size:13.9pt;padding:0 4.05mm;letter-spacing:-.3px}
+.tag{display:inline-block;text-indent:0;border:1px solid var(--ink);background:#fff;font-size:8.1pt;font-weight:700;padding:0 1.89mm;border-radius:1mm;margin-right:2mm;white-space:nowrap}
+.tag.dk{background:var(--ink);color:#fff}
+.sub{font-weight:900;font-size:11.8pt;margin:2.97mm 0 1.89mm;display:flex;justify-content:space-between;align-items:center;letter-spacing:-.3px}
+/* generic boxes */
+.row{display:flex;gap:2.70mm;margin-bottom:2.43mm}
+.box{border:1px solid var(--g3);flex:1}
+.box .hd{background:var(--g2);text-align:center;font-weight:700;font-size:10.0pt;padding:0.94mm 0;border-bottom:1px solid var(--g3)}
+.box .bd{padding:1.62mm 2.70mm}
+.kv{display:flex;border:1px solid var(--g3);margin-bottom:2.43mm}
+.kv .k{background:var(--g2);font-weight:700;width:17mm;display:flex;align-items:center;justify-content:center;text-align:center;border-right:1px solid var(--g3);font-size:9.7pt;padding:1.35mm}
+.kv .v{flex:1;padding:1.62mm 3.24mm}
+ul.b{list-style:none}
+ul.b>li{padding-left:2.6mm;text-indent:-2.6mm}
+ul.b>li:before{content:"· "}
+ul.d{list-style:none;padding-left:2.6mm}
+ul.d>li{padding-left:2.4mm;text-indent:-2.4mm;font-size:9.5pt}
+ul.d>li:before{content:"- "}
+.arrow{font-weight:700}
+.banner{text-align:center;background:linear-gradient(90deg,#fff,var(--g2) 15%,var(--g2) 85%,#fff);font-weight:900;font-size:10.9pt;padding:1.35mm 0;margin:0 0 2.43mm;position:relative}
+.banner:after{content:"";position:absolute;left:50%;bottom:-2mm;transform:translateX(-50%);border:2mm solid transparent;border-top-color:var(--g2);border-bottom:0}
+.tag-ttl{font-weight:700;font-size:9.3pt;display:inline-block;background:var(--ink);color:#fff;padding:0.27mm 2.16mm;margin-right:1.5mm}
+/* chevrons */
+.chev{display:flex;gap:0;margin-bottom:1.62mm}
+.chev .st{flex:1;position:relative}
+.chev .st .h{background:var(--g2);font-weight:700;text-align:center;padding:1.22mm 5.40mm 1.22mm 6.75mm;font-size:9.6pt;clip-path:polygon(0 0,calc(100% - 3mm) 0,100% 50%,calc(100% - 3mm) 100%,0 100%,3mm 50%)}
+.chev .st:first-child .h{clip-path:polygon(0 0,calc(100% - 3mm) 0,100% 50%,calc(100% - 3mm) 100%,0 100%)}
+.chev .st.on .h{background:var(--ink);color:#fff}
+.chev .st .t{padding:1.35mm 2.16mm 0 2.70mm;font-size:9.3pt}
+/* combine cards */
+.comb{display:flex;align-items:stretch;gap:1.35mm;margin:1.62mm 0 1.89mm}
+.comb .c{flex:1;border:1px solid var(--g3)}
+.comb .c .hd{background:#fff;border-bottom:1px dashed var(--g3);text-align:center;font-weight:900;font-size:10.0pt;padding:0.81mm 0}
+.comb .c .bd{padding:1.35mm 2.43mm;font-size:9.3pt}
+.comb .plus{display:flex;align-items:center;font-weight:900;font-size:15.1pt;color:var(--g4)}
+.comb .eq{display:flex;align-items:center;font-weight:900;font-size:13.9pt;color:var(--g4)}
+.comb .res{flex:.9;background:var(--ink);color:#fff;display:flex;flex-direction:column;justify-content:center;text-align:center;font-weight:700;font-size:9.7pt;padding:1.35mm}
+.comb .res small{font-weight:400;font-size:8.4pt;opacity:.85}
+.line{display:flex;border:1px solid var(--g3);font-size:9.5pt;margin-bottom:1.08mm}
+.line .k{background:var(--g2);font-weight:700;padding:0.81mm 2.70mm;white-space:nowrap;border-right:1px solid var(--g3)}
+.line .v{padding:0.81mm 2.97mm}
+.res-box{border:1.6px solid var(--ink);display:flex;margin-top:2.16mm}
+.res-box .k{background:var(--ink);color:#fff;font-weight:900;width:17mm;display:flex;align-items:center;justify-content:center;text-align:center;font-size:10.4pt}
+.res-box .v{flex:1;padding:1.76mm 3.51mm;font-weight:500}
+.eff{border:1px solid var(--g3);margin-top:2.16mm}
+.eff .top{display:flex;align-items:center;border-bottom:1px solid var(--g3)}
+.eff .top .k{background:var(--g4);color:#fff;font-weight:900;padding:1.08mm 3.38mm;font-size:10.0pt}
+.eff .top .v{padding:0.81mm 3.38mm;font-weight:700;font-size:10.2pt}
+.eff ul{padding:1.35mm 3.38mm}
+.eff li{display:flex;justify-content:space-between}
+.eff li span:last-child{font-weight:700;white-space:nowrap;padding-left:2mm}
+/* compare */
+.cmp{display:flex;align-items:stretch;gap:2.03mm;margin:1.35mm 0 1.62mm}
+.cmp .c{flex:1;border:1px solid var(--g3);padding:1.62mm 2.70mm}
+.cmp .c.on{border:1.6px solid var(--ink)}
+.cmp .c .h{font-weight:900;font-size:10.0pt;margin-bottom:0.81mm}
+.cmp .ar{display:flex;align-items:center;font-size:16.2pt;font-weight:900;color:var(--g4)}
+.check{font-weight:900;font-size:10.4pt;margin:0.54mm 0 0.54mm}
+.footer{position:absolute;bottom:6mm;font-size:9.3pt;color:var(--g4);font-weight:700}
+.footer.l{left:12mm}.footer.r{right:12mm}
+.note{font-size:8.1pt;color:var(--g4)}
+
