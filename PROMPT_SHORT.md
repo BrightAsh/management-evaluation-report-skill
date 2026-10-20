@@ -29,4 +29,4 @@
 
 [후속] 수정은 해당 부분만 고친다. 추가 자료는 사실 카드에 넣고 등급을 다시 매겨 쪽수를 유지하며 반영하고, 종합성과까지 갱신한다. '구성안만 먼저'라고 하면 스토리라인 표까지만 보여준다. 방향을 바꾸면 3단계부터, 양식을 바꾸면 5~6단계만 다시 한다.
 
-(출처: github.com/BrightAsh/performance-report-writer · Sukbong-Chun · CC BY-NC 4.0)
+(출처: github.com/BrightAsh/performance-report-writer · KNOC · CC BY-NC 4.0)

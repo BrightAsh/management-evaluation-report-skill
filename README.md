@@ -151,6 +151,6 @@ python3 tools/build_zip.py
 
 ## 라이선스
 
-[CC BY-NC 4.0](LICENSE) (저작자표시-비영리). 비영리 목적이라면 자유롭게 쓰고 고칠 수 있습니다. 공유할 때는 만든 사람(Sukbong-Chun)과 라이선스를 표시하고, 고쳤다면 고쳤다고 밝혀 주세요. 상업적으로 쓰려면 먼저 [이슈](https://github.com/BrightAsh/performance-report-writer/issues)로 연락 주세요.
+[CC BY-NC 4.0](LICENSE) (저작자표시-비영리). 비영리 목적이라면 자유롭게 쓰고 고칠 수 있습니다. 공유할 때는 저작자(KNOC)와 라이선스를 표시하고, 고쳤다면 고쳤다고 밝혀 주세요. 상업적으로 쓰려면 먼저 [이슈](https://github.com/BrightAsh/performance-report-writer/issues)로 연락 주세요.
 
-만든 사람: Sukbong-Chun
+제작: KNOC

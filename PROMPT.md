@@ -1,7 +1,7 @@
 # 실적보고서 작성 프롬프트 (모든 AI용)
 
 > 이 문서를 AI에게 그대로 붙여넣거나 링크로 읽게 한 뒤, 자료를 첨부해 요청한다.
-> 출처: https://github.com/BrightAsh/performance-report-writer · 만든 사람 Sukbong-Chun · CC BY-NC 4.0
+> 출처: https://github.com/BrightAsh/performance-report-writer · 제작 KNOC · CC BY-NC 4.0
 > 스킬(SKILL.md)을 지원하는 AI는 저장소의 `SKILL.md`를 쓰는 편이 더 정확하다.
 
 ---
