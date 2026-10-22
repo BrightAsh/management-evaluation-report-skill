@@ -1,9 +1,11 @@
-# 태그(v*)를 올리면 설치용 zip을 만들어 Releases에 붙인다.
+# main에 설치용 zip(dist/)이나 버전(package.json)이 바뀌어 올라오면, 같은 버전의 릴리스를 만들거나 zip을 갱신한다.
 # README의 '스킬 zip 받기' 링크(releases/latest/download/...)가 이 파일을 가리킨다.
 name: release-zip
 on:
   push:
-    tags: ['v*']
+    branches: [main]
+    paths: ['dist/performance-report-writer.zip', 'package.json', '.github/workflows/release.yml']
+  workflow_dispatch:
 permissions:
   contents: write
 jobs:
@@ -16,10 +18,10 @@ jobs:
       - name: 릴리스 만들기·갱신
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          TAG: ${{ github.ref_name }}
         run: |
+          TAG="v$(python3 -c "import json;print(json.load(open('package.json'))['version'])")"
           if gh release view "$TAG" >/dev/null 2>&1; then
             gh release upload "$TAG" dist/performance-report-writer.zip --clobber
           else
-            gh release create "$TAG" dist/performance-report-writer.zip --title "$TAG" --notes-file .github/release_notes.md --latest
+            gh release create "$TAG" dist/performance-report-writer.zip --target "$GITHUB_SHA" --title "$TAG" --notes-file .github/release_notes.md --latest
           fi
