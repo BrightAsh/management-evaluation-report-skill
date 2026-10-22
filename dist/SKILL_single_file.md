@@ -31,7 +31,9 @@ description: 흩어진 실적 자료(PDF·HWP·엑셀 등)로 경영평가·성�
 > - "구성안(스토리라인)만 먼저 보여줘"
 > - "○○ 사업을 대표 사례로 강조해줘"
 >
-> **받는 것:** PDF·Word 파일, 스토리라인 요약, 자료 사용 내역, 확인이 필요한 사항
+> 양식이 없으면 공공기관 실적보고서에서 널리 쓰는 기본 양식(왼쪽 라벨 칸 + 여러 열 표)으로 씁니다. 자료 속 사진·그래프는 꼭 필요한 곳에만 작게 넣고, 전년 대비·목표 대비 같은 비교 값은 메시지를 뒷받침하는 것만 골라 넣습니다.
+>
+> **받는 것:** PDF·Word 파일, 스토리라인 요약, 자료 사용 내역(넣은 그림·비교 값 포함), 확인이 필요한 사항
 
 ## 작업 흐름
 
@@ -40,11 +42,11 @@ description: 흩어진 실적 자료(PDF·HWP·엑셀 등)로 경영평가·성�
 | 단계 | 할 일 | 산출물 | 참고 |
 |---|---|---|---|
 | 1 | 첨부를 작성 자료 / 양식 / 성과지표 / 가이드라인으로 판별하고 모드(A~D)를 정한다 | 판별표 | 부록 A-01 |
-| 2 | 자료를 **끝까지** 읽고 사실 카드로 뽑는다. 로직모델로 무게를 재고, 사업별 등급(A/B/C)을 매긴다 | `facts.md` | 부록 A-02 |
+| 2 | 자료를 **끝까지** 읽고 사실 카드로 뽑는다. 로직모델로 무게를 재고, 사업별 등급(A/B/C)을 매긴다. **비교 값**(전년·전후·목표)과 **그림 후보**(원자료 속 사진·그래프·화면)를 따로 모은다 | `facts.md`, `compare.md`, `visuals.md` | 부록 A-02 |
 | 3 | 방향을 정한다: 지표가 있으면 지표를 해부하고, 없으면 자료에서 도출한다. 핵심 메시지 1문장과 축 2~4개 | `direction.md` | 부록 A-03 |
-| 4 | **흐름·구조를 설계한다**: 섹션별 흐름 패턴, 주장형 제목, 문제-성과 짝, 지면 배분 | `storyline.md` | 부록 A-04 |
-| 5 | 문체를 정한다: 양식이 있으면 문체 프로필을 뽑고, 없으면 기본 개조식 | `style.md` | 부록 A-05 |
-| 6 | 블록을 골라 내용 데이터를 쓴다 | `content.json` | 부록 A-06 |
+| 4 | **흐름·구조를 설계한다**: 섹션별 흐름 패턴, 주장형 제목, 문제-성과 짝, 비교 값·그림의 자리, 지면 배분 | `storyline.md` | 부록 A-04 |
+| 5 | 문체·지면을 정한다: 양식이 있으면 문체 프로필을 뽑고, 없으면 **기본 양식** | `style.md` | 부록 A-05, 부록 A-09 |
+| 6 | 블록을 골라 내용 데이터를 쓴다. 그림은 관련 칸 안에 작게 | `content.json` | 부록 A-06 |
 | 7 | PDF·Word를 만들고 지면을 맞춘다 | PDF, DOCX | 부록 A-07 |
 | 8 | 사실·흐름·형식을 점검하고 정해진 형식으로 답한다 | 답변 | 부록 A-08 |
 
@@ -54,9 +56,9 @@ description: 흩어진 실적 자료(PDF·HWP·엑셀 등)로 경영평가·성�
 
 | 모드 | 첨부 | 방향(무엇을 말할지) | 구조·말투(어떻게 말할지) |
 |---|---|---|---|
-| A | 자료만 | 자료 분석으로 스스로 도출 | 기본 개조식 |
+| A | 자료만 | 자료 분석으로 스스로 도출 | 기본 양식 (부록 A-09) |
 | B | 자료 + 양식 | 자료 분석으로 도출 | 양식을 그대로 따름 |
-| C | 자료 + 성과지표 | 지표의 세부평가내용이 목차 뼈대 | 기본 개조식 |
+| C | 자료 + 성과지표 | 지표의 세부평가내용이 목차 뼈대 | 기본 양식 |
 | D | 자료 + 양식 + 성과지표 | 지표 | 양식 |
 
 우선순위: 사용자 지시 > 가이드라인 > 성과지표(방향) / 양식(형식) > 기본값.
@@ -74,7 +76,17 @@ description: 흩어진 실적 자료(PDF·HWP·엑셀 등)로 경영평가·성�
 - 원문에 없는 수치·사실은 쓰지 않는다. 모르면 `○○`로 비우고 보고한다.
 - 계획은 '추진', 완료는 '달성'으로 구분한다. 목표·추정치에는 표시를 붙인다.
 - 수치가 충돌하면 결과보고 > 평가 제출본 > 계획안 순, 같은 단계면 최신 자료를 쓴다.
-- 양식은 형식만 빌린다. 양식에 있는 다른 조직의 내용은 절대 섞지 않는다.
+- 양식은 형식만 빌린다. 양식에 있는 다른 조직의 내용·그림은 절대 섞지 않는다.
+
+**비교 값**
+- 자료에서 같은 지표의 두 시점 값(전년·도입 전·목표)과 전년도 지적사항을 찾는다. 계산은 `scripts/compare.py`로 한다.
+- 정의·단위·범위가 같고 두 값 모두 출처가 있으며, 그 섹션의 주장을 뒷받침할 때만 넣는다. 주장 하나에 비교 하나, 섹션당 1~3개.
+- 기준값이 작아 %가 부풀려지면 실수치나 배수로 쓴다. 다 넣지 않는다.
+
+**그림**
+- 원자료에 있는 사진·그래프·화면만 쓴다. 없으면 넣지 않는다. 새로 그리지 않는다.
+- 그 칸의 문장을 직접 뒷받침하고, 작게 줄여도 읽히는 것만. 관련 칸 안에 작게(높이 18~30mm), 쪽당 0~3개.
+- 지면이 모자라면 그림부터 뺀다.
 
 **분량**
 - 지정 쪽수를 정확히 지킨다. 빈칸은 자료의 근거로 채우고, 넘치면 등급이 낮은 내용부터 뺀다. 글자 크기로 맞추지 않는다.
@@ -96,7 +108,7 @@ description: 흩어진 실적 자료(PDF·HWP·엑셀 등)로 경영평가·성�
 
 | 역할 | 필수 여부 | 이 입력이 정하는 것 | 판별 단서 |
 |---|---|---|---|
-| **작성 자료** | 필수 | 쓸 **내용**(사실·수치·사례) | 우리 조직의 실적: 계획안, 결과보고, 증빙, 회의자료, 보도자료, 내부 메모, 과제 목록 엑셀 |
+| **작성 자료** | 필수 | 쓸 **내용**(사실·수치·사례·그림) | 우리 조직의 실적: 계획안, 결과보고, 증빙, 회의자료, 보도자료, 내부 메모, 과제 목록 엑셀. 안에 든 사진·그래프·화면도 보고서 재료다 |
 | **양식(템플릿)** | 선택 | **어떻게** 말할지: 구조·말투·지면 | 완성된 보고서 지면. 짧음(1~6쪽), 박스·도식·표 중심, 다른 조직이나 다른 연도 실적, '예시' 표기 |
 | **성과지표** | 선택 | **무엇을** 말할지: 방향·목차 뼈대·강조점 | 지표명, 지표 정의, 세부평가내용, 평가방법, 가중치, 평가 기준, 전년도 지적사항 |
 | **작성 가이드라인** | 선택 | 지켜야 할 **제약** | 작성요령·유의사항. 쪽수 상한, 글자 크기, 필수 항목, 금지 표현 등 규정 문장 |
@@ -113,7 +125,7 @@ description: 흩어진 실적 자료(PDF·HWP·엑셀 등)로 경영평가·성�
 
 헷갈리는 경우:
 - **다른 조직의 완성된 보고서** → 양식이다. 내용은 절대 가져오지 않는다.
-- **우리 조직의 작년 보고서** → 양식이면서 작성 자료(전년 실적·비교 기준)이기도 하다. 두 역할을 모두 쓴다.
+- **우리 조직의 작년 보고서** → 양식이면서 작성 자료(전년 실적·비교 기준)이기도 하다. 두 역할을 모두 쓴다. 전년 수치는 비교 후보(`02_analysis.md` 8절)로 모은다.
 - **평가 결과 통보서·지적사항** → 성과지표 쪽에 넣는다. 지적사항은 반드시 대응한다.
 - **과제 목록 엑셀** → 작성 자료다. 엑셀 안의 분류 체계는 그대로 따른다.
 
@@ -121,9 +133,9 @@ description: 흩어진 실적 자료(PDF·HWP·엑셀 등)로 경영평가·성�
 
 | 모드 | 첨부 | 방향(무엇을) | 구조·말투(어떻게) | 지면 |
 |---|---|---|---|---|
-| A | 자료만 | 자료 분석으로 스스로 도출 (`03_direction.md` 2절) | 기본 문체 (`05_style.md` 3절) | 기본 지면 |
+| A | 자료만 | 자료 분석으로 스스로 도출 (`03_direction.md` 2절) | 기본 문체 (`05_style.md` 3절) | 기본 양식 (`09_default_template.md`) |
 | B | 자료 + 양식 | 자료 분석으로 도출 | 양식의 구조·말투를 그대로 따름 | 양식 지면 |
-| C | 자료 + 성과지표 | 지표에서 도출 (`03_direction.md` 1절) | 기본 문체 | 기본 지면 |
+| C | 자료 + 성과지표 | 지표에서 도출 (`03_direction.md` 1절) | 기본 문체 | 기본 양식 |
 | D | 자료 + 양식 + 성과지표 | 지표에서 도출 | 양식을 따름 | 양식 지면 |
 
 **역할 분리 원칙.** 성과지표는 '무엇을 말할지', 양식은 '어떻게 말할지'를 정한다. 둘이 부딪히면 이렇게 한다.
@@ -132,6 +144,8 @@ description: 흩어진 실적 자료(PDF·HWP·엑셀 등)로 경영평가·성�
 
 **우선순위:** 사용자 지시 > 가이드라인 > 성과지표(방향) / 양식(형식) > 기본값.
 
+**기본 양식.** 양식이 첨부되지 않으면 `09_default_template.md`의 지면(왼쪽 라벨 칸 + 여러 열 표, 회색 계열)을 쓴다. 사용자가 "양식 없이 간단히", "서술형으로"처럼 다른 지면을 원하면 그 지시가 우선한다.
+
 ### 4. 쪽수 결정
 
 사용자 지정 > 가이드라인 상한 > 양식 샘플 쪽수 > 자료 분량에 맞춘 판단(기본 2쪽).
@@ -139,12 +153,12 @@ description: 흩어진 실적 자료(PDF·HWP·엑셀 등)로 경영평가·성�
 
 ## A-02. 자료 분석: 방대한 자료에서 쓸 것을 고르는 법
 
-좋은 보고서는 문장이 아니라 **고르기**에서 결정된다. 자료를 다 옮기는 것이 아니라, 평가자가 납득할 근거를 골라 하나의 이야기로 엮는다. 이 단계의 산출물은 `facts.md`(사실 카드)와 `inventory.md`(자료 목록)다. 이후 모든 문장은 사실 카드의 ID로 되짚을 수 있어야 한다.
+좋은 보고서는 문장이 아니라 **고르기**에서 결정된다. 자료를 다 옮기는 것이 아니라, 평가자가 납득할 근거를 골라 하나의 이야기로 엮는다. 이 단계의 산출물은 `facts.md`(사실 카드), `inventory.md`(자료 목록), `compare.md`(비교 후보), `visuals.md`(그림 후보)다. 이후 모든 문장은 사실 카드의 ID로 되짚을 수 있어야 한다.
 
 ### 1. 전부 읽기
 
 - 모든 작성 자료를 **처음부터 끝까지** 읽는다. 앞부분만 읽고 쓰면 뒤쪽의 결과보고·최신 수치를 놓친다.
-- `scripts/read_inputs.py`로 텍스트를 뽑은 뒤 구간을 나눠 읽는다. 표와 그림은 필요하면 이미지로 확인한다.
+- `scripts/read_inputs.py`로 텍스트와 그림을 뽑은 뒤 구간을 나눠 읽는다. 표와 그림은 필요하면 이미지로 확인한다.
 - 같은 사업이 여러 문서(계획안 → 중간보고 → 결과보고 → 평가 제출본)에 나오면 모두 찾아 묶는다.
 
 ### 2. 자료 목록 (inventory.md)
@@ -221,7 +235,57 @@ description: 흩어진 실적 자료(PDF·HWP·엑셀 등)로 경영평가·성�
 - **시점 문제**: 실적기간 밖의 실적, 계획 단계인데 완료처럼 보이는 것.
 - **미완 표기**: '??', '상세 미확보', 빈칸 → 넣지 않고 보고한다.
 
-### 8. 이 단계의 점검
+### 8. 비교 값 찾기 (compare.md)
+
+숫자 하나만으로는 크기를 알 수 없다. 자료 안에서 **같은 지표가 두 시점 이상 나오는 값**을 찾아 비교 후보로 모은다.
+
+**찾을 것**
+- 전년 대비: 작년 보고서·실적표·통계의 같은 지표('24년 140명 → '25년 462명)
+- 도입 전후: 개선 전 값과 개선 후 값(처리 20분 → 3분)
+- 목표 대비: 계획서의 목표와 결과(목표 7건 이하 → 3건, 초과 달성)
+- 기준 대비: 평균·타 기관·법정 기준과 비교(근거 자료가 있을 때만)
+- **전년도 지적사항**: 평가 결과 통보서·편람의 지적 원문과, 올해 조치·결과
+
+**정리 표**
+
+| 항목 | 이전 값(시점) | 이후 값(시점) | 단위 | 출처(두 값 모두) | 계산 결과 | 판단 |
+|---|---|---|---|---|---|---|
+| 교육 수료 인원 | 140('24) | 462('25) | 명 | 실적표 p.2 / 결과보고 p.4 | 230%↑, 3.3배 | 넣음(축② 핵심) |
+
+계산은 `scripts/compare.py`로 한다(암산하지 않는다). 비율끼리는 %p, 점수는 점 차이로 계산된다.
+
+**넣는 기준 (모두 만족)**
+1. 그 섹션의 주장이나 핵심 메시지를 직접 뒷받침한다.
+2. 두 값의 정의·단위·범위·집계 기간이 같다.
+3. 두 값 모두 출처가 있다(하나라도 추정이면 넣지 않거나 '(추정)' 표시).
+4. 변화가 의미 있다: 3% 이상, 1%p 이상, 또는 목표를 넘었다.
+
+**빼거나 표현을 바꾸는 경우**
+- 기준값이 작아 증감률이 부풀려 보인다(3건 → 12건을 300%로) → 실수치나 배수로 쓴다.
+- 집계 기준이 해마다 바뀌었다 → 빼고 확인 사항에 적는다.
+- 나빠진 값 → 지적 대응 맥락이 아니면 넣지 않는다. 숨기지 말고 확인 사항에 적는다.
+- 같은 비교를 여러 번 쓴다 → 가장 잘 어울리는 곳 한 번만.
+- 메시지와 무관한 비교 → 뺀다. 숫자가 많다고 좋은 보고서가 아니다.
+
+**분량과 자리**
+- 주장 하나에 비교 하나. 섹션당 1~3개.
+- 추진성과 행, 핵심성과, 대표 숫자 자리에 먼저 둔다.
+- 표기: "교육 수료 462명(230%↑, '24년 140명 → '25년 462명)", "돌발 고장 14건 → 3건(79%↓)".
+- 전년도 지적사항은 '지적 원문 → 조치 → 결과(비교 값)'로 쓴다. 독립 섹션(`04_storyline.md`의 지적 대응형)이나 해당 칸 안 `[[지적반영]]` 한 줄로 반영한다.
+
+### 9. 그림 후보 정리 (visuals.md)
+
+`read_inputs.py`가 만든 `_images.md`와 미리보기 모음(`images/_sheet_N.png`)을 보고, 보고서에 쓸 만한 그림을 사실 카드와 짝지어 둔다. **원자료에 있는 그림만** 대상이다. 새로 그리지 않는다.
+
+| 그림 번호 | 무엇인가 | 뒷받침하는 사실 ID | 크기 줄여도 읽히나 | 판단 |
+|---|---|---|---|---|
+| I04 | 위원회 발족 단체 사진 | F07 | 예 | 후보(추진내용 칸 아래) |
+| I21 | 예측 결과 그래프(실제값 대비) | F12 | 예 | 후보(대표 사례) |
+| I15 | 글자 많은 설명 슬라이드 | - | 아니오 | 제외 |
+
+고르는 기준과 배치는 `06_layout.md` 5절을 따른다. 최종 배치는 스토리라인 단계에서 정한다.
+
+### 10. 이 단계의 점검
 
 - [ ] 모든 작성 자료를 끝까지 읽었다
 - [ ] inventory.md와 facts.md를 만들었다
@@ -229,6 +293,8 @@ description: 흩어진 실적 자료(PDF·HWP·엑셀 등)로 경영평가·성�
 - [ ] 수치 충돌을 정리했다
 - [ ] 사업별 선별 점수와 A/B/C 등급을 정했다
 - [ ] 공백·약점 목록을 만들었다
+- [ ] 비교 후보를 compare.py로 계산했고, 넣을 것과 뺄 것을 판단했다
+- [ ] 그림 후보를 사실 카드와 짝지었다(원자료에 그림이 없으면 '없음')
 
 ## A-03. 방향 설정: 무엇을 말할 것인가
 
@@ -400,11 +466,11 @@ description: 흩어진 실적 자료(PDF·HWP·엑셀 등)로 경영평가·성�
 핵심 메시지: (1문장)
 축: ① ... ② ... ③ ...
 
-| 쪽 | 섹션 | 제목(주장형) | 대응 지표 항목 | 흐름 패턴 | 근거 사실 ID | 대표 숫자(전→후) | 지면 블록 |
-|---|---|---|---|---|---|---|---|
-| 1 | 헤더·대표 요약 | ... | - | - | F03, F11 | - | 헤더, 대표사례 박스 |
-| 1 | 1 | ...으로 ... 달성 | 세부평가① | 문제 해결형 | F03,F04,F07 | 18%→71% | 배경 3단, 문제, 흐름도, 성과 |
-| 2 | 2 | ... | 세부평가② | 과제 묶음형 | F11~F18 | 최대 90%↓ | 방향, 과제 표, 성과 |
+| 쪽 | 섹션 | 제목(주장형) | 대응 지표 항목 | 흐름 패턴 | 근거 사실 ID | 대표 숫자·비교 값 | 그림 | 지면 블록 |
+|---|---|---|---|---|---|---|---|---|
+| 1 | 헤더 | ... | - | - | F03, F11 | - | - | 제목, 평가내용, 핵심성과 |
+| 1 | 1-가 | ...으로 ... 달성 | 세부평가① | 문제 해결형 | F03,F04,F07 | 18%→71%(53%p↑) | I04(칸 아래) | grid(현황·추진내용·추진성과) |
+| 2 | 2-가 | ... | 세부평가② | 과제 묶음형 | F11~F18 | 전년 대비 230%↑ | - | grid, flow |
 ```
 
 ### 6. 설계 점검 질문
@@ -417,6 +483,8 @@ description: 흩어진 실적 자료(PDF·HWP·엑셀 등)로 경영평가·성�
 5. '우리가 한 일 때문에 달라졌다'는 인과가 보이는가?
 6. 같은 사실을 두 번 쓰지 않았는가?
 7. 계획 단계의 일을 완료처럼 쓰지 않았는가?
+8. 비교 값은 섹션당 1~3개이고, 모두 같은 정의끼리 비교했는가?
+9. 그림은 원자료에 있는 것만, 쪽당 3개 이하이며 그 칸의 문장을 뒷받침하는가?
 
 ### 7. 작은 예 (가상 기관)
 
@@ -439,7 +507,7 @@ description: 흩어진 실적 자료(PDF·HWP·엑셀 등)로 경영평가·성�
 
 ### 1. 원칙
 - 양식이 있으면 **양식의 말투를 그대로** 따른다. 평가자는 그 말투에 익숙하다.
-- 양식이 없으면 3절의 기본 문체를 쓴다.
+- 양식이 없으면 3절의 기본 문체를 쓴다. 기본 양식(`09_default_template.md`)과 짝을 이루는 문체다.
 - 어느 경우든 **양식의 내용(다른 조직의 사업·수치)은 절대 가져오지 않는다.** 패턴만 따른다.
 
 ### 2. 양식에서 문체 프로필 뽑기
@@ -474,14 +542,18 @@ description: 흩어진 실적 자료(PDF·HWP·엑셀 등)로 경영평가·성�
 - 키워드를 괄호로 앞에 둔다: "(대상) 전 직원 480명", "(방식) 현장 실습".
 
 **글머리표 위계**
-| 단계 | 기호 | 용도 |
-|---|---|---|
-| 1 | □ 또는 · | 일반 항목 |
-| 2 | ○ 또는 - | 세부 항목 |
-| 결론 | ➡ | 문제의 결론, 효과 |
-| 흐름 | → | 시간 순서, 전후 변화 |
-| 핵심 | ✓ | 블록의 요지 한 줄 |
-| 주석 | ※ | 출처, 산식, 단서 |
+| 단계 | 기호 | 용도 | content.json |
+|---|---|---|---|
+| 1 | · | 일반 항목 | 그냥 쓴다 |
+| 2 | – | 세부 항목 | `"- "`로 시작 |
+| 각주 | * | 내역·정의(칸 아래 작게) | `"* "`로 시작 |
+| 주석 | ※ | 출처, 산식, 단서 | `"※ "`로 시작 |
+| 결론 | ➡ | 문제의 결론, 효과 | 문장 안에 |
+| 흐름 | → | 시간 순서, 전후 변화 | 문장 안에 |
+| 핵심 | ☑ / ✓ | 핵심성과 한 줄 / 블록의 요지 | `key` / `check` |
+
+- 칸 안 문장 앞에 키워드 상자를 붙여 성격을 표시한다: `[[성과]]`, `[[기능]]`, `[[내용]]`, `[[지적반영]]`(한 칸에 1~2개).
+- 양식이 □ → ○ 체계를 쓰면 그 양식을 따른다.
 
 **표기**
 | 항목 | 표기 |
@@ -489,6 +561,7 @@ description: 흩어진 실적 자료(PDF·HWP·엑셀 등)로 경영평가·성�
 | 연도·월 | '26년, '26.9, ('26.9.18) |
 | 증감 | 12종↑, 79%↓, (전년대비 12%p↑) |
 | 전후 | 20분→3분, 18%→71% |
+| 비교 값(괄호) | 462명(230%↑, '24년 140명 → '25년 462명) — `scripts/compare.py`로 계산 |
 | 기관 수 | 3社, 45개社 (조직 관행에 따라 '3개사') |
 | 많음·전체 | 多, 全 (쓰지 않는 조직이면 풀어 씀) |
 | 추정·목표 | (추정), (목표), 예상 |
@@ -511,34 +584,33 @@ description: 흩어진 실적 자료(PDF·HWP·엑셀 등)로 경영평가·성�
 - 블록은 **내용의 성격**으로 고른다. 모양이 예뻐서 고르지 않는다.
 - 쪽당 도식(표·흐름도·카드)은 3~5개. 글만 있는 쪽도, 도식만 있는 쪽도 피한다.
 - 양식이 있으면 양식의 블록 구성을 그대로 따르고, 아래 카탈로그에 없는 요소는 렌더러에 새로 추가한다(`07_output.md` 4절).
+- 양식이 없으면 **기본 양식**(`09_default_template.md`)을 쓴다. 본문의 기본 단위는 `grid`(왼쪽 라벨 칸 + 여러 열 표)다.
 
 ### 2. 내용 성격 → 블록
 
 | 내용 성격 | 블록(t) | 쓰는 자리 |
 |---|---|---|
-| 평가 항목 원문 | `ev` | 첫 쪽 맨 위 |
-| 대표 사례 요약 2줄 | `bp` | 첫 쪽 헤더 아래 |
-| 비전·슬로건 한 줄 | `vision` | 체계도 위 |
+| 문서 제목 | `title` | 첫 쪽 맨 위 |
+| 평가 항목 원문 | `ev` | 첫 쪽 제목 아래 |
+| 핵심 메시지 1문장 | `key` | `ev` 바로 아래 |
+| 대표 사례 요약 2줄 | `bp` | 첫 쪽 헤더 아래(양식이 쓰는 경우) |
 | 대제목(주장형) | `sec` | 섹션 시작 |
-| 중제목 + 성격 태그 | `sub` | 큰 섹션을 가·나로 나눌 때 |
-| 배경 2~3요소(정책·환경·전략) | `boxes` | 섹션 첫머리 |
-| 문제 → 결론 | `kv` + `ar` | 배경 다음 |
+| 중제목 + 성격 태그 | `sub` | 사업·과제 단위 |
+| 라벨 칸 + 여러 열(현황·추진내용·추진성과 등) | `grid` | **본문의 기본 단위** |
+| 단계별 추진 → 결과 | `flow` | 시범 → 확산 → 진단처럼 이어지는 일 |
+| 단계·연도 로드맵 | `chev` (올해 단계만 `on`) | 향후계획·단계 확장 |
+| 라벨 하나 + 내용 한 칸 | `kv` | 추진배경·추진목적 한 줄 |
+| 배경 2~3요소 | `boxes` | 섹션 첫머리 |
 | 문제에서 해결로 넘어가는 한 줄 | `banner` | 문제 다음 |
-| 라벨 + 내용(추진방향·목적·향후계획) | `kv` | 어디든 |
-| 추진내용 묶음(여러 블록을 한 칸에) | `kv` + `inner` | 섹션 본문 |
-| 단계·과정·연도별 진행 | `chev` (올해 단계만 `on`) | 추진내용 |
 | 요소 결합 → 결과물 | `comb` | 시스템·플랫폼·협업 구조 |
 | 기존 → 개선 | `cmp` | 차별성 강조 |
-| 요지 한 줄 | `check` | 블록 묶음의 요약 |
-| 한 줄 라벨(추진경과·협업·주도) | `line` | 추진내용 끝 |
 | 대표 숫자 3~4개 | `kpi` | 성과 직전 |
-| 여러 과제·사례 비교 | `tbl` | 과제 묶음형 섹션, 종합성과 |
-| 효과 나열(➡ 결과) | `eff` | 성과 앞뒤 |
-| 일반 불릿 | `bl` | 주도·참여 구분 등 |
-| 서술 문단 | `text` | 서술형 양식, 짧은 설명 |
-| 좌우 나란히 | `cols` | 체계도 + 실적, 두 사례 병렬 |
-| 그림·도식 이미지 | `img` | 원문 도표, 사진 |
-| 섹션 결론 | `res` | **모든 대제목의 끝** |
+| 여러 과제·사례 비교 | `tbl` | 과제 묶음, 종합성과 |
+| 요지 한 줄 / 한 줄 라벨 | `check` / `line` | 블록 묶음 요약, 추진경과 |
+| 일반 불릿 / 서술 문단 | `bl` / `text` | 서술형 양식 |
+| 좌우 나란히 | `cols` | 두 사례 병렬 |
+| 원자료 그림 | 칸 안 `img`, 사진 띠 `strip`, 단독 `img` | 5절 규칙대로 |
+| 표 밖 마무리 띠 | `res` (`label`: 추진성과·기대효과) | **모든 대제목의 끝** |
 
 ### 3. content.json 형식
 
@@ -546,62 +618,91 @@ description: 흩어진 실적 자료(PDF·HWP·엑셀 등)로 경영평가·성�
 {
   "title": "문서 제목",
   "config": {
-    "theme":  { "ink": "#1A1A1A", "g1": "#F2F2F2", "g2": "#E3E3E3", "g3": "#BDBDBD", "g4": "#7A7A7A" },
+    "layout": { "page_start": 1, "chapter": { "no": "01", "text": "장 제목" }, "running": "쪽 머리 제목", "org": "", "slogan": "", "sidetab": "" },
+    "theme":  { "ink": "#222222", "g1": "#F2F2F2", "g2": "#DADADA", "g3": "#A3A3A3", "g4": "#5A5A5A" },
     "fonts":  { "sans": "Noto Sans CJK KR", "serif": "Noto Serif CJK KR", "docx_sans": "맑은 고딕", "docx_serif": "바탕" },
-    "labels": { "result": "추진성과", "best": ["BEST", "PRACTICE"] }
+    "labels": { "result": "추진성과", "key": "핵심성과", "best": ["BEST", "PRACTICE"] }
   },
-  "pages": [
-    { "footer": "2026년도 실적보고서 │ 1", "align": "right", "blocks": [ ... ] }
-  ]
+  "pages": [ { "blocks": [ ... ] } ]
 }
 ```
-- `config`는 모두 선택이다. 빼면 기본값(흑백, 노토 글꼴/맑은 고딕·바탕, '추진성과')을 쓴다.
-- 바닥글은 보통 홀수쪽 오른쪽, 짝수쪽 왼쪽(`align`). 양식에 맞춘다.
-- 텍스트 마크업: `**굵게**`, `__밑줄+굵게__`, `[[연한 태그]]`, `{{진한 태그}}`.
+- `config`는 모두 선택이다. 빼면 기본 양식의 값(회색 계열, 노토 글꼴/맑은 고딕·바탕)을 쓴다.
+- `layout`이 있으면 머리말·쪽번호·옆탭을 그린다. 쪽마다 `"header": false`로 머리말을 끌 수 있다.
+- 양식이 바닥글 문구를 직접 쓰면 쪽마다 `"footer": "문구", "align": "left|right"`로 준다(이때 `layout` 바닥글 대신 쓴다).
+- 텍스트 마크업: `**굵게**`, `__밑줄+굵게__`, `[[테두리 상자]]`, `{{진한 상자}}`.
+- 목록 항목: `"- "` 하위, `"* "` 각주, `"※ "` 참고, `"= "` 기호 없이, 나머지는 `· `.
 
 #### 블록 필드
 
 | t | 필드 |
 |---|---|
+| `title` | `text` |
 | `ev` | `label`, `text` |
+| `key` | `text`, 선택 `label`(기본 '핵심성과') |
 | `bp` | `items`[2], 선택 `label`[2] |
-| `vision` | `k`, `text` |
 | `sec` | `no`, `title`, 선택 `tag` |
 | `sub` | `title`, 선택 `tag` |
+| `grid` | `rows`[{`k`(`/` 줄바꿈), `cells`[칸] 또는 `span` 칸, 선택 `res`}], 선택 `head`[], `w`[비율], `kw_mm`(라벨 폭, 기본 20) |
+| 칸 | 문자열 = 가운데 굵은 글 / 배열 = 목록 / 객체 {`h` 칸머리, `p` 문장, `b`[] 목록, `img` 그림(하나 또는 배열), `c` 가운데} |
+| 그림(`img`) | `src`(content.json 기준 경로), `h_mm`, 선택 `w_mm`, `pos`('below' 기본 / 'right'), `caption` |
+| `flow` | `items`[{`tag`, `h`, `b`[]}] (2~4개), 선택 `sep`('+' 또는 '→'), `res`[제목, 보조] |
+| `strip` | `items`[{`src`, `caption`}] (3~5개), 선택 `h_mm`(기본 22) |
+| `kv` | `k`, 그리고 `text` 또는 `b`[], 선택 `ar`, `img`, `inner`[블록] |
+| `res` | `b`[] (3줄 이내), 선택 `label` |
 | `boxes` | `items`[{`h`, `b`[]}] (2~3개) |
-| `kv` | `k`(`/`로 줄바꿈), 그리고 `text` 또는 `b`[], 선택 `ar`, 선택 `inner`[블록] |
-| `banner` | `text` |
 | `chev` | `st`[{`h`, `t`[], 선택 `on`}] (3~4단) |
-| `check` | `text` |
-| `comb` | `cards`[{`h`, `b`[]}] (2~3개), `res`[3줄] |
+| `banner` · `check` | `text` |
+| `comb` | `cards`[{`h`, `b`[]}], `res`[3줄] |
 | `cmp` | `a`{`tag`,`h`,`b`[]}, `b`{`tag`,`h`,`b`[]} |
 | `line` | `k`, `v` |
 | `kpi` | `items`[{`v`, `l`}] (3~4개) |
 | `tbl` | `w`[비율], `head`[], `rows`[][] |
 | `eff` | `k`, `v`, `rows`[[내용, '➡ 결과']] |
-| `bl` | `b`[] |
-| `text` | `p`[문단] |
+| `bl` · `text` | `b`[] · `p`[문단] |
 | `cols` | `cols`[[블록], [블록]], 선택 `w`[비율] |
-| `img` | `src`(content.json 기준 경로), `w_mm`, `h_mm`, 선택 `caption` |
-| `res` | `b`[] (3줄 이내), 선택 `label` |
+| `img`(단독) | 그림 필드와 같음 |
 
 완성 예: `examples/demo/content.json`, `assets/content_template.json`.
 
 ### 4. 양식을 블록에 대응시키기
 
-1. 양식 각 쪽을 이미지로 보며 요소마다 이름을 붙인다(예: '좌측 회색 라벨 + 오른쪽 본문' → `kv`).
-2. 대응하는 블록이 있으면 그대로 쓰고, 색·선·글꼴·라벨은 `config`로 맞춘다.
+1. 양식 각 쪽을 이미지로 보며 요소마다 이름을 붙인다(예: '좌측 회색 라벨 + 열 3개' → `grid`).
+2. 대응하는 블록이 있으면 그대로 쓰고, 색·선·글꼴·라벨·머리말은 `config`로 맞춘다.
 3. 대응이 안 되는 요소는 다음 순서로 해결한다.
    - 기존 블록 조합으로 표현(예: 2단 배치 → `cols`, 서술형 → `text`)
-   - 원문 도표·사진이면 `img`
    - 그래도 안 되면 새 블록을 `render_html.js`와 `render_docx.js` **양쪽에** 추가한다. 한쪽에만 추가하면 PDF와 Word가 달라진다.
 4. 양식의 칸 이름(추진배경, 추진성과 등)은 그대로 쓴다. 다른 이름을 쓰는 양식이면 `labels`와 블록의 `k`·`label`을 바꾼다.
 
-### 5. 블록 선택 점검
-- [ ] 모든 대제목이 `res`로 끝난다
-- [ ] 쪽마다 기억할 숫자 하나가 큰 글씨(`kpi`나 `res` 밑줄)로 보인다
+### 5. 그림 넣기 (원자료에 있는 그림만)
+
+**원칙: 새로 그리지 않는다.** 원자료에 그림·그래프·사진이 있으면 골라 넣고, 없으면 넣지 않는다. 원자료의 숫자로 그래프를 새로 만들지 않는다. 양식(다른 조직 보고서)의 그림은 절대 쓰지 않는다.
+
+**찾기.** `read_inputs.py`가 뽑은 `images/_sheet_N.png`(번호 붙은 미리보기 모음)를 먼저 본다. PDF 안 그래프·표가 벡터로 그려져 목록에 없으면 `pages/` 쪽 모음에서 찾아 `crop_pdf.py`로 자른다. 잘린 결과는 반드시 열어 보고 글자가 잘렸으면 좌표를 고쳐 다시 자른다.
+
+**고르기.** 아래를 모두 만족하는 그림만 쓴다.
+1. 그 칸의 문장을 직접 뒷받침한다 — 협약 문장 옆 체결 사진, 모델 구현 옆 결과 그래프, 앱 개선 옆 앱 화면, 체계 구축 옆 조직 구성도.
+2. 폭 30~45mm로 줄여도 요지가 보인다. 글자가 빽빽한 표 그림·설명 슬라이드 통째는 쓰지 않는다.
+3. 우리 조직의 작성 자료에서 나온 그림이다.
+4. 장식·아이콘·배경·로고·클립아트가 아니다.
+5. 개인정보·보안 정보(연락처, 내부 주소, 계정)가 드러나지 않는다.
+
+쓸모 순서: 성과를 보여주는 데이터 그래프 > 시스템·결과물 화면 > 현장·행사 사진(협약, 발족, 수상) > 조직·구성도.
+
+**배치.** (공공기관 실적보고서에서 그림이 쓰이는 방식)
+- 단독 블록으로 크게 넣지 않는다. **관련 문장이 있는 칸 안에** 작게 넣는다.
+- 칸 아래(`pos: 'below'`): 높이 18~30mm. 열 3개 `grid`의 추진내용 칸 아래가 기본 자리.
+- 칸 오른쪽(`pos: 'right'`): 폭 25~35mm. 열 1~2개 표에서 글 옆에 둔다.
+- 사진 띠(`strip`): 섹션 끝, 높이 18~24mm, 3~5장. 현장·시설 사진이 여러 장일 때만.
+- **쪽당 0~3개.** 지면이 모자라면 그림부터 뺀다. 그림 때문에 근거 문장을 빼지 않는다.
+- 캡션은 그림만으로 무엇인지 모를 때만 짧게 단다.
+- 넣은 그림은 답변의 자료 사용 내역에 출처(원본 파일·쪽)를 적는다.
+
+### 6. 블록 선택 점검
+- [ ] 모든 대제목이 추진성과(`grid`의 `res` 행 또는 `res` 블록)로 끝난다
+- [ ] 쪽마다 기억할 숫자 하나가 굵게 보인다
 - [ ] 흐름도에서 올해 단계만 강조했다
 - [ ] 같은 블록이 한 쪽에 세 번 이상 연달아 나오지 않는다
+- [ ] 그림은 원자료에서 온 것만, 칸 안에 작게, 쪽당 3개 이하다
 
 ## A-07. 결과물 만들기: PDF·Word(·HWPX)
 
@@ -620,10 +721,19 @@ description: 흩어진 실적 자료(PDF·HWP·엑셀 등)로 경영평가·성�
 ```bash
 # 0) 준비 (처음 한 번)
 npm ls docx >/dev/null 2>&1 || npm install docx
-pip install olefile openpyxl playwright 2>/dev/null   # 필요한 것만
+pip install olefile openpyxl pillow playwright 2>/dev/null   # 필요한 것만
 
-# 1) 첨부 읽기
+# 1) 첨부 읽기 (텍스트 + 그림 추출, 그림 미리보기 모음)
 python3 -I scripts/read_inputs.py work/inputs 첨부1.pdf 첨부2.hwpx 첨부3.xlsx
+#    → work/inputs/_images.md, images/_sheet_N.png, pages/ (PDF 쪽 모음)
+
+# 1-1) PDF 속 벡터 그래프·표를 그림으로 자르기 (필요할 때만)
+python3 scripts/crop_pdf.py 첨부1.pdf 5 --grid work/inputs      # 눈금 이미지로 위치 확인
+python3 scripts/crop_pdf.py 첨부1.pdf 5 0.20 0.50 0.71 0.59 work/inputs/images/C01.png
+
+# 1-2) 비교 값 계산 (전년·도입 전후·목표 대비)
+python3 scripts/compare.py 140 462 명 --years 24 25
+python3 scripts/compare.py --csv work/compare.csv
 
 # 2) PDF
 node scripts/render_html.js content.json report.html
@@ -645,30 +755,28 @@ python3 scripts/fill_check.py check.pdf
 렌더링을 못 하는 환경에서는 지면을 Markdown 표로 표현한다. 사람이 그대로 한글·Word에 옮겨 쓸 수 있게 한다.
 
 ```markdown
-| 평가내용① | (평가 항목 원문) |
+# Ⅰ. 20XX년 평가내용별 추진실적 및 성과
+
+| 평가내용 1 | (평가 항목 원문) |
 |---|---|
+| **핵심성과** | ☑ **(핵심 메시지 1문장)** |
 
-> **BEST PRACTICE**
-> ① …
-> ② …
+## 1  (주장형 대제목)
 
-## 1  (주장형 대제목)  `B.P①`
+### 가. (주장형 중제목)  `B.P`
 
-| 정부 정책 | 대외 환경 | 기관 전략 |
-|---|---|---|
-| · … | · … | · … |
+| | (열1) | (열2) | (열3) |
+|---|---|---|---|
+| **현황 및 문제점** | · … | · … | · … |
+| **추진내용** | **(실행 단위·시점)**<br>· …<br>  – … | · … | · … |
+| **추진성과** | · … (230%↑, '24년 140명 → '25년 462명) | · … | · … |
 
-| 문제점 | · …<br>**➡ …** |
-|---|---|
+[그림: 결과보고.pdf p.5 — 예측 결과 그래프, 추진내용 (열1) 칸 아래]
 
-> ▼ **(전환 문장)** ▼
-
-| 추진내용 | ① … ▶ **② …(올해)** ▶ ③ … |
-|---|---|
-
-| 추진성과 | · …<br>· … |
+| **기대효과** | · …<br>· … |
 |---|---|
 ```
+그림은 넣을 자리에 `[그림: 원본 파일 쪽 — 무엇, 위치]`로 표시한다.
 
 ### 4. 새 블록 추가 방법
 
@@ -681,10 +789,11 @@ python3 scripts/fill_check.py check.pdf
 ### 5. 지면 맞춤
 
 - 쪽수는 정확히 지킨다(`pdfinfo`로 확인).
-- **PDF**: 쪽별 내용 하단이 약 900~1,040px면 알맞다(한계 1,075px, 넘으면 바닥글과 겹친다).
+- **PDF**: 쪽별 내용 하단이 약 960~1,055px면 알맞다(한계 1,065px, 넘으면 잘리고 바닥글과 겹친다).
 - **Word**: 쪽별 채움 0.80~0.91이 알맞다. 사용자 PC의 실제 글꼴이 점검 환경의 대체 글꼴보다 넓을 수 있어 5~10% 여유를 둔다. 글자배율 1.13~1.24, 간격배율 1.5~2.0 사이에서 조정한다.
 - **빈칸이 남으면** 글자를 키우지 말고 자료에서 근거를 더 넣는다(전후 비교, KPI, 기대효과, 과제 표). **넘치면** 등급이 낮은 내용부터 뺀다.
-- 렌더한 쪽을 **이미지로 직접 보고** 확인한다: 태그 잘림, 라벨 줄바꿈, 표·흐름도 칸 넘침, 바닥글 겹침.
+- 렌더한 쪽을 **이미지로 직접 보고** 확인한다: 태그 잘림, 라벨 줄바꿈, 표·흐름도 칸 넘침, 바닥글 겹침, 그림이 너무 크거나 흐린지.
+- 그림이 지면을 많이 차지하면 높이(`h_mm`)를 줄이거나 그림을 뺀다. 근거 문장보다 그림을 먼저 뺀다.
 
 ### 6. 납품 파일
 - `보고서명.pdf`, `보고서명.docx`
@@ -700,7 +809,9 @@ python3 scripts/fill_check.py check.pdf
 4. **미완 자료는 넣지 않는다.** '??', '상세 미확보', 빈칸은 제외하고 보고한다.
 5. **근거 없는 성격 태그를 붙이지 않는다.** '지적반영', '최초', '유일'은 자료에 근거가 있을 때만 쓴다.
 6. **추정한 것은 밝힌다.** 연도, 쪽번호, 보고서 종류, 실적기간 등.
-7. **양식의 내용은 가져오지 않는다.** 다른 조직의 사업·수치가 섞이지 않았는지 확인한다.
+7. **양식의 내용은 가져오지 않는다.** 다른 조직의 사업·수치·그림이 섞이지 않았는지 확인한다.
+8. **그림은 원자료에 있는 것만 쓴다.** 새로 그리거나 숫자로 그래프를 만들지 않는다.
+9. **비교 값은 계산 도구로 구하고, 두 값 모두 출처가 있어야 한다.** 정의가 다른 값끼리 비교하지 않는다.
 
 ### 2. 납품 전 점검표
 
@@ -708,6 +819,7 @@ python3 scripts/fill_check.py check.pdf
 - [ ] 보고서의 모든 수치·날짜가 facts.md의 카드와 연결되고, 원문 텍스트에서 다시 찾아진다(검색으로 대조)
 - [ ] 수치 충돌을 정리했고, 채택하지 않은 값을 기록했다
 - [ ] 계획/완료, 목표/추정 표시가 맞다
+- [ ] 비교 값을 compare.py로 다시 계산해 보고서 표기와 같은지 확인했다
 
 **방향**
 - [ ] 성과지표가 있으면 모든 세부평가내용에 대응하는 섹션이 있다(없으면 '자료 부족'으로 보고)
@@ -720,6 +832,8 @@ python3 scripts/fill_check.py check.pdf
 - [ ] 모든 숫자에 비교 기준이 있다
 - [ ] 같은 사실을 두 번 쓰지 않았다
 - [ ] 모든 대제목이 성과로 끝난다
+- [ ] 비교 값은 섹션당 1~3개, 같은 비교를 반복하지 않았다
+- [ ] 그림은 그 칸의 문장을 뒷받침하고, 쪽당 3개 이하, 칸 안에 작게 들어갔다
 
 **형식**
 - [ ] 양식이 있으면 문체 프로필(style.md)과 어긋나는 문장이 없다
@@ -734,7 +848,7 @@ python3 scripts/fill_check.py check.pdf
 1. **한 줄 요약**: 몇 쪽, 어떤 모드(자료만/양식/지표), 핵심 메시지
 2. **첨부 판별표**: 파일 | 역할 | 근거 (첫 답변에서만)
 3. **스토리라인 요약**: 쪽 | 섹션 제목 | 대표 숫자
-4. **자료 사용 내역**: 대표 사례로 올린 것, 뺀 것과 이유(지표 무관, 기간 외, 중복, 근거 부족)
+4. **자료 사용 내역**: 대표 사례로 올린 것, 뺀 것과 이유(지표 무관, 기간 외, 중복, 근거 부족), 넣은 비교 값과 그림(출처 파일·쪽)
 5. **지표·가이드라인 점검**: 항목별 대응 여부 (해당 시)
 6. **확인 필요 사항**: 계획/완료 불확실, 수치 충돌, 추정치, 임의로 정한 값, `○○`, 자료 부족
 
@@ -751,6 +865,108 @@ python3 scripts/fill_check.py check.pdf
 | 쪽수 변경 | 스토리라인의 지면 배분만 다시 하고, 등급 순으로 넣거나 뺀다 |
 | "구성안만 먼저" | 스토리라인 표까지만 만들어 보여주고 멈춘다 |
 
+## A-09. 기본 양식: 양식이 첨부되지 않았을 때 쓰는 지면
+
+양식이 없으면(모드 A·C) 이 지면을 쓴다. 공공기관 경영실적보고서에서 널리 쓰이는 **'왼쪽 라벨 칸 + 여러 열 표'** 구성이다. 흑백 인쇄에서도 읽히도록 회색 계열만 쓴다. 렌더러(`scripts/`)의 기본값이 이 양식이고, 견본은 `examples/demo/report_masked.pdf`(내용을 ○로 가린 지면)다.
+
+### 1. 쪽 구성 (`config.layout`)
+
+| 위치 | 요소 | 설정 |
+|---|---|---|
+| 머리말 · 짝수 쪽(왼쪽 면) | 장 번호 상자 + 장 제목, 아래 가는 선 | `chapter: {no, text}` |
+| 머리말 · 홀수 쪽(오른쪽 면) | 오른쪽 회색 띠에 쪽 머리 제목(평가내용 제목 요약) | `running` |
+| 바닥글 | 짝수: `쪽번호 │ 기관명` 왼쪽 / 홀수: `슬로건 │ 쪽번호` 오른쪽 | `page_start`, `org`, `slogan` |
+| 옆 탭 · 홀수 쪽(PDF만) | 오른쪽 가장자리 세로 글(장·평가내용 이름) | `sidetab` |
+
+- 기관명·슬로건은 사용자가 주거나 자료에 있을 때만 넣는다. 모르면 비워 둔다. 로고 그림은 넣지 않는다.
+- 쪽번호는 보고서 안 실제 쪽(`page_start`)을 알면 그 값, 모르면 1.
+
+### 2. 문서 위계
+
+```
+title   Ⅰ. 20XX년 평가내용별 추진실적 및 성과          ← 첫 쪽 맨 위에 한 번
+ev      평가내용 1 │ (평가 항목 원문 그대로)
+key     핵심성과   │ ☑ (핵심 메시지 1문장)
+sec     ■1 (대제목 = 축, 주장형)
+sub     가. (중제목 = 사업·과제, 주장형)   {{B.P}}
+grid    왼쪽 라벨 칸 + 1~5열 표  ← 본문의 기본 단위
+        … 마지막 행은 추진성과(진한 라벨 + 연한 띠)
+res     기대효과 · 향후계획(필요할 때)
+```
+
+- 평가내용이 여럿이면 평가내용마다 `ev` + `key` → `sec`들을 반복한다.
+- 대제목(1·2·3)은 축, 중제목(가·나·다)은 사업·과제다. 대제목 하나에 중제목 2~4개.
+- 대표 사례(A등급) 중제목에만 `B.P` 태그를 단다(`sub.tag`).
+- 성과지표가 있으면 평가내용 원문을 `ev`에, 세부평가내용 순서를 대제목 순서로 쓴다.
+
+### 3. 라벨 칸 표(`grid`) 쓰는 법
+
+한 중제목 아래 `grid` 1~2개가 기본이다. 행 라벨 묶음은 내용 성격에 맞춰 고른다.
+
+| 패턴 | 행 라벨 순서 | 열 | 맞는 내용 |
+|---|---|---|---|
+| 전략 체계형 | 환경분석 → 시사점 → 비전 → 중장기 로드맵·목표 → 전략방향 → 전략과제 | 3~5 | 전략·체계 수립 |
+| 역할 비교형 | 역할 → 추진내용 → 추진성과 | 3(주체·기능별) | 조직·위원회·규정처럼 나란한 3가지 |
+| 문제 해결형 | 현황 및 문제점 → 추진내용 → 추진성과 | 3(영역 머리) | 여러 영역을 함께 개선 |
+| 전후 비교형 | 기존 → 개선 → 추진성과 | 1~2 | 시스템·서비스 개선 |
+| 생태계형 | 추진배경 → 개요 → 주요 참여자 → 추진실적 → 향후 계획 | 4(참여 주체별) | 협력·확산 |
+| 과제형 | 추진배경 │ 추진내용 │ 성과 를 열 3개로 | 3 | 개발·실증 과제 하나 |
+| 목적형 | 추진목적 → 추진내용(안에 작은 표·그래프) → 향후계획 | 1 | 모델·시스템 구현 |
+
+칸 쓰는 법:
+- **열 머리**(`head`): 열이 주체·영역일 때. "운영 체계 │ 인력 역량 │ 기반 시설".
+- **칸 머리**(`h`): 칸 첫 줄 회색 띠. 그 칸의 실행 단위 이름 + 시점 — "○○위원회 발족(12월)".
+- **칸 내용**: 목록 2~4항목. `"- "` 하위, `"* "` 각주(내역·정의), `"※ "` 참고. 핵심 수치는 `**굵게**`.
+- **키워드 상자**: 칸 안 문장 앞에 `[[성과]]` `[[기능]]` `[[내용]]`처럼 붙여 성격을 표시한다(한 칸에 1~2개).
+- **한 줄 칸**(`span`): 시사점·비전·개요처럼 전체 열을 가로지르는 한 줄. 문자열이면 가운데 굵은 글.
+- **추진성과 행**(`res: true`): 표의 마지막 행. 열마다 정량 성과 1~2항목, 비교 값은 여기에 먼저 둔다.
+
+### 4. 그 밖의 블록
+
+| 블록 | 쓰는 곳 |
+|---|---|
+| `flow` | 단계별 추진. 상자 3개(시기 태그 + 제목 + 1~2줄)를 `+`나 `→`로 잇고, 아래 진한 결과 띠 |
+| `chev` | 연도·단계 로드맵(올해 단계만 진하게) |
+| `kv` | 라벨 하나 + 내용 한 칸(추진배경·추진목적 한 줄) |
+| `res` | 표 밖 마무리 띠: 기대효과·향후계획(`label`로 이름을 바꾼다) |
+| `strip` | 섹션 끝 작은 사진 띠(현장·시설 3~5장, 원자료에 있을 때만) |
+| `boxes` | 큰 묶음 2개(예: "작업안전 │ 설비안전") 아래 카드 |
+
+### 5. 문체
+
+`05_style.md` 3절을 따른다. 이 양식의 특징:
+- 칸 안 본문은 명조, 라벨·제목·칸 머리는 고딕.
+- 명사형 종결 개조식, 1항목 1~2줄. 중제목은 '수단 + 으로 + 결과'.
+- 비교 값은 괄호로: "직무 교육 수료 인원 증가(230%↑, '24년 140명 → '25년 462명)".
+- 각주는 칸 아래 작게: "* 장비 12억, 교육 4억".
+
+### 6. 지면 밀도
+
+- 쪽당 대제목 1~2개, 중제목 2~3개, `grid` 2~3개.
+- 흰 공간이 거의 없는 꽉 찬 지면이 기본이다(PDF 내용 하단 960~1,055px).
+- 그림은 쪽당 0~3개, 칸 안에 작게(`06_layout.md` 5절).
+
+### 7. content.json 뼈대
+
+```json
+{
+  "title": "20XX년 실적보고서",
+  "config": { "layout": { "page_start": 1, "chapter": { "no": "01", "text": "장 제목" },
+              "running": "쪽 머리 제목", "org": "", "slogan": "", "sidetab": "" } },
+  "pages": [ { "blocks": [
+    { "t": "title", "text": "Ⅰ. 20XX년 평가내용별 추진실적 및 성과" },
+    { "t": "ev", "label": "평가내용 1", "text": "(평가 항목 원문)" },
+    { "t": "key", "text": "(핵심 메시지 1문장)" },
+    { "t": "sec", "no": "1", "title": "(대제목)" },
+    { "t": "sub", "title": "가. (중제목)", "tag": "B.P" },
+    { "t": "grid", "head": ["(열1)", "(열2)", "(열3)"], "rows": [
+      { "k": "현황 및/문제점", "cells": [["…"], ["…"], ["…"]] },
+      { "k": "추진내용", "cells": [ { "h": "(실행 단위·시점)", "b": ["…", "- …"], "img": { "src": "work/inputs/images/I03.png", "h_mm": 22 } }, ["…"], ["…"] ] },
+      { "k": "추진성과", "res": true, "cells": [["…"], ["…"], ["…"]] } ] }
+  ] } ]
+}
+```
+
 ---
 
 # 부록 B. 스크립트와 데이터 틀
@@ -761,16 +977,20 @@ python3 scripts/fill_check.py check.pdf
 
 ```python
 #!/usr/bin/env python3
-"""첨부 파일을 한 번에 텍스트로 뽑고, 역할 판별을 돕는 목록(_inventory.md)을 만든다.
+"""첨부 파일을 한 번에 텍스트로 뽑고, 그림을 따로 모으고, 역할 판별을 돕는 목록을 만든다.
 
-사용법:  python3 -I read_inputs.py <출력폴더> <파일1> [파일2 ...]
+사용법:  python3 -I read_inputs.py <출력폴더> <파일1> [파일2 ...] [--no-images]
 지원:    PDF, HWP(5.0), HWPX, DOCX, PPTX, XLSX/XLSM, CSV, TXT, MD, 이미지(PNG/JPG)
-결과:    <출력폴더>/<파일명>.txt  — 본문 텍스트(PDF는 쪽 구분 '=== p.N ===')
-         <출력폴더>/preview/      — PDF 앞 2쪽 이미지, HWPX 미리보기 이미지(양식 판별용)
-         <출력폴더>/_inventory.md — 파일별 분량·첫 줄·역할 추정 점수
-필요 시:  pip install olefile openpyxl   (HWP, XLSX를 읽을 때만)
+결과:    <출력폴더>/<파일명>.txt   — 본문 텍스트(PDF는 쪽 구분 '=== p.N ===')
+         <출력폴더>/preview/       — PDF 앞 2쪽 이미지, HWPX 미리보기 이미지(양식 판별용)
+         <출력폴더>/images/        — 원자료 속 그림(사진·그래프·화면). 아이콘·선 조각·중복은 거른다
+         <출력폴더>/images/_sheet_N.png — 그림 미리보기 모음(번호 붙음). 이것부터 보고 고른다
+         <출력폴더>/pages/         — PDF 쪽 미리보기 모음(벡터 그래프·표를 찾아 crop_pdf.py로 자를 때)
+         <출력폴더>/_images.md     — 그림 목록(번호·원본·쪽·크기·경로)
+         <출력폴더>/_inventory.md  — 파일별 분량·첫 줄·역할 추정 점수
+필요 시:  pip install olefile openpyxl pillow   (HWP, XLSX, 그림 처리를 할 때만)
 """
-import sys, os, re, zipfile, shutil, subprocess, zlib, struct
+import sys, os, re, zipfile, shutil, subprocess, zlib, struct, hashlib, tempfile
 import xml.etree.ElementTree as ET
 
 ROLE_HINTS = {
@@ -966,17 +1186,174 @@ def pdf_preview(path, prev_dir):
         subprocess.run(['pdftoppm', '-r', '60', '-f', '1', '-l', '2', '-png', path, stem], capture_output=True)
 
 
+# ---------- 그림 추출 ----------
+MIN_SIDE = 150      # px. 이보다 작으면 아이콘·글머리표·선 조각으로 보고 버린다
+MAX_ASPECT = 6.0    # 가로세로 비가 이보다 크면 띠·밑줄 조각으로 보고 버린다
+MEDIA_DIRS = ('word/media/', 'ppt/media/', 'xl/media/', 'bindata/')
+
+
+def sniff(b):
+    if b[:4] == b'\x89PNG': return 'png'
+    if b[:2] == b'\xff\xd8': return 'jpg'
+    if b[:4] == b'GIF8': return 'gif'
+    if b[:2] == b'BM': return 'bmp'
+    if b[40:44] == b' EMF': return 'emf'
+    if b[:4] in (b'\xd7\xcd\xc6\x9a', b'\x01\x00\x09\x00'): return 'wmf'
+    return None
+
+
+class Images:
+    """그림을 모아 번호를 붙인다. 중복(같은 내용)·작은 조각은 거른다."""
+    def __init__(self, out_dir):
+        self.dir = os.path.join(out_dir, 'images'); self.items = []; self.seen = set(); self.skipped = 0
+        os.makedirs(self.dir, exist_ok=True)
+
+    def add(self, data, src, where):
+        ext = sniff(data)
+        if not ext:
+            return
+        h = hashlib.md5(data).hexdigest()
+        if h in self.seen:
+            return
+        self.seen.add(h)
+        if ext in ('emf', 'wmf'):   # 벡터 그림: LibreOffice가 있으면 PNG로 바꾼다
+            data, ext = self._vector_to_png(data, ext)
+            if data is None:
+                return
+        try:
+            from PIL import Image
+            import io
+            im = Image.open(io.BytesIO(data)); w, hgt = im.size
+        except Exception:
+            return
+        if min(w, hgt) < MIN_SIDE or max(w, hgt) / max(1, min(w, hgt)) > MAX_ASPECT:
+            self.skipped += 1
+            return
+        try:   # 단색 바탕·빗금 무늬(명암 차이가 거의 없는 그림)는 버린다
+            from PIL import ImageStat
+            small = im.convert('L').resize((64, 64))
+            if ImageStat.Stat(small).stddev[0] < 8 or len(set(small.point(lambda v: v // 16).tobytes())) <= 3:
+                self.skipped += 1
+                return
+        except Exception:
+            pass
+        if ext == 'bmp' or ext == 'gif':
+            im = im.convert('RGB'); buf = io.BytesIO(); im.save(buf, 'PNG'); data, ext = buf.getvalue(), 'png'
+        n = len(self.items) + 1
+        path = os.path.join(self.dir, f'I{n:02d}.{ext}')
+        with open(path, 'wb') as f:
+            f.write(data)
+        self.items.append({'id': f'I{n:02d}', 'src': src, 'where': where, 'w': w, 'h': hgt, 'path': path})
+
+    def _vector_to_png(self, data, ext):
+        if not shutil.which('soffice'):
+            return None, None
+        d = tempfile.mkdtemp(); f = os.path.join(d, 'v.' + ext)
+        open(f, 'wb').write(data)
+        subprocess.run(['soffice', '--headless', '--convert-to', 'png', '--outdir', d, f], capture_output=True, timeout=90)
+        g = os.path.join(d, 'v.png')
+        return (open(g, 'rb').read(), 'png') if os.path.exists(g) else (None, None)
+
+    def from_zip(self, path):
+        with zipfile.ZipFile(path) as z:
+            for n in z.namelist():
+                if n.lower().startswith(MEDIA_DIRS):
+                    self.add(z.read(n), os.path.basename(path), n.split('/')[-1])
+
+    def from_hwp(self, path):
+        import olefile
+        f = olefile.OleFileIO(path)
+        for s in f.listdir():
+            if s[0] == 'BinData':
+                d = f.openstream(s).read()
+                for cand in (d, None):
+                    if cand is None:
+                        try: cand = zlib.decompress(d, -15)
+                        except Exception: break
+                    if sniff(cand):
+                        self.add(cand, os.path.basename(path), s[-1]); break
+
+    def from_pdf(self, path):
+        if not shutil.which('pdfimages'):
+            return
+        lst = subprocess.run(['pdfimages', '-list', path], capture_output=True, text=True).stdout.splitlines()[2:]
+        kind = {}
+        for l in lst:
+            c = l.split()
+            if len(c) > 3: kind[int(c[1])] = (int(c[0]), c[2])   # num → (page, type)
+        d = tempfile.mkdtemp()
+        subprocess.run(['pdfimages', '-png', path, os.path.join(d, 'x')], capture_output=True)
+        for fn in sorted(os.listdir(d)):
+            m = re.match(r'x-(\d+)\.png$', fn)
+            if not m: continue
+            num = int(m.group(1)); page, typ = kind.get(num, (0, 'image'))
+            if typ != 'image': continue                     # smask·stencil(투명도 마스크) 제외
+            self.add(open(os.path.join(d, fn), 'rb').read(), os.path.basename(path), f'p.{page}')
+
+    def from_file(self, path):
+        self.add(open(path, 'rb').read(), os.path.basename(path), '파일 자체')
+
+    def sheets(self):
+        """번호 붙인 미리보기 모음(한 장에 20개)."""
+        try:
+            from PIL import Image, ImageDraw
+        except ImportError:
+            return []
+        out, tw, th, cols = [], 260, 200, 4
+        for k in range(0, len(self.items), 20):
+            chunk = self.items[k:k + 20]; rows = (len(chunk) + cols - 1) // cols
+            sheet = Image.new('RGB', (cols * tw, rows * (th + 22)), 'white'); dr = ImageDraw.Draw(sheet)
+            for j, it in enumerate(chunk):
+                x, y = (j % cols) * tw, (j // cols) * (th + 22)
+                try:
+                    im = Image.open(it['path']).convert('RGB'); im.thumbnail((tw - 10, th - 10))
+                    sheet.paste(im, (x + (tw - im.width) // 2, y + 22 + (th - im.height) // 2))
+                except Exception:
+                    pass
+                dr.rectangle([x, y, x + tw - 1, y + th + 21], outline=(180, 180, 180))
+                dr.text((x + 6, y + 5), f"{it['id']}  {it['w']}x{it['h']}", fill=(0, 0, 0))
+            p = os.path.join(self.dir, f'_sheet_{k // 20 + 1}.png'); sheet.save(p); out.append(p)
+        return out
+
+
+def pdf_page_sheets(path, out_dir):
+    """PDF 전 쪽 미리보기 모음(한 장에 12쪽). 벡터로 그린 그래프·표를 찾을 때 본다."""
+    if not shutil.which('pdftoppm'):
+        return []
+    try:
+        from PIL import Image, ImageDraw
+    except ImportError:
+        return []
+    d = tempfile.mkdtemp(); subprocess.run(['pdftoppm', '-r', '30', '-png', path, os.path.join(d, 'p')], capture_output=True)
+    files = sorted(os.listdir(d), key=lambda f: int(re.findall(r'\d+', f)[-1]))
+    pdir = os.path.join(out_dir, 'pages'); os.makedirs(pdir, exist_ok=True); out = []
+    stem = re.sub(r'[^\w가-힣]+', '_', os.path.splitext(os.path.basename(path))[0])[:40]
+    for k in range(0, len(files), 12):
+        chunk = files[k:k + 12]; ims = [Image.open(os.path.join(d, f)).convert('RGB') for f in chunk]
+        tw, th = max(i.width for i in ims), max(i.height for i in ims)
+        sheet = Image.new('RGB', (4 * tw, ((len(ims) + 3) // 4) * (th + 16)), 'white'); dr = ImageDraw.Draw(sheet)
+        for j, im in enumerate(ims):
+            x, y = (j % 4) * tw, (j // 4) * (th + 16)
+            sheet.paste(im, (x, y + 16)); dr.text((x + 4, y + 2), f'p.{k + j + 1}', fill=(0, 0, 0))
+        p = os.path.join(pdir, f'{stem}_{k // 12 + 1}.png'); sheet.save(p); out.append(p)
+    return out
+
+
 def role_scores(text):
     return {r: sum(text.count(k) for k in kws) for r, kws in ROLE_HINTS.items()}
 
 
 def main():
-    if len(sys.argv) < 3:
+    args = [a for a in sys.argv[1:] if a != '--no-images']
+    want_img = '--no-images' not in sys.argv
+    if len(args) < 2:
         print(__doc__)
         sys.exit(1)
-    out_dir, files = sys.argv[1], sys.argv[2:]
+    out_dir, files = args[0], args[1:]
     os.makedirs(out_dir, exist_ok=True)
     prev_dir = os.path.join(out_dir, 'preview')
+    imgs = Images(out_dir) if want_img else None
+    page_sheets = []
     rows = []
     for p in files:
         ext = os.path.splitext(p)[1].lower()
@@ -1003,6 +1380,20 @@ def main():
                 text, size = f'[지원하지 않는 형식: {ext}]', '-'
         except Exception as e:  # 한 파일이 실패해도 나머지는 계속
             text, size = f'[읽기 실패: {e}]', '-'
+        if imgs is not None:
+            try:
+                before = len(imgs.items)
+                if ext == '.pdf':
+                    imgs.from_pdf(p); page_sheets += pdf_page_sheets(p, out_dir)
+                elif ext in ('.docx', '.pptx', '.xlsx', '.xlsm', '.hwpx'):
+                    imgs.from_zip(p)
+                elif ext == '.hwp':
+                    imgs.from_hwp(p)
+                elif ext in ('.png', '.jpg', '.jpeg', '.gif'):
+                    imgs.from_file(p)
+                size = f'{size}, 그림 {len(imgs.items) - before}개'
+            except Exception as e:
+                size = f'{size}, 그림 추출 실패({e})'
         with open(os.path.join(out_dir, name + '.txt'), 'w', encoding='utf-8') as f:
             f.write(text)
         first = [l for l in text.splitlines() if l.strip() and not l.startswith('===')][:3]
@@ -1018,6 +1409,161 @@ def main():
             scs = ', '.join(f'{k} {v}' for k, v in sc.items() if v)
             f.write(f'| {n} | {e} | {s} | {c:,} | {fl.replace("|", "/")} | {g} | {scs} |\n')
     print('목록:', os.path.join(out_dir, '_inventory.md'))
+
+    if imgs is not None:
+        sheets = imgs.sheets()
+        with open(os.path.join(out_dir, '_images.md'), 'w', encoding='utf-8') as f:
+            f.write('# 원자료 그림 목록 (자동 추출)\n\n')
+            f.write(f'작은 조각·띠·중복 {imgs.skipped}개는 걸렀다. 미리보기 모음을 먼저 보고, 보고서에 쓸 후보만 원본 크기로 확인한다.\n')
+            f.write('PDF 안의 그래프·표가 벡터로 그려진 경우 이 목록에 없다 → pages/ 미리보기에서 찾아 crop_pdf.py로 자른다.\n\n')
+            f.write('미리보기 모음: ' + (', '.join(os.path.relpath(x, out_dir) for x in sheets) or '없음') + '\n')
+            f.write('PDF 쪽 모음: ' + (', '.join(os.path.relpath(x, out_dir) for x in page_sheets) or '없음') + '\n\n')
+            f.write('| 번호 | 원본 파일 | 위치 | 크기(px) | 파일 |\n|---|---|---|---|---|\n')
+            for it in imgs.items:
+                f.write(f"| {it['id']} | {it['src']} | {it['where']} | {it['w']}x{it['h']} | {os.path.relpath(it['path'], out_dir)} |\n")
+        print(f'그림: {len(imgs.items)}개 (걸러낸 조각 {imgs.skipped}개) → _images.md')
+
+
+if __name__ == '__main__':
+    main()
+```
+
+### 파일: crop_pdf.py
+
+```python
+#!/usr/bin/env python3
+"""PDF 쪽에서 그래프·표·사진 영역을 잘라 그림 파일로 만든다 (벡터로 그려져 그림 추출이 안 될 때).
+
+1) 위치 찾기:  python3 crop_pdf.py 자료.pdf 3 --grid [출력폴더]
+   → 3쪽 위에 10% 눈금을 그린 이미지(page3_grid.png). 눈금을 보고 영역의 비율 좌표를 정한다.
+2) 자르기:     python3 crop_pdf.py 자료.pdf 3 0.12 0.40 0.58 0.71 [출력.png] [--dpi 200]
+   → 왼쪽 위(x0,y0)~오른쪽 아래(x1,y1)를 쪽 크기 대비 비율(0~1)로 준다.
+   잘린 결과를 반드시 열어 보고, 글자가 잘리거나 다른 내용이 섞이면 좌표를 고쳐 다시 자른다.
+"""
+import sys, os, subprocess, tempfile, glob
+from PIL import Image, ImageDraw
+
+
+def render(pdf, page, dpi):
+    d = tempfile.mkdtemp()
+    subprocess.run(['pdftoppm', '-r', str(dpi), '-f', str(page), '-l', str(page), '-png', pdf, os.path.join(d, 'p')], check=True)
+    return Image.open(glob.glob(os.path.join(d, 'p*.png'))[0]).convert('RGB')
+
+
+def main():
+    a = sys.argv[1:]
+    dpi = 200
+    if '--dpi' in a:
+        i = a.index('--dpi'); dpi = int(a[i + 1]); del a[i:i + 2]
+    if len(a) < 3:
+        print(__doc__); sys.exit(1)
+    pdf, page = a[0], int(a[1])
+    if a[2] == '--grid':
+        out_dir = a[3] if len(a) > 3 else '.'
+        im = render(pdf, page, 100); dr = ImageDraw.Draw(im); w, h = im.size
+        for k in range(1, 10):
+            x, y = w * k // 10, h * k // 10
+            dr.line([(x, 0), (x, h)], fill=(230, 60, 60), width=1); dr.line([(0, y), (w, y)], fill=(230, 60, 60), width=1)
+            dr.text((x + 2, 2), f'.{k}', fill=(230, 60, 60)); dr.text((2, y + 2), f'.{k}', fill=(230, 60, 60))
+        out = os.path.join(out_dir, f'page{page}_grid.png'); im.save(out); print('눈금 이미지:', out)
+        return
+    x0, y0, x1, y1 = map(float, a[2:6])
+    out = a[6] if len(a) > 6 else f'crop_p{page}.png'
+    im = render(pdf, page, dpi); w, h = im.size
+    im.crop((int(x0 * w), int(y0 * h), int(x1 * w), int(y1 * h))).save(out)
+    print('잘라낸 그림:', out, f'({int((x1 - x0) * w)}x{int((y1 - y0) * h)}px)')
+
+
+if __name__ == '__main__':
+    main()
+```
+
+### 파일: compare.py
+
+```python
+#!/usr/bin/env python3
+"""비교 값(전년 대비·도입 전후·목표 대비)을 계산하고 보고서 표기로 만들어 준다. 암산하지 말고 이것으로 계산한다.
+
+하나:  python3 compare.py 140 462 명                 → 140명 → 462명 (230%↑, 3.3배)
+       python3 compare.py 18 71 %                    → 18% → 71% (53%p↑)
+       python3 compare.py 140 462 명 --years 24 25   → '24년 140명 → '25년 462명 (230%↑, 3.3배)
+여럿:  python3 compare.py --csv 비교후보.csv
+       CSV 열: 항목,이전값,이후값,단위[,이전시점,이후시점[,출처]]  (첫 줄은 머리글)
+
+경고(⚠)가 붙은 비교는 그대로 쓰지 말고 표현을 바꾸거나 뺀다.
+"""
+import sys, csv
+
+
+def num(s):
+    return float(str(s).replace(',', '').strip())
+
+
+def fmt(v):
+    if abs(v - round(v)) < 1e-9:
+        return f'{int(round(v)):,}'
+    return f'{v:,.1f}' if abs(v) >= 10 else f'{v:,.2f}'.rstrip('0').rstrip('.')
+
+
+def rate_txt(r):
+    return f'{round(r):,}' if abs(r) >= 10 else f'{r:.1f}'.rstrip('0').rstrip('.')
+
+
+def compare(a, b, unit='', ya=None, yb=None):
+    pa = f"'{ya}년 " if ya else ''
+    pb = f"'{yb}년 " if yb else ''
+    left, right = f'{pa}{fmt(a)}{unit}', f'{pb}{fmt(b)}{unit}'
+    warns, parts = [], []
+    arrow = lambda d: '↑' if d > 0 else '↓' if d < 0 else ''
+    if unit in ('%', '%p'):            # 비율끼리는 %p(차이)로 쓴다
+        d = b - a
+        parts.append(f'{rate_txt(abs(d))}%p{arrow(d)}')
+        if abs(d) < 1:
+            warns.append('변화 폭이 1%p 미만 → 강조용으로 쓰지 않는다')
+    elif unit == '점':                 # 점수는 점 차이로 쓴다
+        d = b - a
+        parts.append(f'{rate_txt(abs(d))}점{arrow(d)}')
+        if abs(d) < 1:
+            warns.append('변화 폭이 1점 미만 → 강조용으로 쓰지 않는다')
+    elif a == 0:
+        warns.append('기준값 0 → 증감률 계산 불가. "신규 N" 또는 실수치로 쓴다')
+    else:
+        r = (b - a) / abs(a) * 100
+        parts.append(f"{rate_txt(abs(r))}%{'↑' if r > 0 else '↓' if r < 0 else ''}")
+        if a > 0 and b > 0 and b / a >= 2:
+            parts.append(f'{b / a:.1f}배'.replace('.0배', '배'))
+        if abs(a) < 10 and abs(r) >= 200:
+            warns.append('기준값이 작아 증감률이 과장돼 보임 → 실수치(전→후)나 배수로 쓴다')
+        if abs(r) < 3:
+            warns.append('변화 폭이 작다(3% 미만) → 강조용으로 쓰지 않는다')
+    text =f"{left} → {right}" + (f" ({', '.join(parts)})" if parts else '')
+    return text, warns
+
+
+def main():
+    a = sys.argv[1:]
+    if not a:
+        print(__doc__); sys.exit(1)
+    if a[0] == '--csv':
+        rows = list(csv.reader(open(a[1], encoding='utf-8-sig')))[1:]
+        print('| 항목 | 비교 표기 | 경고 | 출처 |\n|---|---|---|---|')
+        for r in rows:
+            if not r or not r[0].strip():
+                continue
+            r += [''] * (7 - len(r))
+            try:
+                t, w = compare(num(r[1]), num(r[2]), r[3].strip(), r[4].strip() or None, r[5].strip() or None)
+            except ValueError:
+                t, w = '(숫자가 아님)', ['값 확인 필요']
+            print(f"| {r[0]} | {t} | {'⚠ ' + ' / '.join(w) if w else ''} | {r[6]} |")
+        return
+    ya = yb = None
+    if '--years' in a:
+        i = a.index('--years'); ya, yb = a[i + 1], a[i + 2]; del a[i:i + 3]
+    t, w = compare(num(a[0]), num(a[1]), a[2] if len(a) > 2 else '', ya, yb)
+    print(t)
+    for x in w:
+        print('⚠', x)
 
 
 if __name__ == '__main__':
@@ -1040,40 +1586,91 @@ const C = src.endsWith('.json') ? JSON.parse(fs.readFileSync(src, 'utf8')) : req
 
 // ---- 설정 (content.json의 "config"로 덮어쓴다)
 const DEF = {
-  theme: { ink: '#1A1A1A', g1: '#F2F2F2', g2: '#E3E3E3', g3: '#BDBDBD', g4: '#7A7A7A' },
+  theme: { ink: '#222222', g1: '#F2F2F2', g2: '#DADADA', g3: '#A3A3A3', g4: '#5A5A5A' },
   fonts: { sans: 'Noto Sans CJK KR', serif: 'Noto Serif CJK KR' },
-  labels: { result: '추진성과', best: ['BEST', 'PRACTICE'] },
+  labels: { result: '추진성과', key: '핵심성과', best: ['BEST', 'PRACTICE'] },
 };
+const cc = C.config || {};
 const cfg = {
-  theme: { ...DEF.theme, ...((C.config || {}).theme || {}) },
-  fonts: { ...DEF.fonts, ...((C.config || {}).fonts || {}) },
-  labels: { ...DEF.labels, ...((C.config || {}).labels || {}) },
+  theme: { ...DEF.theme, ...(cc.theme || {}) },
+  fonts: { ...DEF.fonts, ...(cc.fonts || {}) },
+  labels: { ...DEF.labels, ...(cc.labels || {}) },
+  layout: cc.layout || null,   // 머리말·쪽번호·옆탭. 없으면 그리지 않는다
 };
 const css = fs.readFileSync(path.join(__dirname, 'base.css'), 'utf8');
 
-// ---- 텍스트 마크업: **굵게** __밑줄굵게__ [[연한태그]] {{진한태그}}
-const esc = s => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+// ---- 텍스트 마크업: **굵게** __밑줄굵게__ [[테두리 태그]] {{진한 태그}}
+const esc = s => String(s ?? '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 const mk = s => esc(s)
   .replace(/\*\*([^*]+)\*\*/g, '<b>$1</b>')
   .replace(/__([^_]+)__/g, '<b><u>$1</u></b>')
   .replace(/\[\[([^\]]+)\]\]/g, '<span class="tag">$1</span>')
   .replace(/\{\{([^}]+)\}\}/g, '<span class="tag dk">$1</span>');
-const ul = (arr, cls = 'b serif') => `<ul class="${cls}">${(arr || []).map(x => `<li>${mk(x)}</li>`).join('')}</ul>`;
+// 목록: "- " 하위, "* " 각주, "※ " 참고, "= " 기호 없음, 나머지는 "· "
+const li = x => { const s = String(x);
+  if (s.startsWith('- ')) return `<li class="d">${mk(s.slice(2))}</li>`;
+  if (s.startsWith('* ')) return `<li class="n">${mk(s.slice(2))}</li>`;
+  if (s.startsWith('※')) return `<li class="x">${mk(s.replace(/^※\s*/, ''))}</li>`;
+  if (s.startsWith('= ')) return `<li class="p">${mk(s.slice(2))}</li>`;
+  return `<li>${mk(s)}</li>`; };
+const ul = (arr, cls = 'b serif') => `<ul class="${cls}">${(arr || []).map(li).join('')}</ul>`;
 const imgData = p => {
   const f = path.resolve(baseDir, p);
   const ext = path.extname(f).slice(1).toLowerCase().replace('jpg', 'jpeg');
   return `data:image/${ext};base64,${fs.readFileSync(f).toString('base64')}`;
 };
 
+// ---- 그림: src가 없으면(가린 견본) 빗금 자리표시로 그린다
+const figure = i => {
+  if (i.src && !fs.existsSync(path.resolve(baseDir, i.src))) { console.warn('그림 파일 없음(자리표시로 그림):', i.src); i = { ...i, src: null, label: i.label || '그림 없음' }; }
+  const right = i.pos === 'right', w = i.w_mm || (right ? 30 : null);
+  const st = [w ? `width:${w}mm` : '', i.h_mm ? `height:${i.h_mm}mm` : ''].filter(Boolean).join(';');
+  const media = i.src ? `<img src="${imgData(i.src)}" style="${st}">`
+    : `<div class="phimg" style="width:${w ? w + 'mm' : '100%'};height:${i.h_mm || 20}mm">${esc(i.label || '그림')}</div>`;
+  return `<figure class="cimg"${right ? ` style="flex:none;width:${w}mm;margin-top:0"` : ''}>${media}${i.caption ? `<figcaption>${mk(i.caption)}</figcaption>` : ''}</figure>`;
+};
+// ---- 표 칸: 문자열=가운데 굵은 글, 배열=목록, 객체={h 칸머리, p 문장, b 목록, img 그림, c 가운데}
+const normCell = x => typeof x === 'string' ? { p: [x], c: true } : Array.isArray(x) ? { b: x } : (x || {});
+function cellInner(c) {
+  const head = c.h ? `<div class="ch">${mk(c.h)}</div>` : '';
+  const body = (c.p ? [].concat(c.p).map(x => `<div class="cp">${mk(x)}</div>`).join('') : '') + (c.b ? ul(c.b) : '');
+  const imgs = [].concat(c.img || []), right = imgs.filter(i => i.pos === 'right'), below = imgs.filter(i => i.pos !== 'right');
+  const mid = right.length ? `<div class="cw"><div class="cwt">${body}</div>${right.map(figure).join('')}</div>` : body;
+  return head + mid + below.map(figure).join('');
+}
+
 const R = {
+  title: b => `<div class="ttl">${mk(b.text)}</div>`,
   ev: b => `<div class="evhead"><div class="lab">${mk(b.label)}</div><div class="txt">${mk(b.text)}</div></div>`,
+  key: b => `<div class="evhead key"><div class="lab">${mk(b.label || cfg.labels.key)}</div><div class="txt">☑&nbsp;${mk(b.text)}</div></div>`,
   bp: b => `<div class="bp"><div class="lab">${esc(b.label ? b.label[0] : cfg.labels.best[0])}<small>${esc(b.label ? b.label[1] || '' : cfg.labels.best[1])}</small></div><ul>${b.items.map(x => `<li>${mk(x)}</li>`).join('')}</ul></div>`,
   vision: b => `<div class="vision"><span>${mk(b.k)}</span>${mk(b.text)}</div>`,
   sec: (b, i) => `<div class="sec"${i === 0 ? ' style="margin-top:0"' : ''}><div class="no">${esc(b.no)}</div><div class="tt">${mk(b.title)}</div>${b.tag ? `<span class="tag dk">${esc(b.tag)}</span>` : ''}</div>`,
-  sub: b => `<div class="sub"><span>${mk(b.title)}</span>${b.tag ? `<span class="tag">${mk(b.tag)}</span>` : ''}</div>`,
+  sub: b => `<div class="sub"><span>${mk(b.title)}</span>${b.tag ? `<span class="tag dk">${mk(b.tag)}</span>` : ''}</div>`,
+  grid: b => {
+    const n = b.head ? b.head.length : Math.max(...b.rows.map(r => (r.cells || [0]).length));
+    const w = b.w || Array(n).fill(1);
+    let h = `<div class="grid" style="grid-template-columns:${b.kw_mm || 20}mm ${w.map(x => x + 'fr').join(' ')}">`;
+    if (b.head) h += '<div></div>' + b.head.map(x => `<div class="gh">${mk(x)}</div>`).join('');
+    b.rows.forEach(r => {
+      const dk = r.res ? ' rk' : '', lt = r.res ? ' rc' : '';
+      h += `<div class="gk${dk}">${String(r.k || '').split('/').map(mk).join('<br>')}</div>`;
+      if (r.span !== undefined) { const c = normCell(r.span); h += `<div class="gc sp${lt}${c.c ? ' c' : ''}">${cellInner(c)}</div>`; }
+      else r.cells.forEach(x => { const c = normCell(x); h += `<div class="gc${lt}${c.c ? ' c' : ''}">${cellInner(c)}</div>`; });
+    });
+    return h + '</div>';
+  },
+  flow: b => {
+    const items = b.items.map(x => `<div class="fi"><div class="fh">${x.tag ? `<span class="tag dk">${esc(x.tag)}</span>` : ''}${mk(x.h)}</div>${x.b ? `<div class="fb">${ul(x.b)}</div>` : ''}</div>`)
+      .join(`<div class="fs">${esc(b.sep || '+')}</div>`);
+    const r = b.res ? [].concat(b.res) : null;
+    return `<div class="flow">${items}</div>${r ? `<div class="fdown">▼</div><div class="fres">${mk(r[0])}${r[1] ? `<small>${mk(r[1])}</small>` : ''}</div>` : '<div style="height:2.4mm"></div>'}`;
+  },
+  strip: b => `<div class="strip">${b.items.map(i => `<figure>${i.src && fs.existsSync(path.resolve(baseDir, i.src)) ? `<img src="${imgData(i.src)}" style="height:${b.h_mm || 22}mm">`
+    : `<div class="phimg" style="height:${b.h_mm || 22}mm">${esc(i.label || '사진')}</div>`}${i.caption ? `<figcaption>${mk(i.caption)}</figcaption>` : ''}</figure>`).join('')}</div>`,
   boxes: b => `<div class="row">${b.items.map(x => `<div class="box"><div class="hd">${mk(x.h)}</div><div class="bd">${ul(x.b)}</div></div>`).join('')}</div>`,
-  kv: b => `<div class="kv"><div class="k">${b.k.split('/').map(esc).join('<br>')}</div><div class="v${b.inner ? '' : ' serif'}">${
-    b.text ? mk(b.text) : ''}${b.b ? ul(b.b) : ''}${b.ar ? `<div class="arrow serif">${mk(b.ar)}</div>` : ''}${b.inner ? b.inner.map(render).join('') : ''}</div></div>`,
+  kv: b => `<div class="kv"><div class="k">${String(b.k).split('/').map(esc).join('<br>')}</div><div class="v${b.inner ? '' : ' serif'}">${
+    b.text ? mk(b.text) : ''}${b.b ? ul(b.b) : ''}${b.ar ? `<div class="arrow serif">${mk(b.ar)}</div>` : ''}${[].concat(b.img || []).map(figure).join('')}${b.inner ? b.inner.map(render).join('') : ''}</div></div>`,
   banner: b => `<div class="banner">${mk(b.text)}</div><div style="height:2.4mm"></div>`,
   chev: b => `<div class="chev serif">${b.st.map(s => `<div class="st${s.on ? ' on' : ''}"><div class="h">${mk(s.h)}</div><div class="t">${s.t.map(x => '· ' + mk(x)).join('<br>')}</div></div>`).join('')}</div>`,
   check: b => `<div class="check" style="margin-top:1.4mm">✓ ${mk(b.text)}</div>`,
@@ -1083,38 +1680,55 @@ const R = {
   bl: b => ul(b.b),
   text: b => `<div class="txtblk serif">${(b.p || []).map(x => `<p>${mk(x)}</p>`).join('')}</div>`,
   eff: b => `<div class="eff"><div class="top"><div class="k">${mk(b.k)}</div><div class="v">${mk(b.v)}</div></div><ul class="serif">${b.rows.map(r => `<li><span>· ${mk(r[0])}</span><span>${mk(r[1])}</span></li>`).join('')}</ul></div>`,
-  res: b => `<div class="res-box"><div class="k">${esc(b.label || cfg.labels.result)}</div><div class="v serif">${ul(b.b)}</div></div>`,
+  res: b => `<div class="res-box"><div class="k">${String(b.label || cfg.labels.result).split('/').map(esc).join('<br>')}</div><div class="v serif">${ul(b.b)}</div></div>`,
   kpi: b => `<div class="kpi">${b.items.map(x => `<div><b>${mk(x.v)}</b><span>${mk(x.l)}</span></div>`).join('')}</div>`,
   tbl: b => `<table class="tb serif"><colgroup>${b.w.map(w => `<col style="width:${w * 100}%">`).join('')}</colgroup><tr>${b.head.map(h => `<th>${mk(h)}</th>`).join('')}</tr>${b.rows.map(r => `<tr>${r.map((c, i) => `<td${i === 0 ? ' class="f"' : ''}>${mk(c)}</td>`).join('')}</tr>`).join('')}</table>`,
   cols: b => { const w = b.w || b.cols.map(() => 1 / b.cols.length);
     return `<div class="cols">${b.cols.map((col, i) => `<div style="flex:${w[i]}">${col.map(render).join('')}</div>`).join('')}</div>`; },
-  img: b => `<figure class="img"><img src="${imgData(b.src)}" style="width:${b.w_mm}mm;height:${b.h_mm}mm">${b.caption ? `<figcaption>${mk(b.caption)}</figcaption>` : ''}</figure>`,
+  img: b => `<div class="img">${figure({ ...b, pos: 'below' })}</div>`,
 };
 function render(b, i) {
   if (!R[b.t]) throw new Error(`알 수 없는 블록 타입: ${b.t}`);
   return R[b.t](b, i);
 }
 
+// ---- 쪽 머리말·쪽번호·옆탭 (config.layout). 짝수 쪽=왼쪽 면, 홀수 쪽=오른쪽 면
+function chrome(p, i) {
+  if (p.footer) return `<div class="footer ${p.align === 'left' ? 'l' : 'r'}">${esc(p.footer)}</div>`;
+  const L = cfg.layout; if (!L) return '';
+  const n = (L.page_start || 1) + i, even = n % 2 === 0;
+  let s = '';
+  if (p.header !== false) {
+    if (even && L.chapter) s += `<div class="ph even">${L.chapter.no ? `<span class="no">${esc(L.chapter.no)}</span>` : ''}<span class="tt">${esc(L.chapter.text || '')}</span></div>`;
+    if (!even && L.running) s += `<div class="ph odd"><span class="tt">${esc(L.running)}</span></div>`;
+  }
+  if (L.page_numbers !== false) s += even
+    ? `<div class="pf even"><span class="pn">${n}</span>${L.org ? `<span class="sep"></span><span class="org">${esc(L.org)}</span>` : ''}</div>`
+    : `<div class="pf odd">${L.slogan ? `<span class="slogan">${esc(L.slogan)}</span><span class="sep"></span>` : ''}<span class="pn">${n}</span></div>`;
+  if (!even && L.sidetab) s += `<div class="stab"><div class="t">${esc(L.sidetab)}</div><div class="k"></div></div>`;
+  return s;
+}
+
 const extra = `
 :root{--ink:${cfg.theme.ink};--g1:${cfg.theme.g1};--g2:${cfg.theme.g2};--g3:${cfg.theme.g3};--g4:${cfg.theme.g4};
 --sans:"${cfg.fonts.sans}","Malgun Gothic",sans-serif;--serif:"${cfg.fonts.serif}","Batang",serif}
-.vision{background:var(--ink);color:#fff;font-weight:900;font-size:10.6pt;text-align:center;padding:1.5mm;margin-bottom:2mm}
+.vision{background:var(--g4);color:#fff;font-weight:900;font-size:10.6pt;text-align:center;padding:1.5mm;border-radius:1.4mm;margin-bottom:2mm}
 .vision span{border:1px solid #fff;font-size:8.4pt;padding:0 1.6mm;margin-right:3mm;vertical-align:1px}
-.kpi{display:flex;gap:2mm;margin-bottom:2.4mm}
-.kpi>div{flex:1;border:1px solid var(--g3);border-top:2.4px solid var(--ink);text-align:center;padding:1.4mm 1mm}
+.kpi{display:flex;gap:1.6mm;margin-bottom:2.4mm}
+.kpi>div{flex:1;border:.8px solid var(--g3);border-top:2.4px solid var(--g4);border-radius:1mm;text-align:center;padding:1.3mm 1mm}
 .kpi b{display:block;font-size:15pt;font-weight:900;line-height:1.15}
 .kpi span{font-size:8.4pt;color:#444}
 .tb{width:100%;border-collapse:collapse;margin-bottom:2.4mm;font-size:9.3pt;table-layout:fixed}
-.tb th{background:var(--g2);font-family:var(--sans);font-weight:700;border:1px solid var(--g3);padding:1mm;font-size:9.4pt}
-.tb td{border:1px solid var(--g3);padding:1mm 1.8mm;vertical-align:middle}
+.tb th{background:var(--g2);font-family:var(--sans);font-weight:700;border:.8px solid var(--g3);padding:1mm;font-size:9.4pt}
+.tb td{border:.8px solid var(--g3);padding:1mm 1.8mm;vertical-align:middle}
 .tb td.f{font-family:var(--sans);font-weight:700;background:var(--g1);font-size:9.2pt}
-.kv .v .tb,.kv .v .kpi{margin-bottom:1.2mm}
+.kv .v .tb,.kv .v .kpi,.kv .v .grid{margin-bottom:1.2mm}
 .txtblk{margin-bottom:2.4mm;font-size:10pt}.txtblk p{margin-bottom:1.2mm;text-indent:2mm}
-.cols{display:flex;gap:2.7mm;align-items:flex-start}.cols>div{min-width:0}
-.img{margin:1mm 0 2.4mm;text-align:center}.img figcaption{font-size:8.4pt;color:var(--g4);margin-top:.8mm}
+.cols{display:flex;gap:2.4mm;align-items:flex-start}.cols>div{min-width:0}
+.img{margin:1mm 0 2.4mm}
 `;
 const html = `<!doctype html><html lang="ko"><head><meta charset="utf-8"><title>${esc(C.title || 'report')}</title><style>${css}${extra}</style></head><body>
-${C.pages.map(p => `<section class="page">${p.blocks.map(render).join('\n')}${p.footer ? `<div class="footer ${p.align === 'left' ? 'l' : 'r'}">${esc(p.footer)}</div>` : ''}</section>`).join('\n')}
+${C.pages.map((p, i) => `<section class="page">${p.blocks.map(render).join('\n')}${chrome(p, i)}</section>`).join('\n')}
 </body></html>`;
 fs.writeFileSync(out, html);
 console.log('ok:', out);
@@ -1123,88 +1737,150 @@ console.log('ok:', out);
 ### 파일: base.css
 
 ```css
-/* 기본 지면 스타일. 색·글꼴은 content.json의 config로 덮어쓴다. */
+/* 기본 양식 지면 스타일 (흑백 계열, A4). 색·글꼴·머리말은 content.json의 config로 덮어쓴다. */
 @page{size:A4;margin:0}
-:root{--ink:#1a1a1a;--g1:#f2f2f2;--g2:#e3e3e3;--g3:#bdbdbd;--g4:#7a7a7a;--sans:"Noto Sans CJK KR","Malgun Gothic",sans-serif;--serif:"Noto Serif CJK KR","Batang",serif}
+:root{--ink:#222;--g1:#f2f2f2;--g2:#dadada;--g3:#a3a3a3;--g4:#5a5a5a;--sans:"Noto Sans CJK KR","Malgun Gothic",sans-serif;--serif:"Noto Serif CJK KR","Batang",serif}
 *{box-sizing:border-box;margin:0;padding:0}
-body{font-family:var(--sans);color:var(--ink);font-size:10.0pt;line-height:1.42;background:#fff}
-.page{width:210mm;height:297mm;padding:11mm 12mm 9mm;position:relative;page-break-after:always;overflow:hidden}
+body{font-family:var(--sans);color:var(--ink);font-size:10pt;line-height:1.45;background:#fff}
+.page{width:210mm;height:297mm;padding:18mm 19mm 15mm;position:relative;page-break-after:always;overflow:hidden}
 .page:last-child{page-break-after:auto}
 .serif{font-family:var(--serif)}
 b,strong{font-weight:700}
 u{text-decoration:underline;text-underline-offset:2px}
-/* header */
-.evhead{display:flex;border:1.2px solid var(--ink);margin-bottom:2.97mm}
-.evhead .lab{background:var(--g2);font-weight:900;font-size:12.2pt;padding:2.70mm 4.73mm;display:flex;align-items:center;white-space:nowrap;border-right:1.2px solid var(--ink)}
-.evhead .txt{padding:2.16mm 4.05mm;font-size:11.1pt;font-weight:500;display:flex;align-items:center}
-.bp{display:flex;align-items:stretch;border:1px solid var(--g3);margin-bottom:3.51mm}
-.bp .lab{background:var(--g4);color:#fff;font-weight:900;font-size:11.6pt;line-height:1.05;padding:2.03mm 4.05mm;display:flex;flex-direction:column;justify-content:center;text-align:center}
+
+/* 쪽 머리말 · 바닥글 · 옆 탭 */
+.ph{position:absolute;top:8.5mm;height:7mm;display:flex;align-items:flex-end;border-bottom:.8px solid var(--g3)}
+.ph.even{left:19mm;right:0}
+.ph.odd{left:0;right:19mm;justify-content:flex-end}
+.ph .no{background:var(--g4);color:#fff;font-weight:900;font-size:11.5pt;line-height:1;padding:1mm 1.6mm;margin:0 2.2mm 1mm 0;border-radius:.6mm}
+.ph.even .tt{font-weight:700;font-size:12pt;padding-bottom:.6mm}
+.ph.odd .tt{background:var(--g1);border-radius:1.4mm 1.4mm 0 0;padding:.6mm 3.2mm;font-size:9.4pt;font-weight:500}
+.pf{position:absolute;bottom:7mm;font-size:9.4pt;display:flex;align-items:center;gap:2.4mm;color:var(--g4)}
+.pf.even{left:19mm}.pf.odd{right:19mm}
+.pf .pn{font-weight:700;color:var(--ink)}
+.pf .sep{width:.8px;height:3.2mm;background:var(--g3)}
+.pf .org{font-weight:700}
+.pf .slogan{font-weight:700;font-style:italic;color:var(--g3)}
+.stab{position:absolute;right:0;top:82mm;display:flex;align-items:flex-start;gap:1.4mm}
+.stab .t{writing-mode:vertical-rl;font-size:7.6pt;color:var(--g4);border-left:.6px solid var(--g3);padding-left:1mm;max-height:115mm;overflow:hidden}
+.stab .k{width:7mm;height:20mm;background:var(--g4);border-radius:1.6mm 0 0 1.6mm}
+.footer{position:absolute;bottom:7mm;font-size:9.4pt;color:var(--g4);font-weight:700}
+.footer.l{left:19mm}.footer.r{right:19mm}
+
+/* 문서 제목 · 평가내용 · 핵심성과 */
+.ttl{text-align:center;font-weight:900;font-size:17pt;letter-spacing:-.4px;margin:1mm 0 4mm}
+.evhead{display:flex;border:.9px solid var(--g3);border-radius:1.6mm;overflow:hidden;margin-bottom:2.4mm}
+.evhead .lab{background:var(--g2);font-weight:900;font-size:12.2pt;padding:2.2mm 4.6mm;display:flex;align-items:center;white-space:nowrap}
+.evhead .txt{padding:1.8mm 4mm;font-size:10.8pt;display:flex;align-items:center}
+.evhead.key .lab{background:var(--g4);color:#fff;font-size:11.4pt;padding:1.6mm 4.6mm}
+.evhead.key .txt{font-weight:700;font-size:10.8pt}
+.bp{display:flex;align-items:stretch;border:.9px solid var(--g3);border-radius:1.6mm;overflow:hidden;margin-bottom:3mm}
+.bp .lab{background:var(--g4);color:#fff;font-weight:900;font-size:11.4pt;line-height:1.05;padding:2mm 4mm;display:flex;flex-direction:column;justify-content:center;text-align:center}
 .bp .lab small{font-size:7.2pt;font-weight:500;letter-spacing:.5px}
-.bp ul{list-style:none;padding:1.89mm 4.05mm;font-size:10.2pt;font-weight:500}
-.bp b{font-weight:900}
-/* section title */
-.sec{display:flex;align-items:center;background:var(--g1);border-top:2px solid var(--ink);border-bottom:1px solid var(--ink);margin:3.24mm 0 2.70mm}
-.sec .no{background:var(--ink);color:#fff;font-weight:900;font-size:15.1pt;width:9mm;text-align:center;padding:1.08mm 0}
-.sec .tt{flex:1;font-weight:900;font-size:13.9pt;padding:0 4.05mm;letter-spacing:-.3px}
-.tag{display:inline-block;text-indent:0;border:1px solid var(--ink);background:#fff;font-size:8.1pt;font-weight:700;padding:0 1.89mm;border-radius:1mm;margin-right:2mm;white-space:nowrap}
-.tag.dk{background:var(--ink);color:#fff}
-.sub{font-weight:900;font-size:11.8pt;margin:2.97mm 0 1.89mm;display:flex;justify-content:space-between;align-items:center;letter-spacing:-.3px}
-/* generic boxes */
-.row{display:flex;gap:2.70mm;margin-bottom:2.43mm}
-.box{border:1px solid var(--g3);flex:1}
-.box .hd{background:var(--g2);text-align:center;font-weight:700;font-size:10.0pt;padding:0.94mm 0;border-bottom:1px solid var(--g3)}
-.box .bd{padding:1.62mm 2.70mm}
-.kv{display:flex;border:1px solid var(--g3);margin-bottom:2.43mm}
-.kv .k{background:var(--g2);font-weight:700;width:17mm;display:flex;align-items:center;justify-content:center;text-align:center;border-right:1px solid var(--g3);font-size:9.7pt;padding:1.35mm}
-.kv .v{flex:1;padding:1.62mm 3.24mm}
+.bp ul{list-style:none;padding:1.8mm 4mm;font-size:10.2pt;font-weight:500}
+
+/* 대제목 · 중제목 · 태그 */
+.sec{display:flex;align-items:center;gap:2.6mm;border-bottom:.8px solid var(--g3);padding-bottom:1.1mm;margin:4.2mm 0 2.2mm}
+.sec .no{background:var(--g4);color:#fff;font-weight:900;font-size:13pt;min-width:7.2mm;height:7.2mm;border-radius:1.1mm;display:flex;align-items:center;justify-content:center}
+.sec .tt{font-weight:900;font-size:15pt;letter-spacing:-.4px;line-height:1.25}
+.sub{font-weight:800;font-size:12.4pt;margin:2.8mm 0 1.7mm;display:flex;align-items:center;gap:2mm;letter-spacing:-.3px}
+.tag{display:inline-block;text-indent:0;border:.9px solid var(--ink);background:#fff;font-family:var(--sans);font-size:8.2pt;font-weight:700;line-height:1.3;padding:0 1.6mm;border-radius:.6mm;margin-right:1.4mm;white-space:nowrap;vertical-align:1px}
+.tag.dk{background:var(--g4);border-color:var(--g4);color:#fff;border-radius:1mm}
+.sub .tag{font-size:9pt;padding:.1mm 1.8mm}
+
+/* 목록 기호: · 기본, - 하위, * 각주, ※ 참고 */
 ul.b{list-style:none}
-ul.b>li{padding-left:2.6mm;text-indent:-2.6mm}
+ul.b>li{padding-left:2.7mm;text-indent:-2.7mm}
 ul.b>li:before{content:"· "}
-ul.d{list-style:none;padding-left:2.6mm}
-ul.d>li{padding-left:2.4mm;text-indent:-2.4mm;font-size:9.5pt}
-ul.d>li:before{content:"- "}
+ul.b>li.d{padding-left:5.4mm;text-indent:-2.5mm}
+ul.b>li.d:before{content:"– "}
+ul.b>li.n{padding-left:4.6mm;text-indent:-1.8mm;font-size:8.3pt;color:#444}
+ul.b>li.n:before{content:"* "}
+ul.b>li.x{padding-left:3.4mm;text-indent:-3.4mm;font-size:8.6pt}
+ul.b>li.x:before{content:"※ "}
+ul.b>li.p{padding-left:0;text-indent:0}
+ul.b>li.p:before{content:""}
+
+/* 라벨 칸 표 (grid): 왼쪽 라벨 + 열 N개 */
+.grid{display:grid;gap:1.2mm;margin-bottom:2.6mm;align-items:stretch}
+.grid .gk{background:var(--g2);border-radius:1.4mm;font-weight:700;font-size:10pt;display:flex;align-items:center;justify-content:center;text-align:center;padding:1.2mm;line-height:1.3}
+.grid .gh{background:var(--g2);border-radius:1.4mm 1.4mm 0 0;font-weight:700;font-size:10pt;text-align:center;padding:.9mm 1mm;line-height:1.3;display:flex;align-items:center;justify-content:center}
+.grid .gc{border:.8px solid var(--g3);border-radius:1.2mm;padding:1.1mm 1.7mm;font-family:var(--serif);font-size:9.6pt;min-width:0;overflow:hidden}
+.grid .gc.c{text-align:center;display:flex;flex-direction:column;justify-content:center;font-family:var(--sans);font-weight:700;font-size:10pt}
+.grid .gc.sp{grid-column:2/-1}
+.grid .rk{background:var(--g4);color:#fff}
+.grid .rc{background:var(--g1)}
+.grid .gc .ch{background:var(--g1);border-bottom:.8px solid var(--g3);margin:-1.1mm -1.7mm 1mm;padding:.7mm 1mm;text-align:center;font-family:var(--sans);font-weight:700;font-size:9.6pt}
+.grid .gc .cp{margin-bottom:.6mm}
+.grid .gc.c .cp{margin:0}
+.grid .gc .cp small{display:block;font-weight:400;font-size:8.6pt}
+.grid .conn{grid-column:2/-1;height:2.2mm;border:.8px solid var(--g3);border-top:0;border-radius:0 0 3mm 3mm;margin:-.6mm 6mm 0}
+.cw{display:flex;gap:1.6mm;align-items:flex-start}.cw>.cwt{flex:1;min-width:0}
+.cimg{margin-top:1mm;text-align:center}
+.cimg img{display:block;margin:0 auto;max-width:100%;object-fit:contain}
+.cimg figcaption{font-family:var(--sans);font-size:7.8pt;color:var(--g4);margin-top:.4mm}
+.phimg{display:flex;align-items:center;justify-content:center;margin:0 auto;max-width:100%;background:repeating-linear-gradient(135deg,var(--g1) 0 2mm,var(--g2) 2mm 4mm);color:var(--g4);font-family:var(--sans);font-size:8pt;font-weight:700;border-radius:.8mm}
+
+/* 흐름 (flow): 상자 + 연결 기호 → 결과 띠 */
+.flow{display:flex;align-items:stretch;gap:1.4mm;margin:1mm 0 0}
+.flow .fi{flex:1;border:.8px solid var(--g3);border-radius:1.4mm;overflow:hidden;min-width:0}
+.flow .fh{background:var(--g1);border-bottom:.8px solid var(--g3);text-align:center;font-weight:700;font-size:10pt;padding:.8mm 1mm;line-height:1.3}
+.flow .fb{padding:1.2mm 2mm;font-family:var(--serif);font-size:9.5pt}
+.flow .fs{display:flex;align-items:center;justify-content:center;font-weight:900;font-size:14pt;color:var(--g4);min-width:5mm}
+.fdown{text-align:center;color:var(--g4);font-size:10pt;line-height:1;margin:.8mm 0}
+.fres{background:var(--g4);color:#fff;border-radius:1.6mm;text-align:center;font-weight:700;font-size:10.4pt;padding:1.3mm 2mm;margin-bottom:2.6mm}
+.fres small{display:block;font-weight:400;font-size:8.8pt;opacity:.9}
+
+/* 사진 띠 (strip) */
+.strip{display:flex;gap:1.6mm;margin:1.2mm 0 2.4mm}
+.strip figure{flex:1;min-width:0;text-align:center}
+.strip img,.strip .phimg{width:100%;object-fit:cover;border-radius:.8mm;display:block}
+.strip figcaption{font-size:7.8pt;color:var(--g4);margin-top:.3mm}
+
+/* 그 밖의 블록 */
+.row{display:flex;gap:1.6mm;margin-bottom:2.4mm}
+.box{border:.8px solid var(--g3);border-radius:1.4mm;overflow:hidden;flex:1}
+.box .hd{background:var(--g2);text-align:center;font-weight:700;font-size:10pt;padding:.9mm 0}
+.box .bd{padding:1.4mm 2.4mm;font-size:9.6pt}
+.kv{display:flex;gap:1.2mm;margin-bottom:2.4mm}
+.kv .k{background:var(--g2);border-radius:1.4mm;font-weight:700;width:20mm;flex:none;display:flex;align-items:center;justify-content:center;text-align:center;font-size:10pt;padding:1.2mm;line-height:1.3}
+.kv .v{flex:1;border:.8px solid var(--g3);border-radius:1.2mm;padding:1.3mm 2.6mm;font-size:9.8pt;min-width:0}
 .arrow{font-weight:700}
-.banner{text-align:center;background:linear-gradient(90deg,#fff,var(--g2) 15%,var(--g2) 85%,#fff);font-weight:900;font-size:10.9pt;padding:1.35mm 0;margin:0 0 2.43mm;position:relative}
-.banner:after{content:"";position:absolute;left:50%;bottom:-2mm;transform:translateX(-50%);border:2mm solid transparent;border-top-color:var(--g2);border-bottom:0}
-.tag-ttl{font-weight:700;font-size:9.3pt;display:inline-block;background:var(--ink);color:#fff;padding:0.27mm 2.16mm;margin-right:1.5mm}
-/* chevrons */
-.chev{display:flex;gap:0;margin-bottom:1.62mm}
+.banner{text-align:center;background:var(--g1);border:.8px solid var(--g3);border-radius:1.6mm;font-weight:900;font-size:10.8pt;padding:1.2mm 0;margin:0 0 2.4mm;position:relative}
+.banner:after{content:"";position:absolute;left:50%;bottom:-2mm;transform:translateX(-50%);border:2mm solid transparent;border-top-color:var(--g3);border-bottom:0}
+.chev{display:flex;gap:0;margin-bottom:1.6mm}
 .chev .st{flex:1;position:relative}
-.chev .st .h{background:var(--g2);font-weight:700;text-align:center;padding:1.22mm 5.40mm 1.22mm 6.75mm;font-size:9.6pt;clip-path:polygon(0 0,calc(100% - 3mm) 0,100% 50%,calc(100% - 3mm) 100%,0 100%,3mm 50%)}
+.chev .st .h{background:var(--g2);font-weight:700;text-align:center;padding:1.1mm 5.4mm 1.1mm 6.6mm;font-size:9.6pt;clip-path:polygon(0 0,calc(100% - 3mm) 0,100% 50%,calc(100% - 3mm) 100%,0 100%,3mm 50%)}
 .chev .st:first-child .h{clip-path:polygon(0 0,calc(100% - 3mm) 0,100% 50%,calc(100% - 3mm) 100%,0 100%)}
-.chev .st.on .h{background:var(--ink);color:#fff}
-.chev .st .t{padding:1.35mm 2.16mm 0 2.70mm;font-size:9.3pt}
-/* combine cards */
-.comb{display:flex;align-items:stretch;gap:1.35mm;margin:1.62mm 0 1.89mm}
-.comb .c{flex:1;border:1px solid var(--g3)}
-.comb .c .hd{background:#fff;border-bottom:1px dashed var(--g3);text-align:center;font-weight:900;font-size:10.0pt;padding:0.81mm 0}
-.comb .c .bd{padding:1.35mm 2.43mm;font-size:9.3pt}
-.comb .plus{display:flex;align-items:center;font-weight:900;font-size:15.1pt;color:var(--g4)}
-.comb .eq{display:flex;align-items:center;font-weight:900;font-size:13.9pt;color:var(--g4)}
-.comb .res{flex:.9;background:var(--ink);color:#fff;display:flex;flex-direction:column;justify-content:center;text-align:center;font-weight:700;font-size:9.7pt;padding:1.35mm}
+.chev .st.on .h{background:var(--g4);color:#fff}
+.chev .st .t{padding:1.3mm 2mm 0 2.6mm;font-size:9.3pt}
+.comb{display:flex;align-items:stretch;gap:1.3mm;margin:1.6mm 0 1.9mm}
+.comb .c{flex:1;border:.8px solid var(--g3);border-radius:1.4mm}
+.comb .c .hd{border-bottom:.8px dashed var(--g3);text-align:center;font-weight:900;font-size:10pt;padding:.8mm 0}
+.comb .c .bd{padding:1.3mm 2.4mm;font-size:9.3pt}
+.comb .plus{display:flex;align-items:center;font-weight:900;font-size:15pt;color:var(--g4)}
+.comb .eq{display:flex;align-items:center;font-weight:900;font-size:14pt;color:var(--g4)}
+.comb .res{flex:.9;background:var(--g4);color:#fff;border-radius:1.4mm;display:flex;flex-direction:column;justify-content:center;text-align:center;font-weight:700;font-size:9.7pt;padding:1.3mm}
 .comb .res small{font-weight:400;font-size:8.4pt;opacity:.85}
-.line{display:flex;border:1px solid var(--g3);font-size:9.5pt;margin-bottom:1.08mm}
-.line .k{background:var(--g2);font-weight:700;padding:0.81mm 2.70mm;white-space:nowrap;border-right:1px solid var(--g3)}
-.line .v{padding:0.81mm 2.97mm}
-.res-box{border:1.6px solid var(--ink);display:flex;margin-top:2.16mm}
-.res-box .k{background:var(--ink);color:#fff;font-weight:900;width:17mm;display:flex;align-items:center;justify-content:center;text-align:center;font-size:10.4pt}
-.res-box .v{flex:1;padding:1.76mm 3.51mm;font-weight:500}
-.eff{border:1px solid var(--g3);margin-top:2.16mm}
-.eff .top{display:flex;align-items:center;border-bottom:1px solid var(--g3)}
-.eff .top .k{background:var(--g4);color:#fff;font-weight:900;padding:1.08mm 3.38mm;font-size:10.0pt}
-.eff .top .v{padding:0.81mm 3.38mm;font-weight:700;font-size:10.2pt}
-.eff ul{padding:1.35mm 3.38mm}
+.line{display:flex;gap:1.2mm;font-size:9.5pt;margin-bottom:1.1mm}
+.line .k{background:var(--g2);border-radius:1.2mm;font-weight:700;padding:.7mm 2.6mm;white-space:nowrap}
+.line .v{flex:1;border:.8px solid var(--g3);border-radius:1.2mm;padding:.7mm 2.8mm}
+.res-box{display:flex;gap:1.2mm;margin:1.2mm 0 2.4mm}
+.res-box .k{background:var(--g4);color:#fff;border-radius:1.4mm;font-weight:700;width:20mm;flex:none;display:flex;align-items:center;justify-content:center;text-align:center;font-size:10.2pt;padding:1.2mm}
+.res-box .v{flex:1;background:var(--g1);border:.8px solid var(--g3);border-radius:1.2mm;padding:1.4mm 3mm;font-size:9.8pt}
+.eff{border:.8px solid var(--g3);border-radius:1.4mm;overflow:hidden;margin-top:2mm}
+.eff .top{display:flex;align-items:center;border-bottom:.8px solid var(--g3)}
+.eff .top .k{background:var(--g4);color:#fff;font-weight:900;padding:1mm 3.4mm;font-size:10pt}
+.eff .top .v{padding:.8mm 3.4mm;font-weight:700;font-size:10.2pt}
+.eff ul{padding:1.3mm 3.4mm}
 .eff li{display:flex;justify-content:space-between}
 .eff li span:last-child{font-weight:700;white-space:nowrap;padding-left:2mm}
-/* compare */
-.cmp{display:flex;align-items:stretch;gap:2.03mm;margin:1.35mm 0 1.62mm}
-.cmp .c{flex:1;border:1px solid var(--g3);padding:1.62mm 2.70mm}
-.cmp .c.on{border:1.6px solid var(--ink)}
-.cmp .c .h{font-weight:900;font-size:10.0pt;margin-bottom:0.81mm}
-.cmp .ar{display:flex;align-items:center;font-size:16.2pt;font-weight:900;color:var(--g4)}
-.check{font-weight:900;font-size:10.4pt;margin:0.54mm 0 0.54mm}
-.footer{position:absolute;bottom:6mm;font-size:9.3pt;color:var(--g4);font-weight:700}
-.footer.l{left:12mm}.footer.r{right:12mm}
+.cmp{display:flex;align-items:stretch;gap:2mm;margin:1.3mm 0 1.6mm}
+.cmp .c{flex:1;border:.8px solid var(--g3);border-radius:1.4mm;padding:1.6mm 2.6mm}
+.cmp .c.on{border:1.4px solid var(--g4)}
+.cmp .c .h{font-weight:900;font-size:10pt;margin-bottom:.8mm}
+.cmp .ar{display:flex;align-items:center;font-size:16pt;font-weight:900;color:var(--g4)}
+.check{font-weight:900;font-size:10.4pt;margin:.5mm 0}
 .note{font-size:8.1pt;color:var(--g4)}
 ```
 
@@ -1220,8 +1896,8 @@ with sync_playwright() as p:
     b = p.chromium.launch(); pg = b.new_page(viewport={'width': 794, 'height': 1123})
     pg.goto(src.as_uri()); pg.wait_for_timeout(500)
     fill = pg.evaluate("""[...document.querySelectorAll('.page')].map(p=>{const r=p.getBoundingClientRect();let m=0;
-      p.querySelectorAll('*').forEach(e=>{if(e.classList.contains('footer'))return;const v=e.getBoundingClientRect().bottom-r.top;if(v>m)m=v});return Math.round(m)})""")
-    print('쪽별 내용 하단(px):', fill, '/ 한계 약 1075px (넘으면 바닥글 침범)')
+      p.querySelectorAll('*').forEach(e=>{if(e.closest('.footer,.pf,.ph,.stab'))return;const v=e.getBoundingClientRect().bottom-r.top;if(v>m)m=v});return Math.round(m)})""")
+    print('쪽별 내용 하단(px):', fill, '/ 알맞음 약 960~1,055 · 한계 1,065px (넘으면 잘림·바닥글 침범)')
     pg.pdf(path=str(src.with_suffix('.pdf')), format='A4', print_background=True, prefer_css_page_size=True)
     b.close()
 ```
@@ -1236,7 +1912,7 @@ with sync_playwright() as p:
 const fs = require('fs');
 const path = require('path');
 const { Document, Packer, Paragraph, TextRun, Table, TableRow, TableCell, WidthType, ShadingType,
-  BorderStyle, AlignmentType, VerticalAlign, Footer, TableLayoutType, ImageRun } = require('docx');
+  BorderStyle, AlignmentType, VerticalAlign, Header, Footer, TableLayoutType, ImageRun, HeightRule } = require('docx');
 
 const src = path.resolve(process.argv[2] || 'content.json');
 const OUT = process.argv[3] || 'report.docx';
@@ -1248,34 +1924,42 @@ const CT = src.endsWith('.json') ? JSON.parse(fs.readFileSync(src, 'utf8')) : re
 // ---- 설정
 const cc = CT.config || {};
 const hex = v => String(v).replace('#', '').toUpperCase();
-const TH = { ink: '#1A1A1A', g1: '#F2F2F2', g2: '#E3E3E3', g3: '#BDBDBD', g4: '#7A7A7A', ...(cc.theme || {}) };
+const TH = { ink: '#222222', g1: '#F2F2F2', g2: '#DADADA', g3: '#A3A3A3', g4: '#5A5A5A', ...(cc.theme || {}) };
 const INK = hex(TH.ink), G1 = hex(TH.g1), G2 = hex(TH.g2), G3 = hex(TH.g3), G4 = hex(TH.g4);
 const FN = { docx_sans: '맑은 고딕', docx_serif: '바탕', ...(cc.fonts || {}) };
-const LB = { result: '추진성과', best: ['BEST', 'PRACTICE'], ...(cc.labels || {}) };
+const LB = { result: '추진성과', key: '핵심성과', best: ['BEST', 'PRACTICE'], ...(cc.labels || {}) };
+const LAY = cc.layout || null;
 const font = n => ({ ascii: n, eastAsia: n, hAnsi: n });
 const SANS = font(FN.docx_sans), SERIF = font(FN.docx_serif);
 
 const mm = x => Math.round(x * 56.7);
-const W = mm(186);
+const W = mm(172);
 const SZ = 17;
 const AL = AlignmentType;
 
 function runs(text, o = {}) {
   const out = [], sz = Math.round((o.size || SZ) * F), tsz = Math.round(((o.size || SZ) - 3) * F);
-  String(text).split(/(\*\*[^*]+\*\*|__[^_]+__|\[\[[^\]]+\]\]|\{\{[^}]+\}\})/g).filter(Boolean).forEach(t => {
+  String(text ?? '').split(/(\*\*[^*]+\*\*|__[^_]+__|\[\[[^\]]+\]\]|\{\{[^}]+\}\})/g).filter(Boolean).forEach(t => {
     const base = { font: o.font || SERIF, size: sz, bold: o.bold, color: o.color };
     if (t.startsWith('**')) out.push(new TextRun({ ...base, text: t.slice(2, -2), bold: true }));
     else if (t.startsWith('__')) out.push(new TextRun({ ...base, text: t.slice(2, -2), bold: true, underline: {} }));
-    else if (t.startsWith('[[')) out.push(new TextRun({ ...base, font: SANS, size: tsz, bold: true, color: INK, text: ` ${t.slice(2, -2)} `, shading: { type: ShadingType.CLEAR, fill: G2, color: 'auto' } }), new TextRun({ ...base, text: ' ' }));
-    else if (t.startsWith('{{')) out.push(new TextRun({ ...base, font: SANS, size: tsz, bold: true, color: 'FFFFFF', text: ` ${t.slice(2, -2)} `, shading: { type: ShadingType.CLEAR, fill: INK, color: 'auto' } }), new TextRun({ ...base, text: ' ' }));
+    else if (t.startsWith('[[')) out.push(new TextRun({ ...base, font: SANS, size: tsz, bold: true, color: INK, text: ` ${t.slice(2, -2)} `, border: { style: BorderStyle.SINGLE, size: 6, color: INK, space: 0 } }), new TextRun({ ...base, text: ' ' }));
+    else if (t.startsWith('{{')) out.push(new TextRun({ ...base, font: SANS, size: tsz, bold: true, color: 'FFFFFF', text: ` ${t.slice(2, -2)} `, shading: { type: ShadingType.CLEAR, fill: G4, color: 'auto' } }), new TextRun({ ...base, text: ' ' }));
     else out.push(new TextRun({ ...base, text: t }));
   });
   return out;
 }
 const P = (text, o = {}) => new Paragraph({ children: runs(text, o), alignment: o.align,
   spacing: { before: o.before || 0, after: o.after || 0, line: o.line || 264 },
-  indent: o.hang ? { left: o.hang, hanging: o.hang } : (o.first ? { firstLine: o.first } : undefined) });
-const B = (t, o = {}) => P('· ' + t, { hang: 150, ...o });
+  shading: o.fill ? { type: ShadingType.CLEAR, fill: o.fill, color: 'auto' } : undefined,
+  indent: o.left !== undefined ? { left: o.left, hanging: o.hanging || 0 } : (o.hang ? { left: o.hang, hanging: o.hang } : (o.first ? { firstLine: o.first } : undefined)) });
+// 목록: "- " 하위, "* " 각주, "※ " 참고, "= " 기호 없음
+const B = (t, o = {}) => { const s = String(t);
+  if (s.startsWith('- ')) return P('– ' + s.slice(2), { left: 300, hanging: 150, ...o });
+  if (s.startsWith('* ')) return P('* ' + s.slice(2), { left: 260, hanging: 110, ...o, size: (o.size || SZ) - 3, color: '444444' });
+  if (s.startsWith('※')) return P('※ ' + s.replace(/^※\s*/, ''), { left: 200, hanging: 200, ...o, size: (o.size || SZ) - 2 });
+  if (s.startsWith('= ')) return P(s.slice(2), o);
+  return P('· ' + s, { hang: 150, ...o }); };
 const Bs = (a, o) => (a || []).map(t => B(t, o));
 const H = (t, o = {}) => P(t, { font: SANS, bold: true, size: 17, align: AL.CENTER, ...o });
 
@@ -1284,54 +1968,130 @@ const ln = (c = G3, s = 4) => ({ style: BorderStyle.SINGLE, size: s, color: c })
 const bAll = b => ({ top: b, bottom: b, left: b, right: b });
 const NOB = bAll(NONE);
 function C(children, w, o = {}) {
-  return new TableCell({ children: Array.isArray(children) ? children : [children], width: { size: w, type: WidthType.DXA },
+  return new TableCell({ children: Array.isArray(children) ? (children.length ? children : [P('')]) : [children], width: { size: w, type: WidthType.DXA },
     shading: o.fill ? { type: ShadingType.CLEAR, fill: o.fill, color: 'auto' } : undefined,
     borders: o.borders || bAll(ln()), verticalAlign: o.v || VerticalAlign.CENTER, columnSpan: o.span, rowSpan: o.rowSpan,
     margins: { top: Math.round((o.mt ?? 45) * SP), bottom: Math.round((o.mb ?? 45) * SP), left: o.ml ?? 90, right: o.mr ?? 90 } });
 }
-function T(rows, widths) {
-  return new Table({ rows: rows.map(r => new TableRow({ children: r, cantSplit: true })), columnWidths: widths,
+function T(rows, widths, heights) {
+  return new Table({ rows: rows.map((r, i) => new TableRow({ children: r, cantSplit: true,
+      height: heights && heights[i] ? { value: heights[i], rule: HeightRule.EXACT } : undefined })), columnWidths: widths,
     width: { size: widths.reduce((a, b) => a + b, 0), type: WidthType.DXA }, layout: TableLayoutType.FIXED,
     borders: { top: NONE, bottom: NONE, left: NONE, right: NONE, insideHorizontal: NONE, insideVertical: NONE } });
 }
 const gap = (h = 70) => new Paragraph({ spacing: { before: 0, after: 0, line: Math.max(20, Math.round(h * SP)), lineRule: 'exact' }, children: [new TextRun({ text: '', size: 2 })] });
 const split = (total, ws, gapW, n) => { const s = ws.reduce((a, b) => a + b, 0), avail = total - gapW * (n - 1);
   const cw = ws.map(x => Math.round(avail * x / s)); cw[n - 1] = avail - cw.slice(0, -1).reduce((a, b) => a + b, 0); return cw; };
-const KW = mm(17);
+const KW = mm(20);
 const push = (arr, r) => (Array.isArray(r) ? arr.push(...r) : arr.push(r));
 const blocks = (list, w) => { const kids = []; list.forEach((x, i) => { if (i) kids.push(gap(40)); push(kids, R[x.t](x, w)); }); return kids; };
 
+// ---- 그림 크기(px)와 자리표시
+function imgSize(buf) {
+  if (buf[0] === 0x89 && buf[1] === 0x50) return [buf.readUInt32BE(16), buf.readUInt32BE(20)];
+  if (buf[0] === 0x47 && buf[1] === 0x49) return [buf.readUInt16LE(6), buf.readUInt16LE(8)];
+  if (buf[0] === 0xFF && buf[1] === 0xD8) { let i = 2;
+    while (i < buf.length) { if (buf[i] !== 0xFF) { i++; continue; } const m = buf[i + 1], L = buf.readUInt16BE(i + 2);
+      if (m >= 0xC0 && m <= 0xCF && ![0xC4, 0xC8, 0xCC].includes(m)) return [buf.readUInt16BE(i + 7), buf.readUInt16BE(i + 5)];
+      i += 2 + L; } }
+  return [4, 3];
+}
+const px = v => Math.round(v * 96 / 25.4);           // mm → px(96dpi)
+const dxa2mm = d => d / 56.7;
+function picture(i, maxW) {   // maxW: DXA
+  const maxMm = dxa2mm(maxW) - 1.5;
+  if (i.src && !fs.existsSync(path.resolve(baseDir, i.src))) { console.warn('그림 파일 없음(자리표시로 그림):', i.src); i = { ...i, src: null, label: i.label || '그림 없음' }; }
+  if (!i.src) {   // 가린 견본: 빗금 대신 회색 칸
+    const wmm = Math.min(i.w_mm || maxMm, maxMm), hmm = i.h_mm || 20;
+    return T([[C(P(i.label || '그림', { font: SANS, bold: true, size: 14, color: G4, align: AL.CENTER }), mm(wmm), { fill: G2, borders: NOB })]], [mm(wmm)], [mm(hmm)]);
+  }
+  const f = path.resolve(baseDir, i.src), buf = fs.readFileSync(f), [iw, ih] = imgSize(buf);
+  let wmm = i.w_mm, hmm = i.h_mm;
+  if (wmm && !hmm) hmm = wmm * ih / iw; else if (hmm && !wmm) wmm = hmm * iw / ih; else if (!wmm && !hmm) { wmm = Math.min(maxMm, 40); hmm = wmm * ih / iw; }
+  if (wmm > maxMm) { hmm = hmm * maxMm / wmm; wmm = maxMm; }
+  let ext = path.extname(f).slice(1).toLowerCase(); if (ext === 'jpeg') ext = 'jpg';
+  return new Paragraph({ alignment: AL.CENTER, spacing: { before: 30, after: 10 },
+    children: [new ImageRun({ type: ext, data: buf, transformation: { width: px(wmm), height: px(hmm) } })] });
+}
+const figure = (i, maxW) => { const out = [picture(i, maxW)];
+  if (i.caption) out.push(P(i.caption, { font: SANS, size: 13, color: G4, align: AL.CENTER })); return out; };
+
+// ---- 표 칸
+const normCell = x => typeof x === 'string' ? { p: [x], c: true } : Array.isArray(x) ? { b: x } : (x || {});
+function cellKids(c, w) {
+  const kids = [];
+  if (c.h) kids.push(P(c.h, { font: SANS, bold: true, size: 16, align: AL.CENTER, fill: G1, after: 40 }));
+  const body = [];
+  [].concat(c.p || []).forEach(x => body.push(c.c ? P(x, { font: SANS, bold: true, size: 17, align: AL.CENTER }) : P(x, { size: 16 })));
+  body.push(...Bs(c.b, { size: 16 }));
+  const imgs = [].concat(c.img || []), right = imgs.filter(i => i.pos === 'right'), below = imgs.filter(i => i.pos !== 'right');
+  if (right.length) {
+    const iw = mm(right[0].w_mm || 30) + 120, tw = w - iw - 180;
+    kids.push(T([[C(body, tw, { borders: NOB, v: VerticalAlign.TOP, ml: 0, mr: 60, mt: 0, mb: 0 }),
+      C(right.flatMap(i => figure(i, iw)), iw, { borders: NOB, v: VerticalAlign.TOP, ml: 0, mr: 0, mt: 0, mb: 0 })]], [tw, iw]));
+  } else kids.push(...body);
+  below.forEach(i => kids.push(...figure(i, w - 180)));
+  return kids;
+}
+
 const R = {
-  ev: (b, w) => T([[C(P(b.label, { font: SANS, bold: true, size: 20, align: AL.CENTER }), mm(26), { fill: G2, borders: bAll(ln(INK, 10)) }),
-    C(P(b.text, { font: SANS, size: 19 }), w - mm(26), { borders: bAll(ln(INK, 10)), ml: 140 })]], [mm(26), w - mm(26)]),
+  title: (b) => P(b.text, { font: SANS, bold: true, size: 29, align: AL.CENTER, after: 60 }),
+  ev: (b, w) => T([[C(P(b.label, { font: SANS, bold: true, size: 20, align: AL.CENTER }), mm(28), { fill: G2, borders: bAll(ln(G3, 6)) }),
+    C(P(b.text, { font: SANS, size: 18 }), w - mm(28), { borders: bAll(ln(G3, 6)), ml: 140 })]], [mm(28), w - mm(28)]),
+  key: (b, w) => T([[C(P(b.label || LB.key, { font: SANS, bold: true, size: 19, color: 'FFFFFF', align: AL.CENTER }), mm(28), { fill: G4, borders: bAll(ln(G3, 6)) }),
+    C(P('☑ ' + b.text, { font: SANS, bold: true, size: 18 }), w - mm(28), { borders: bAll(ln(G3, 6)), ml: 140 })]], [mm(28), w - mm(28)]),
   bp: (b, w) => { const lb = b.label || LB.best;
     return T([[C([P(lb[0], { font: SANS, bold: true, size: 20, color: 'FFFFFF', align: AL.CENTER, line: 220 }),
       P(lb[1] || '', { font: SANS, size: 11, color: 'FFFFFF', align: AL.CENTER, line: 200 })], mm(20), { fill: G4 }),
       C(b.items.map(t => P(t, { font: SANS, size: 18 })), w - mm(20), { ml: 140 })]], [mm(20), w - mm(20)]); },
-  vision: (b, w) => T([[C(P(`[[${b.k}]] ${b.text}`, { font: SANS, bold: true, size: 20, color: 'FFFFFF', align: AL.CENTER }), w, { fill: INK, borders: NOB })]], [w]),
-  sec: (b, w) => { const ws = [mm(10), w - mm(10) - (b.tag ? mm(20) : 0)]; if (b.tag) ws.push(mm(20));
-    const tb = { top: ln(INK, 16), bottom: ln(INK, 6), left: NONE, right: NONE };
-    const r = [C(P(b.no, { font: SANS, bold: true, size: 26, color: 'FFFFFF', align: AL.CENTER }), ws[0], { fill: INK, borders: tb }),
-      C(P(b.title, { font: SANS, bold: true, size: 24 }), ws[1], { fill: G1, borders: tb, ml: 140 })];
-    if (b.tag) r.push(C(P(`{{${b.tag}}}`, { size: 19, align: AL.RIGHT }), ws[2], { fill: G1, borders: tb }));
+  vision: (b, w) => T([[C(P(`[[${b.k}]] ${b.text}`, { font: SANS, bold: true, size: 20, color: 'FFFFFF', align: AL.CENTER }), w, { fill: G4, borders: NOB })]], [w]),
+  sec: (b, w) => { const ws = [mm(9), w - mm(9) - (b.tag ? mm(20) : 0)]; if (b.tag) ws.push(mm(20));
+    const tb = { top: NONE, bottom: ln(G3, 6), left: NONE, right: NONE };
+    const r = [C(P(b.no, { font: SANS, bold: true, size: 23, color: 'FFFFFF', align: AL.CENTER }), ws[0], { fill: G4, borders: tb, ml: 0, mr: 0 }),
+      C(P(b.title, { font: SANS, bold: true, size: 26 }), ws[1], { borders: tb, ml: 140 })];
+    if (b.tag) r.push(C(P(`{{${b.tag}}}`, { size: 19, align: AL.RIGHT }), ws[2], { borders: tb }));
     return T([r], ws); },
-  sub: (b, w) => { const tw = b.tag ? mm(32) : 0;
-    const r = [C(P(b.title, { font: SANS, bold: true, size: 20 }), w - tw, { borders: NOB, ml: 0 })];
-    if (b.tag) r.push(C(P(`[[${b.tag}]]`, { size: 19, align: AL.RIGHT }), tw, { borders: NOB, mr: 0 }));
-    return T([r], b.tag ? [w - tw, tw] : [w]); },
-  boxes: (b, w) => { const n = b.items.length, g = mm(2), cw = split(w, b.items.map(() => 1), g, n), ws = [], r1 = [], r2 = [];
+  sub: (b, w) => P(b.title + (b.tag ? `  {{${b.tag}}}` : ''), { font: SANS, bold: true, size: 21 }),
+  grid: (b, w) => {
+    const n = b.head ? b.head.length : Math.max(...b.rows.map(r => (r.cells || [0]).length));
+    const kw = mm(b.kw_mm || 20), cw = split(w - kw, b.w || Array(n).fill(1), 0, n), ws = [kw, ...cw], rows = [];
+    if (b.head) rows.push([C(P(''), kw, { borders: NOB }), ...b.head.map((x, i) => C(H(x, { size: 17 }), cw[i], { fill: G2, borders: bAll(ln(G3, 4)) }))]);
+    b.rows.forEach(r => {
+      const lab = C(String(r.k || '').split('/').map(x => P(x, { font: SANS, bold: true, size: 17, align: AL.CENTER, color: r.res ? 'FFFFFF' : INK })), kw,
+        { fill: r.res ? G4 : G2, borders: bAll(ln(G3, 4)) });
+      const fill = r.res ? G1 : undefined;
+      if (r.span !== undefined) { const c = normCell(r.span); rows.push([lab, C(cellKids(c, w - kw), w - kw, { span: n, fill, v: c.c ? VerticalAlign.CENTER : VerticalAlign.TOP })]); }
+      else rows.push([lab, ...r.cells.map((x, i) => { const c = normCell(x); return C(cellKids(c, cw[i]), cw[i], { fill, v: c.c ? VerticalAlign.CENTER : VerticalAlign.TOP }); })]);
+    });
+    return T(rows, ws); },
+  flow: (b, w) => { const n = b.items.length, sw = mm(6), cw = split(w, b.items.map(() => 1), sw, n), ws = [], r = [];
+    b.items.forEach((x, i) => { ws.push(cw[i]);
+      r.push(C([P((x.tag ? `{{${x.tag}}}` : '') + x.h, { font: SANS, bold: true, size: 17, align: AL.CENTER, fill: G1, after: 30 }), ...Bs(x.b, { size: 16 })], cw[i], { v: VerticalAlign.TOP, mt: 0 }));
+      if (i < n - 1) { ws.push(sw); r.push(C(P(b.sep || '+', { font: SANS, bold: true, size: 26, color: G4, align: AL.CENTER }), sw, { borders: NOB, ml: 0, mr: 0 })); } });
+    const out = [T([r], ws)];
+    if (b.res) { const rs = [].concat(b.res);
+      out.push(P('▼', { font: SANS, size: 16, color: G4, align: AL.CENTER, before: 20 }),
+        T([[C([P(rs[0], { font: SANS, bold: true, size: 18, color: 'FFFFFF', align: AL.CENTER }), ...(rs[1] ? [P(rs[1], { font: SANS, size: 15, color: 'EEEEEE', align: AL.CENTER })] : [])], w, { fill: G4, borders: NOB })]], [w])); }
+    return out; },
+  strip: (b, w) => { const n = b.items.length, g = mm(1.6), cw = split(w, b.items.map(() => 1), g, n), ws = [], r = [];
+    b.items.forEach((x, i) => { ws.push(cw[i]);
+      r.push(C(figure({ ...x, h_mm: b.h_mm || 22 }, cw[i]), cw[i], { borders: NOB, ml: 0, mr: 0, mt: 0, mb: 0 }));
+      if (i < n - 1) { ws.push(g); r.push(C(P(''), g, { borders: NOB })); } });
+    return T([r], ws); },
+  boxes: (b, w) => { const n = b.items.length, g = mm(1.6), cw = split(w, b.items.map(() => 1), g, n), ws = [], r1 = [], r2 = [];
     b.items.forEach((x, i) => { ws.push(cw[i]); r1.push(C(H(x.h), cw[i], { fill: G2 })); r2.push(C(Bs(x.b), cw[i], { v: VerticalAlign.TOP }));
       if (i < n - 1) { ws.push(g); r1.push(C(P(''), g, { borders: NOB })); r2.push(C(P(''), g, { borders: NOB })); } });
     return T([r1, r2], ws); },
   kv: (b, w) => { const iw = w - KW - 240; const kids = [];
     if (b.text) kids.push(P(b.text)); if (b.b) kids.push(...Bs(b.b)); if (b.ar) kids.push(P(`**${b.ar}**`));
+    [].concat(b.img || []).forEach(i => kids.push(...figure(i, iw)));
     if (b.inner) { kids.push(...blocks(b.inner, iw)); kids.push(gap(20)); }
-    return T([[C(b.k.split('/').map(x => P(x, { font: SANS, bold: true, size: 17, align: AL.CENTER })), KW, { fill: G2 }),
+    return T([[C(String(b.k).split('/').map(x => P(x, { font: SANS, bold: true, size: 17, align: AL.CENTER })), KW, { fill: G2 }),
       C(kids, w - KW, { ml: 120, v: b.inner ? VerticalAlign.TOP : VerticalAlign.CENTER, mt: b.inner ? 70 : 45 })]], [KW, w - KW]); },
-  banner: (b, w) => T([[C(P(`▼  ${b.text}  ▼`, { font: SANS, bold: true, size: 19, align: AL.CENTER }), w, { fill: G2, borders: NOB, mt: 50, mb: 50 })]], [w]),
+  banner: (b, w) => T([[C(P(`▼  ${b.text}  ▼`, { font: SANS, bold: true, size: 19, align: AL.CENTER }), w, { fill: G1, mt: 50, mb: 50 })]], [w]),
   chev: (b, w) => { const aw = mm(4), n = b.st.length, sw = Math.floor((w - aw * (n - 1)) / n), ws = [], r1 = [], r2 = [];
     b.st.forEach((s, i) => { ws.push(sw);
-      r1.push(C(H(s.h, { color: s.on ? 'FFFFFF' : INK, size: 16 }), sw, { fill: s.on ? INK : G2, borders: NOB, ml: 40, mr: 40 }));
+      r1.push(C(H(s.h, { color: s.on ? 'FFFFFF' : INK, size: 16 }), sw, { fill: s.on ? G4 : G2, borders: NOB, ml: 40, mr: 40 }));
       r2.push(C(Bs(s.t, { size: 16 }), sw, { borders: NOB, v: VerticalAlign.TOP, ml: 60, mr: 40 }));
       if (i < n - 1) { ws.push(aw); r1.push(C(P('▶', { font: SANS, size: 15, color: G4, align: AL.CENTER }), aw, { borders: NOB, ml: 0, mr: 0 }));
         r2.push(C(P(''), aw, { borders: NOB, ml: 0, mr: 0 })); } });
@@ -1345,14 +2105,14 @@ const R = {
     b.cards.forEach((c, i) => { ws.push(cw, pw); r1.push(card(c.h), sym(i < n - 1 ? '+' : '=')); r2.push(body(c.b)); });
     const last = w - ws.reduce((a, x) => a + x, 0); ws.push(last);
     r1.push(C([P(b.res[0], { font: SANS, bold: true, size: 17, color: 'FFFFFF', align: AL.CENTER }), P(b.res[1] || '', { font: SANS, bold: true, size: 17, color: 'FFFFFF', align: AL.CENTER }),
-      P(b.res[2] || '', { font: SANS, size: 14, color: 'DDDDDD', align: AL.CENTER })], last, { fill: INK, borders: NOB, rowSpan: 2 }));
+      P(b.res[2] || '', { font: SANS, size: 14, color: 'DDDDDD', align: AL.CENTER })], last, { fill: G4, borders: NOB, rowSpan: 2 }));
     return T([r1, r2], ws); },
   line: (b, w) => T([[C(P(b.k, { font: SANS, bold: true, size: 16, align: AL.CENTER }), mm(18), { fill: G2, mt: 25, mb: 25, ml: 40, mr: 40 }),
     C(P(b.v, { size: 16 }), w - mm(18), { mt: 25, mb: 25 })]], [mm(18), w - mm(18)]),
   cmp: (b, w) => { const aw = mm(9), cw = Math.floor((w - aw) / 2);
     const side = (x, dark) => [P(`${dark ? '{{' : '[['}${x.tag}${dark ? '}}' : ']]'}**${x.h}**`, { size: 17 }), ...Bs(x.b, { size: 16 })];
     return T([[C(side(b.a), cw, { v: VerticalAlign.TOP }), C(P('➡', { font: SANS, bold: true, size: 28, color: G4, align: AL.CENTER }), aw, { borders: NOB, ml: 0, mr: 0 }),
-      C(side(b.b, true), w - cw - aw, { v: VerticalAlign.TOP, borders: bAll(ln(INK, 12)) })]], [cw, aw, w - cw - aw]); },
+      C(side(b.b, true), w - cw - aw, { v: VerticalAlign.TOP, borders: bAll(ln(G4, 12)) })]], [cw, aw, w - cw - aw]); },
   bl: (b) => Bs(b.b),
   text: (b) => (b.p || []).map(x => P(x, { first: 120, after: 40 })),
   eff: (b, w) => { const a = mm(26), c = mm(54), m = w - a - c, o = ln();
@@ -1361,44 +2121,55 @@ const R = {
     return T([[C(P(b.k, { font: SANS, bold: true, size: 17, color: 'FFFFFF', align: AL.CENTER }), a, { fill: G4 }),
       C(P(b.v, { font: SANS, bold: true, size: 17 }), m + c, { span: 2, ml: 140 })],
       ...b.rows.map((r, i) => row(r[0], r[1], i === b.rows.length - 1))], [a, m, c]); },
-  res: (b, w) => T([[C(P(b.label || LB.result, { font: SANS, bold: true, size: 15, color: 'FFFFFF', align: AL.CENTER }), KW, { fill: INK, borders: bAll(ln(INK, 14)) }),
-    C(Bs(b.b), w - KW, { borders: bAll(ln(INK, 14)), ml: 130, mt: 60, mb: 60 })]], [KW, w - KW]),
-  kpi: (b, w) => { const n = b.items.length, g = mm(2), cw = split(w, b.items.map(() => 1), g, n), ws = [], r = [];
+  res: (b, w) => T([[C(String(b.label || LB.result).split('/').map(x => P(x, { font: SANS, bold: true, size: 17, color: 'FFFFFF', align: AL.CENTER })), KW, { fill: G4, borders: bAll(ln(G3, 4)) }),
+    C(Bs(b.b), w - KW, { fill: G1, borders: bAll(ln(G3, 4)), ml: 130, mt: 55, mb: 55 })]], [KW, w - KW]),
+  kpi: (b, w) => { const n = b.items.length, g = mm(1.6), cw = split(w, b.items.map(() => 1), g, n), ws = [], r = [];
     b.items.forEach((x, i) => { ws.push(cw[i]);
       r.push(C([P(x.v, { font: SANS, bold: true, size: 26, align: AL.CENTER, line: 300 }), P(x.l, { font: SANS, size: 14, color: '444444', align: AL.CENTER })], cw[i],
-        { borders: { top: ln(INK, 18), left: ln(), right: ln(), bottom: ln() } }));
+        { borders: { top: ln(G4, 18), left: ln(), right: ln(), bottom: ln() } }));
       if (i < n - 1) { ws.push(g); r.push(C(P(''), g, { borders: NOB })); } });
     return T([r], ws); },
   tbl: (b, w) => { const ws = split(w, b.w, 0, b.w.length);
     return T([b.head.map((h, i) => C(H(h, { size: 16 }), ws[i], { fill: G2 })),
       ...b.rows.map(r => r.map((c, i) => i === 0 ? C(P(c, { font: SANS, bold: true, size: 16 }), ws[i], { fill: G1 }) : C(P(c, { size: 16 }), ws[i], { ml: 110 })))], ws); },
-  cols: (b, w) => { const n = b.cols.length, g = mm(2.7), cw = split(w, b.w || b.cols.map(() => 1), g, n), ws = [], r = [];
+  cols: (b, w) => { const n = b.cols.length, g = mm(2.4), cw = split(w, b.w || b.cols.map(() => 1), g, n), ws = [], r = [];
     b.cols.forEach((col, i) => { ws.push(cw[i]); r.push(C(blocks(col, cw[i] - 20), cw[i], { borders: NOB, v: VerticalAlign.TOP, ml: 0, mr: 0, mt: 0, mb: 0 }));
       if (i < n - 1) { ws.push(g); r.push(C(P(''), g, { borders: NOB })); } });
     return T([r], ws); },
-  img: (b) => { const f = path.resolve(baseDir, b.src), ext = path.extname(f).slice(1).toLowerCase();
-    const px = v => Math.round(v * 96 / 25.4);
-    const out = [new Paragraph({ alignment: AL.CENTER, spacing: { before: 40, after: 20 },
-      children: [new ImageRun({ type: ext === 'jpeg' ? 'jpg' : ext, data: fs.readFileSync(f), transformation: { width: px(b.w_mm), height: px(b.h_mm) } })] })];
-    if (b.caption) out.push(P(b.caption, { font: SANS, size: 14, color: G4, align: AL.CENTER }));
-    return out; },
+  img: (b, w) => figure(b, w),
 };
 
-const before = { sec: 150, sub: 120, ev: 0 };
+// ---- 머리말·바닥글 (config.layout). 짝수 쪽=왼쪽 면, 홀수 쪽=오른쪽 면. 옆탭은 PDF에서만 그린다
+const rule = { bottom: { style: BorderStyle.SINGLE, size: 6, color: G3, space: 2 } };
+function chrome(p, i) {
+  if (p.footer) return { footers: { default: new Footer({ children: [P(p.footer, { font: SANS, bold: true, size: 16, color: G4, align: p.align === 'left' ? AL.LEFT : AL.RIGHT })] }) } };
+  if (!LAY) return {};
+  const n = (LAY.page_start || 1) + i, even = n % 2 === 0, o = {};
+  const t = (text, x = {}) => new TextRun({ text, font: SANS, size: Math.round((x.size || 18) * F), bold: x.bold, color: x.color || INK, shading: x.fill ? { type: ShadingType.CLEAR, fill: x.fill, color: 'auto' } : undefined });
+  if (p.header !== false) {
+    if (even && LAY.chapter) o.headers = { default: new Header({ children: [new Paragraph({ border: rule, children: [
+      ...(LAY.chapter.no ? [t(` ${LAY.chapter.no} `, { bold: true, color: 'FFFFFF', fill: G4, size: 20 }), t('  ')] : []), t(LAY.chapter.text || '', { bold: true, size: 20 })] })] }) };
+    if (!even && LAY.running) o.headers = { default: new Header({ children: [new Paragraph({ alignment: AL.RIGHT, border: rule, children: [t(`  ${LAY.running}  `, { size: 16, fill: G1 })] })] }) };
+  }
+  if (LAY.page_numbers !== false) o.footers = { default: new Footer({ children: [new Paragraph({ alignment: even ? AL.LEFT : AL.RIGHT, children: even
+    ? [t(String(n), { bold: true, size: 16 }), ...(LAY.org ? [t('  |  ', { color: G3, size: 16 }), t(LAY.org, { bold: true, color: G4, size: 16 })] : [])]
+    : [...(LAY.slogan ? [t(LAY.slogan, { color: G3, size: 16 }), t('  |  ', { color: G3, size: 16 })] : []), t(String(n), { bold: true, size: 16 })] })] }) };
+  return o;
+}
+
+const before = { sec: 150, sub: 110, ev: 0, title: 0, key: 50 };
 function pageChildren(list) {
   const out = [];
   list.forEach((b, i) => {
     if (!R[b.t]) throw new Error(`알 수 없는 블록 타입: ${b.t}`);
-    if (i) out.push(gap(before[b.t] ?? 85));
+    if (i) out.push(gap(before[b.t] ?? 80));
     push(out, R[b.t](b, W));
   });
   return out;
 }
-const pageProps = { page: { size: { width: 11906, height: 16838 }, margin: { top: mm(11), bottom: mm(13), left: mm(12), right: mm(12), footer: mm(6) } } };
+const pageProps = { page: { size: { width: 11906, height: 16838 }, margin: { top: mm(18), bottom: mm(15), left: mm(19), right: mm(19), header: mm(8.5), footer: mm(7) } } };
 const doc = new Document({ styles: { default: { document: { run: { font: SERIF, size: SZ } } } },
-  sections: CT.pages.map(p => ({ properties: pageProps,
-    footers: p.footer ? { default: new Footer({ children: [P(p.footer, { font: SANS, bold: true, size: 16, color: G4, align: p.align === 'left' ? AL.LEFT : AL.RIGHT })] }) } : undefined,
-    children: pageChildren(p.blocks) })) });
+  sections: CT.pages.map((p, i) => ({ properties: pageProps, ...chrome(p, i), children: pageChildren(p.blocks) })) });
 Packer.toBuffer(doc).then(b => { fs.writeFileSync(OUT, b); console.log('ok:', OUT); });
 ```
 
@@ -1421,34 +2192,34 @@ for f in sorted(glob.glob(d + '/p-*.png')):
 
 ```json
 {
-  "title": "보고서 제목",
+  "title": "20XX년 실적보고서",
   "config": {
-    "labels": { "result": "추진성과", "best": ["BEST", "PRACTICE"] }
+    "layout": { "page_start": 1, "chapter": { "no": "01", "text": "장 제목" }, "running": "쪽 머리 제목", "org": "", "slogan": "", "sidetab": "" }
   },
   "pages": [
     {
-      "footer": "○○년도 실적보고서 │ 1",
-      "align": "right",
       "blocks": [
-        { "t": "ev", "label": "평가내용①", "text": "(성과지표의 평가 항목 원문, 없으면 보고서 주제)" },
-        { "t": "bp", "items": ["① **[대표 사례 1]** (수단)으로 (결과·숫자)", "② **[대표 사례 2]** (수단)으로 (결과·숫자)"] },
-        { "t": "sec", "no": "1", "title": "(수단)으로 (결과) — 주장형 제목", "tag": "B.P①" },
-        { "t": "boxes", "items": [
-          { "h": "정부 정책", "b": ["(상위 정책과의 연결)"] },
-          { "h": "대외 환경", "b": ["(환경 변화 + 숫자 1개)"] },
-          { "h": "기관 전략", "b": ["(기관 전략과의 연결)"] }
+        { "t": "title", "text": "Ⅰ. 20XX년 평가내용별 추진실적 및 성과" },
+        { "t": "ev", "label": "평가내용 1", "text": "(평가 항목 원문)" },
+        { "t": "key", "text": "(핵심 메시지 1문장)" },
+        { "t": "sec", "no": "1", "title": "(대제목: 수단 + 으로 + 결과)" },
+        { "t": "sub", "title": "가. (중제목: 사업·과제)", "tag": "B.P" },
+        { "t": "grid", "head": ["(열1)", "(열2)", "(열3)"], "rows": [
+          { "k": "현황 및/문제점", "cells": [["(문제, 정량)"], ["…"], ["…"]] },
+          { "k": "추진내용", "cells": [
+            { "h": "(실행 단위·시점)", "b": ["[[내용]] …", "- 세부"], "img": { "src": "work/inputs/images/I01.png", "h_mm": 22 } },
+            { "h": "(실행 단위·시점)", "b": ["…", "* 각주"] },
+            { "h": "(실행 단위·시점)", "b": ["…"] } ] },
+          { "k": "추진성과", "res": true, "cells": [["(성과, 비교 값)"], ["…"], ["…"]] }
         ] },
-        { "t": "kv", "k": "문 제 점", "b": ["(기존 방식의 한계)"], "ar": "➡ (핵심 문제, 숫자)" },
-        { "t": "banner", "text": "(해결 방향 한 줄)" },
-        { "t": "kv", "k": "추 진/내 용", "inner": [
-          { "t": "chev", "st": [
-            { "h": "(1단계)", "t": ["(내용)"] },
-            { "h": "(2단계·올해)", "t": ["(내용)"], "on": true },
-            { "h": "(3단계)", "t": ["(내용)"] }
-          ] },
-          { "t": "line", "k": "추진경과", "v": "(단계)('YY.M) → (단계) → (단계)" }
+        { "t": "sub", "title": "나. (중제목)" },
+        { "t": "grid", "rows": [
+          { "k": "기존", "cells": [["…"]] },
+          { "k": "개선", "cells": [{ "b": ["…", "- …"], "img": { "src": "work/inputs/images/I02.png", "pos": "right", "w_mm": 30 } }] },
+          { "k": "추진성과", "res": true, "cells": [["…"]] }
         ] },
-        { "t": "res", "b": ["(외부 인정)", "(정량 성과: 기준 → 결과)", "(확산·다음 단계)"] }
+        { "t": "flow", "items": [ { "tag": "○월", "h": "(단계1)", "b": ["…"] }, { "tag": "○월", "h": "(단계2)", "b": ["…"] }, { "tag": "○월", "h": "(단계3)", "b": ["…"] } ], "res": ["(결과)", "(보조 설명)"] },
+        { "t": "res", "label": "기대효과", "b": ["…", "…"] }
       ]
     }
   ]

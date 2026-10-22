@@ -34,7 +34,7 @@ for f in sorted((ROOT / 'references').glob('0*.md')):
 
 out.append('\n---\n\n# 부록 B. 스크립트와 데이터 틀\n\n아래 파일을 **이름 그대로** 한 폴더에 저장해 쓴다(`render_html.js`는 같은 폴더의 `base.css`를 읽는다). Word 출력에는 `npm install docx`, PDF 출력에는 Playwright가 필요하다.\n')
 lang = {'.py': 'python', '.js': 'js', '.css': 'css', '.json': 'json'}
-for name in ['read_inputs.py', 'render_html.js', 'base.css', 'to_pdf.py', 'render_docx.js', 'fill_check.py']:
+for name in ['read_inputs.py', 'crop_pdf.py', 'compare.py', 'render_html.js', 'base.css', 'to_pdf.py', 'render_docx.js', 'fill_check.py']:
     p = ROOT / 'scripts' / name
     out.append(f'\n### 파일: {name}\n\n```{lang[p.suffix]}\n{p.read_text(encoding="utf-8").rstrip()}\n```\n')
 p = ROOT / 'assets' / 'content_template.json'

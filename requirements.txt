@@ -3,4 +3,4 @@ playwright      # HTML → PDF (설치 후: python -m playwright install chromiu
 olefile         # HWP 읽기
 openpyxl        # XLSX 읽기
 numpy           # fill_check.py
-pillow          # fill_check.py
+pillow          # 그림 추출·미리보기 모음(read_inputs.py), crop_pdf.py, fill_check.py
