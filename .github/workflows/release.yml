@@ -1,0 +1,25 @@
+# 태그(v*)를 올리면 설치용 zip을 만들어 Releases에 붙인다.
+# README의 '스킬 zip 받기' 링크(releases/latest/download/...)가 이 파일을 가리킨다.
+name: release-zip
+on:
+  push:
+    tags: ['v*']
+permissions:
+  contents: write
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: 설치용 zip 만들기
+        run: python3 tools/build_zip.py
+      - name: 릴리스 만들기·갱신
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          TAG: ${{ github.ref_name }}
+        run: |
+          if gh release view "$TAG" >/dev/null 2>&1; then
+            gh release upload "$TAG" dist/performance-report-writer.zip --clobber
+          else
+            gh release create "$TAG" dist/performance-report-writer.zip --title "$TAG" --notes-file .github/release_notes.md --latest
+          fi
