@@ -1,0 +1,6 @@
+# 필요한 것만 설치하면 된다
+playwright      # HTML → PDF (설치 후: python -m playwright install chromium)
+olefile         # HWP 읽기
+openpyxl        # XLSX 읽기
+numpy           # fill_check.py
+pillow          # fill_check.py
