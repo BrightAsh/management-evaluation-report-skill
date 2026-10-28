@@ -1,5 +1,16 @@
 # 실적보고서 작성 스킬 (performance-report-writer)
 
+## 변경 이력
+
+### v2.1 (v2.0 대비)
+
+- 양식 재현보다 자료 분석과 평가자 관점의 흐름·구조 설계를 중심으로 작성 원칙을 강화했습니다.
+- 특정 기관·부서·주제에 종속되지 않도록 범용화하고, 자료·양식·성과지표의 첨부 조합에 따라 방향과 형식을 정하도록 정리했습니다.
+- 양식이 없을 때 사용할 기본 양식을 추가했습니다.
+- 원자료의 사진·그래프와 전년도 지적사항, 전년·목표·도입 전후 비교값 중 메시지에 필요한 것만 선별해 반영하도록 했습니다.
+
+---
+
 흩어진 실적 자료를 AI가 끝까지 읽고 분석해서, **평가자가 한눈에 이해하는 흐름**으로 엮은 실적보고서(PDF·Word)를 만들어 줍니다.
 
 **[스킬 zip 받기](https://github.com/BrightAsh/performance-report-writer/releases/latest/download/performance-report-writer.zip)** · [PROMPT.md (다른 AI용)](PROMPT.md) · 라이선스 [CC BY-NC 4.0](LICENSE)
