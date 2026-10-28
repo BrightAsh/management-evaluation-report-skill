@@ -2,7 +2,7 @@
 
 흩어진 실적 자료를 AI가 끝까지 읽고 분석해서, **평가자가 한눈에 이해하는 흐름**으로 엮은 실적보고서(PDF·Word)를 만들어 줍니다.
 
-**[스킬 zip 받기](https://github.com/BrightAsh/performance-report-writer/releases/latest/download/performance-report-writer.zip)** · **[한 장 안내 페이지](https://brightash.github.io/performance-report-writer/)** · [PROMPT.md (다른 AI용)](PROMPT.md) · 라이선스 [CC BY-NC 4.0](LICENSE)
+**[스킬 zip 받기](https://github.com/BrightAsh/performance-report-writer/releases/latest/download/performance-report-writer.zip)** · [PROMPT.md (다른 AI용)](PROMPT.md) · 라이선스 [CC BY-NC 4.0](LICENSE)
 
 양식을 채우는 도구가 아닙니다. 방대한 자료에서 **무엇을 고르고, 어떤 순서와 구조로 말해야 메시지가 잘 보이는지** 설계하는 데 초점을 둡니다. 경영평가 실적보고서, 내부 성과보고서, 사업 결과보고서 등 어느 조직·부서·주제에도 씁니다.
 
@@ -116,7 +116,6 @@ performance-report-writer/
 ├── scripts/            첨부 텍스트·그림 추출, PDF 영역 자르기, 비교 값 계산, PDF·Word 렌더러, 지면 점검
 ├── assets/             content.json 빈 틀, 작업 기록 서식
 ├── examples/demo/      가상 기관 예시 (원자료 → 사실 카드 → 스토리라인 → 마스킹한 결과 지면)
-├── docs/index.html     한 장짜리 시각 가이드 (GitHub Pages용)
 ├── dist/               설치용 zip, 단일 파일판 SKILL (참고 문서·스크립트를 한 파일에 합침)
 ├── tools/              설치용 zip·단일 파일판 생성, 공개용 마스킹 도구
 └── LICENSE             CC BY-NC 4.0
