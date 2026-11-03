@@ -6,3 +6,4 @@
 - [v2.0 · performance-report-writer](v2.0%20performance-report-writer/)
 - [v2.1 · performance-report-writer](v2.1%20performance-report-writer/)
 - [v2.2 · performance-report-writer](v2.2%20performance-report-writer/)
+- [v2.3 · performance-report-writer (경량화)](v2.3%20performance-report-writer/)
