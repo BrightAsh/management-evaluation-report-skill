@@ -8,6 +8,6 @@
 
 ## 다운로드
 
-**[template-report-builder.skill 바로 다운로드](https://raw.githubusercontent.com/BrightAsh/management-evaluation-report-skill/main/v1.0%20template-report-builder/dist/template-report-builder.skill)**
+**[template-report-builder.skill 바로 다운로드](https://github.com/BrightAsh/management-evaluation-report-skill/raw/refs/heads/main/v1.0%20template-report-builder/dist/template-report-builder.skill)**
 
 링크를 누르면 GitHub 파일 보기 페이지를 거치지 않고 Claude에 업로드할 `.skill` 파일을 바로 받습니다.

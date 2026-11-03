@@ -13,7 +13,7 @@
 
 흩어진 실적 자료를 AI가 끝까지 읽고 분석해서, **평가자가 한눈에 이해하는 흐름**으로 엮은 실적보고서(PDF·Word)를 만들어 줍니다.
 
-**[스킬 zip 바로 받기](https://raw.githubusercontent.com/BrightAsh/management-evaluation-report-skill/main/v2.0.0%20performance-report-writer/dist/performance-report-writer.zip)** · [PROMPT.md (다른 AI용)](PROMPT.md) · 라이선스 [CC BY-NC 4.0](LICENSE)
+**[스킬 zip 바로 받기](https://github.com/BrightAsh/management-evaluation-report-skill/raw/refs/heads/main/v2.0.0%20performance-report-writer/dist/performance-report-writer.zip)** · [PROMPT.md (다른 AI용)](PROMPT.md) · 라이선스 [CC BY-NC 4.0](LICENSE)
 
 양식을 채우는 도구가 아닙니다. 방대한 자료에서 **무엇을 고르고, 어떤 순서와 구조로 말해야 메시지가 잘 보이는지** 설계하는 데 초점을 둡니다. 경영평가 실적보고서, 내부 성과보고서, 사업 결과보고서 등 어느 조직·부서·주제에도 씁니다.
 
@@ -60,7 +60,7 @@
 ## 설치
 
 ### Claude (claude.ai 웹·앱)
-1. **[performance-report-writer.zip 바로 받기](https://raw.githubusercontent.com/BrightAsh/management-evaluation-report-skill/main/v2.0.0%20performance-report-writer/dist/performance-report-writer.zip)** — 압축을 풀지 말고 그대로 씁니다.
+1. **[performance-report-writer.zip 바로 받기](https://github.com/BrightAsh/management-evaluation-report-skill/raw/refs/heads/main/v2.0.0%20performance-report-writer/dist/performance-report-writer.zip)** — 압축을 풀지 말고 그대로 씁니다.
 2. Claude 설정에서 **코드 실행**을 켜고, **스킬** 메뉴에서 zip을 업로드합니다.
 
 > 깃허브의 `Code → Download ZIP`으로 받은 파일은 폴더 이름이 `performance-report-writer-main`이 되어 그대로 올리면 안 될 수 있습니다. 위 링크의 zip을 쓰세요.
@@ -81,9 +81,9 @@ cp -R "management-evaluation-report-skill/v2.0.0 performance-report-writer" ~/.c
 ### 스킬을 지원하지 않는 AI (ChatGPT, Gemini 웹 등)
 | 방법 | 쓰는 파일 |
 |---|---|
-| 대화창에 붙여넣기, 또는 원문 링크를 주고 "이 지침대로 해줘" | [`PROMPT.md`](PROMPT.md) ([원문 링크](https://raw.githubusercontent.com/BrightAsh/management-evaluation-report-skill/main/v2.0.0%20performance-report-writer/PROMPT.md)) |
+| 대화창에 붙여넣기, 또는 원문 링크를 주고 "이 지침대로 해줘" | [`PROMPT.md`](PROMPT.md) ([원문 링크](https://github.com/BrightAsh/management-evaluation-report-skill/raw/refs/heads/main/v2.0.0%20performance-report-writer/PROMPT.md)) |
 | 맞춤형 GPT·Gem의 지침 칸 (8,000자 이내) | [`PROMPT.md`](PROMPT.md) (약 6천 자) |
-| 짧은 지침 칸 (4,000자 이내, Claude 프로젝트 지침 등) | [`PROMPT_SHORT.md`](PROMPT_SHORT.md) (약 3천 자, [원문 링크](https://raw.githubusercontent.com/BrightAsh/management-evaluation-report-skill/main/v2.0.0%20performance-report-writer/PROMPT_SHORT.md)) |
+| 짧은 지침 칸 (4,000자 이내, Claude 프로젝트 지침 등) | [`PROMPT_SHORT.md`](PROMPT_SHORT.md) (약 3천 자, [원문 링크](https://github.com/BrightAsh/management-evaluation-report-skill/raw/refs/heads/main/v2.0.0%20performance-report-writer/PROMPT_SHORT.md)) |
 
 코드를 실행할 수 없는 AI는 PDF·Word 대신 **Markdown 지면안**으로 결과를 줍니다. 한글·Word에 옮겨 쓰면 됩니다.
 
