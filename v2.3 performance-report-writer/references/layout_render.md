@@ -2,28 +2,51 @@
 
 PDF·Word 또는 `content.json`이 필요할 때만 읽는다.
 
-## 1. 블록과 그림 필드
+## 1. `content.json` 규격
 
-| 목적 | 블록 |
+최상위는 `{title,config?,pages:[{header?,footer?,align?,blocks:[]}]}`다. `config`는 선택이다.
+
+- `layout`: `{page_start,chapter:{no,text},running,org,slogan,sidetab,page_numbers?}`
+- `theme`: `{ink,g1,g2,g3,g4}`, `fonts`: `{sans,serif,docx_sans,docx_serif}`, `labels`: `{result,key,best:[2개]}`
+- 쪽별 `header:false`는 머리말을 끄고, `footer`와 `align:"left|right"`는 별도 바닥글을 쓴다.
+
+내용 성격으로 블록을 고르고 아래 필드만 사용한다. `?`는 선택이다.
+
+| `t` | 필드 |
 |---|---|
-| 제목·평가내용·핵심성과 | `title`, `ev`, `key` |
-| 대·중제목 | `sec`, `sub` |
-| 라벨 칸 표 | `grid` |
-| 단계·로드맵 | `flow`, `chev` |
-| 배경·비교·대표 수치 | `boxes`, `cmp`, `kpi` |
-| 여러 과제·요약 표 | `tbl` |
-| 한 줄·일반 문장 | `kv`, `line`, `bl`, `text` |
-| 좌우 배치 | `cols` |
-| 그림·표시 상자 | 칸 안 `img`, `strip` |
-| 섹션 마무리 | `res` |
+| `title` | `text` |
+| `ev` | `label,text` |
+| `key` | `text,label?` |
+| `bp` | `items:[2개],label?:[2개]` — B에 실제 상자가 있을 때만 |
+| `vision` | `k,text` — B에 실제 띠가 있을 때만 |
+| `sec` | `no,title,tag?` |
+| `sub` | `title,tag?` |
+| `grid` | `rows:[{k,cells 또는 span,res?}],head?,w?,kw_mm?` |
+| `flow` | `items:[{tag,h,b:[]}]` 2~4개, `sep?,res?:[제목,보조]` |
+| `chev` | `st:[{h,t:[],on?}]` 3~4단 |
+| `kv` | `k`, `text` 또는 `b:[]`, `ar?,img?,inner?` |
+| `boxes` | `items:[{h,b:[]}]` 2~3개 |
+| `banner`,`check` | `text` |
+| `comb` | `cards:[{h,b:[]}],res:[]` |
+| `cmp` | `a:{tag,h,b:[]},b:{tag,h,b:[]}` |
+| `line` | `k,v` |
+| `kpi` | `items:[{v,l}]` 3~4개 |
+| `tbl` | `w:[],head:[],rows:[[]]` |
+| `eff` | `k,v,rows:[[내용,결과]]` |
+| `bl` | `b:[]` |
+| `text` | `p:[]` |
+| `cols` | `cols:[[블록],[블록]],w?` |
+| `strip` | `items:[그림],h_mm?` |
+| `img` | 아래 그림 필드 |
+| `res` | `b:[]` 3줄 이내, `label?` |
 
-`grid`는 `head`, `w`, `kw_mm`, `rows`를 쓴다. 행은 `k`, `cells` 또는 `span`, 필요하면 `res:true`를 가진다. 칸은 문자열·목록 또는 `{h,p,b,img,c}` 객체다.
+`grid` 칸은 문자열(가운데 굵은 글), 배열(목록), 또는 `{h,p,b:[],img,c?}`다. `inner`와 `cols` 안에는 같은 블록 객체를 넣는다.
 
 - 실제 그림: `{src,h_mm,w_mm,pos,caption}`
 - 표시 상자: `{label:"[이미지 삽입] 현장 적용 장면",h_mm:24,w_mm:34,pos:"right"}`
-- `strip`: `{t:"strip",h_mm:22,items:[{src:"..."},{label:"[이미지 삽입] 현장 점검 장면"}]}`
+- 사진 띠: `{t:"strip",h_mm:22,items:[{src:"..."},{label:"[이미지 삽입] 현장 점검 장면"}]}`
 
-텍스트 마크업은 `**굵게**`, `__밑줄+굵게__`, `[[테두리 상자]]`, `{{진한 상자}}`다. 목록의 `- `는 하위, `* `는 각주, `※ `는 참고다. 다른 구조는 `assets/content_template.json`과 렌더러가 이미 쓰는 블록을 확인한다.
+텍스트 마크업은 `**굵게**`, `__밑줄+굵게__`, `[[테두리 상자]]`, `{{진한 상자}}`다. 목록의 `- `는 하위, `* `는 각주, `※ `는 참고다. 기존 블록을 쓸 때 렌더러 소스를 읽지 않는다.
 
 ## 2. 한 번에 렌더
 
@@ -31,7 +54,7 @@ PDF·Word 또는 `content.json`이 필요할 때만 읽는다.
 python3 scripts/render_report.py content.json report --format both
 ```
 
-필요한 형식만 요청받으면 `--format pdf` 또는 `--format docx`를 사용한다. Word 글자·간격 조정은 `--font-scale 1.17 --spacing-scale 1.65`를 시작값으로 한다. 스크립트는 요청한 PDF·Word와 가능한 Word 변환 점검을 한 번에 실행하고 짧은 JSON 요약만 출력한다.
+필요한 형식만 요청받으면 `--format pdf` 또는 `--format docx`를 사용한다. Word 글자·간격 조정은 `--font-scale 1.17 --spacing-scale 1.65`를 시작값으로 한다. 스크립트는 JSON 구조를 먼저 검증하고 요청한 PDF·Word와 가능한 Word 변환 점검을 한 번에 실행한 뒤 짧은 JSON 요약만 출력한다.
 
 오류가 없으면 개별 렌더러 소스를 읽지 않는다. 기존 블록으로 B를 표현할 수 없을 때만 `render_html.js`와 `render_docx.js` 양쪽에 같은 블록을 추가하고 둘 다 확인한다.
 

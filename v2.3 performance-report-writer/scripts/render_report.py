@@ -58,6 +58,10 @@ def main() -> int:
     node = executable(args.node)
     summary: dict[str, object] = {"content": str(content), "format": args.format, "files": [], "steps": {}}
 
+    summary["steps"]["validate"] = run_step(
+        "validate_content", [sys.executable, str(scripts / "validate_content.py"), str(content)]
+    )
+
     if args.format in {"pdf", "both"}:
         html, pdf = stem.with_suffix(".html"), stem.with_suffix(".pdf")
         summary["steps"]["html"] = run_step("render_html", [node, str(scripts / "render_html.js"), str(content), str(html)])

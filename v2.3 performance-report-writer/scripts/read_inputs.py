@@ -2,8 +2,9 @@
 """첨부 파일을 한 번에 텍스트로 뽑고, 그림을 따로 모으고, 역할 판별을 돕는 목록을 만든다.
 
 사용법:  python3 -I read_inputs.py <출력폴더> <파일1> [파일2 ...] [--no-images] [--pdf-pages]
+         python3 -I read_inputs.py <출력폴더> <DOCX/PPTX/XLSX...> --embedded-images-only
 지원:    PDF, HWP(5.0), HWPX, DOCX, PPTX, XLSX/XLSM, CSV, TXT, MD, 이미지(PNG/JPG)
-결과:    <출력폴더>/<파일명>.txt   — 본문 텍스트(PDF는 쪽 구분 '=== p.N ===')
+결과:    <출력폴더>/<파일명>.txt   — 본문 텍스트(PDF는 쪽 구분 '=== p.N ==='; images-only면 생략)
          <출력폴더>/preview/       — PDF 앞 2쪽 이미지, HWPX 미리보기 이미지(양식 판별용)
          <출력폴더>/images/        — 원자료 속 그림(사진·그래프·화면). 아이콘·선 조각·중복은 거른다
          <출력폴더>/images/_sheet_N.png — 그림 미리보기 모음(번호 붙음). 이것부터 보고 고른다
@@ -370,10 +371,14 @@ def role_scores(text):
 
 
 def main():
-    flags = {'--no-images', '--pdf-pages'}
+    flags = {'--no-images', '--pdf-pages', '--embedded-images-only'}
     args = [a for a in sys.argv[1:] if a not in flags]
     want_img = '--no-images' not in sys.argv
     want_pdf_pages = '--pdf-pages' in sys.argv
+    images_only = '--embedded-images-only' in sys.argv
+    if images_only and not want_img:
+        print('--embedded-images-only와 --no-images는 함께 쓸 수 없습니다.', file=sys.stderr)
+        sys.exit(2)
     if len(args) < 2:
         print(__doc__)
         sys.exit(1)
@@ -386,33 +391,37 @@ def main():
     for p in files:
         ext = os.path.splitext(p)[1].lower()
         name = os.path.basename(p)
-        try:
-            if ext == '.pdf':
-                text, size = read_pdf(p)
-                pdf_preview(p, prev_dir)
-            elif ext == '.hwpx':
-                text, size = read_hwpx(p, prev_dir)
-            elif ext == '.hwp':
-                text, size = read_hwp(p)
-            elif ext == '.docx':
-                text, size = read_docx(p)
-            elif ext == '.pptx':
-                text, size = read_pptx(p)
-            elif ext in ('.xlsx', '.xlsm'):
-                text, size = read_xlsx(p)
-            elif ext in ('.csv', '.txt', '.md'):
-                text, size = open(p, encoding='utf-8', errors='ignore').read(), '-'
-            elif ext in ('.png', '.jpg', '.jpeg', '.gif', '.webp'):
-                text, size = '[이미지 파일 — 직접 보고 판단할 것]', '이미지'
-            else:
-                text, size = f'[지원하지 않는 형식: {ext}]', '-'
-        except Exception as e:  # 한 파일이 실패해도 나머지는 계속
-            text, size = f'[읽기 실패: {e}]', '-'
+        if images_only:
+            text, size = '', '텍스트 생략(Claude 첨부 원문 사용)'
+        else:
+            try:
+                if ext == '.pdf':
+                    text, size = read_pdf(p)
+                    pdf_preview(p, prev_dir)
+                elif ext == '.hwpx':
+                    text, size = read_hwpx(p, prev_dir)
+                elif ext == '.hwp':
+                    text, size = read_hwp(p)
+                elif ext == '.docx':
+                    text, size = read_docx(p)
+                elif ext == '.pptx':
+                    text, size = read_pptx(p)
+                elif ext in ('.xlsx', '.xlsm'):
+                    text, size = read_xlsx(p)
+                elif ext in ('.csv', '.txt', '.md'):
+                    text, size = open(p, encoding='utf-8', errors='ignore').read(), '-'
+                elif ext in ('.png', '.jpg', '.jpeg', '.gif', '.webp'):
+                    text, size = '[이미지 파일 — 직접 보고 판단할 것]', '이미지'
+                else:
+                    text, size = f'[지원하지 않는 형식: {ext}]', '-'
+            except Exception as e:  # 한 파일이 실패해도 나머지는 계속
+                text, size = f'[읽기 실패: {e}]', '-'
         if imgs is not None:
             try:
                 before = len(imgs.items)
                 if ext == '.pdf':
-                    imgs.from_pdf(p)
+                    if not images_only:
+                        imgs.from_pdf(p)
                     if want_pdf_pages:
                         page_sheets += pdf_page_sheets(p, out_dir)
                 elif ext in ('.docx', '.pptx', '.xlsx', '.xlsm', '.hwpx'):
@@ -424,13 +433,15 @@ def main():
                 size = f'{size}, 그림 {len(imgs.items) - before}개'
             except Exception as e:
                 size = f'{size}, 그림 추출 실패({e})'
-        with open(os.path.join(out_dir, name + '.txt'), 'w', encoding='utf-8') as f:
-            f.write(text)
+        if not images_only:
+            with open(os.path.join(out_dir, name + '.txt'), 'w', encoding='utf-8') as f:
+                f.write(text)
         first = [l for l in text.splitlines() if l.strip() and not l.startswith('===')][:3]
         sc = role_scores(text)
-        guess = max(sc, key=sc.get) if max(sc.values()) else '판별 필요'
+        guess = max(sc, key=sc.get) if max(sc.values()) else ('첨부 원문 사용' if images_only else '판별 필요')
         rows.append((name, ext[1:].upper(), size, len(text), ' / '.join(first)[:120], guess, sc))
-        print(f'[ok] {name}: {size}, {len(text):,}자 → {name}.txt')
+        suffix = '' if images_only else f' → {name}.txt'
+        print(f'[ok] {name}: {size}, {len(text):,}자{suffix}')
 
     with open(os.path.join(out_dir, '_inventory.md'), 'w', encoding='utf-8') as f:
         f.write('# 첨부 목록 (자동 추출)\n\n역할 추정은 키워드 빈도일 뿐이다. 반드시 내용과 미리보기 이미지를 보고 최종 판별한다.\n\n')

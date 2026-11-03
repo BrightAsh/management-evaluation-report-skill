@@ -38,8 +38,8 @@ description: 흩어진 실적 자료를 분석해 경영평가·성과보고서�
 ## 작업 흐름
 
 1. 첨부를 A/B/C/D로 판별하고 D의 제약과 요청 분량을 기록한다. 짧은 판별표와 정한 방향을 같은 응답에서 먼저 보여주되, 확인이 꼭 필요한 경우가 아니면 승인을 기다리지 않고 진행한다.
-2. `scripts/read_inputs.py`를 한 번 실행한다. 추출 스크립트 소스는 오류가 나거나 수정이 필요할 때만 읽는다.
-3. `assets/work_ledger.md`를 `work/ledger.md`로 복사해 분석 상태를 한 파일에 유지한다. 별도 `facts.md`, `direction.md`, `storyline.md`, `style.md`, `compare.md`, `visuals.md`를 만들지 않는다.
+2. **Claude가 이미 분석한 첨부를 다시 텍스트로 추출하지 않는다.** PDF·DOCX·PPTX·XLSX·CSV·TXT·MD·이미지는 첨부 원문을 직접 읽는다. HWP/HWPX처럼 기본 분석이 안 되거나 텍스트가 깨진 파일만 `scripts/read_inputs.py`로 추출한다. DOCX·PPTX·XLSX의 내장 그림만 필요하면 `--embedded-images-only`를 사용한다. 스크립트 소스는 오류 수정 때만 읽는다.
+3. `assets/work_ledger.md`를 `work/ledger.md`로 복사해 분석 상태를 한 파일에 유지한다. 원문을 복사하지 않고 사실·판단·출처만 한 번 기록한다. 이후에는 섹션 제목·사실 ID로 필요한 행만 검색하고 원장 전체를 반복해서 읽지 않는다. 별도 `facts.md`, `direction.md`, `storyline.md`, `style.md`, `compare.md`, `visuals.md`를 만들지 않는다.
 4. A를 처음부터 끝까지 읽고, 출처가 붙은 사실 → 비교 후보 → 대표 사례 등급 → 공백을 원장에 기록한다.
 5. C가 있으면 평가 항목·배점에 맞춰, 없으면 A의 성과와 반복 목적에서 핵심 메시지 1문장과 축 2~4개를 만든다.
 6. 주장형 제목과 쪽별 스토리라인을 먼저 확정한다. “구성안만” 요청이면 여기서 결과를 주고 멈춘다.

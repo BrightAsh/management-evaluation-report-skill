@@ -1,7 +1,9 @@
 #!/usr/bin/env python3
 """Measure exact local size and optional Anthropic input-token counts.
 
-Local mode reports bytes, Unicode characters and lines. ``--count-tokens``
+Local mode reports file bytes and LF-normalized Unicode characters/lines.
+Newline normalization makes Windows and Unix checkouts comparable and matches
+the deterministic upload ZIP. ``--count-tokens``
 uses Anthropic's model-specific Token Counting API and requires an
 ``ANTHROPIC_API_KEY`` environment variable. The key is never printed.
 
@@ -75,13 +77,14 @@ def image_stats(path: Path) -> dict[str, int | str]:
 
 
 def read_text(path: Path) -> str:
-    return path.read_bytes().decode("utf-8", errors="strict")
+    text = path.read_bytes().decode("utf-8", errors="strict")
+    return text.replace("\r\n", "\n").replace("\r", "\n")
 
 
 def file_stats(path: Path) -> dict[str, int | str]:
     text = read_text(path)
     return {
-        "path": str(path), "bytes": len(text.encode("utf-8")),
+        "path": str(path), "bytes": path.stat().st_size,
         "chars": len(text), "lines": text.count("\n") + 1,
     }
 
@@ -234,6 +237,7 @@ def main() -> int:
     result: dict = {
         "model": args.model, "scenario": scenario, "task": args.task,
         "scope": "preflight routed input only; not total agentic task usage",
+        "text_measurement": "Unicode characters after LF newline normalization",
         "route_files": [str(path.relative_to(skill_dir)) for path in skill_paths],
         "route_assets": [str(path.relative_to(skill_dir)) for path in asset_paths],
         "groups": totals, "images": image_measurements,
@@ -258,7 +262,7 @@ def main() -> int:
         print(f"model: {args.model}\nscenario: {scenario}\ntask: {args.task}\nscope: {result['scope']}")
         for name, item in totals.items():
             if item["files"]:
-                print(f"{name}: {item['files']} files, {item['bytes']:,} bytes, {item['text_chars']:,} text chars")
+                print(f"{name}: {item['files']} files, {item['bytes']:,} bytes, {item['text_chars']:,} LF-normalized text chars")
                 if item["visual_tokens"]:
                     print(f"{name}_visual_tokens: {item['visual_tokens']:,}")
         if args.count_tokens:

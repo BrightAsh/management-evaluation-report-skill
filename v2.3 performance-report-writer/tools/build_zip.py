@@ -11,6 +11,8 @@ OUT = ROOT / "dist" / f"{NAME}.zip"
 ROOT_FILES = ("SKILL.md", "LICENSE", "package.json", "requirements.txt")
 RUNTIME_DIRS = ("references", "scripts", "assets")
 SKIP_SUFFIXES = {".pyc", ".zip"}
+TEXT_SUFFIXES = {".md", ".txt", ".json", ".py", ".js", ".css", ".yaml", ".yml"}
+TEXT_NAMES = {"LICENSE"}
 
 
 def runtime_files():
@@ -26,7 +28,15 @@ def runtime_files():
 
 OUT.parent.mkdir(parents=True, exist_ok=True)
 files = list(runtime_files())
-with zipfile.ZipFile(OUT, "w", zipfile.ZIP_DEFLATED) as archive:
+with zipfile.ZipFile(OUT, "w", zipfile.ZIP_DEFLATED, compresslevel=9) as archive:
     for path in files:
-        archive.write(path, Path(NAME) / path.relative_to(ROOT))
+        arcname = (Path(NAME) / path.relative_to(ROOT)).as_posix()
+        data = path.read_bytes()
+        if path.suffix.lower() in TEXT_SUFFIXES or path.name in TEXT_NAMES:
+            text = data.decode("utf-8").replace("\r\n", "\n").replace("\r", "\n")
+            data = text.encode("utf-8")
+        info = zipfile.ZipInfo(arcname, date_time=(2020, 1, 1, 0, 0, 0))
+        info.compress_type = zipfile.ZIP_DEFLATED
+        info.external_attr = 0o100644 << 16
+        archive.writestr(info, data, compress_type=zipfile.ZIP_DEFLATED, compresslevel=9)
 print(f"{OUT.relative_to(ROOT)}: {len(files)} files, {OUT.stat().st_size:,} bytes")

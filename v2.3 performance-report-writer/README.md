@@ -7,7 +7,8 @@
 - **조건부 지침 로딩**: 모든 작업에서 01~09 참고문서를 거의 전부 읽던 구조를 공통 분석·성과지표·양식·기본 지면·시각자료·렌더링으로 나누고, 입력 조합과 요청 단계에 필요한 문서만 읽습니다.
 - **충돌 규칙 제거**: v2.2의 `SKILL.md가 오래된 references를 덮어쓰는 구조`를 없앴습니다. v2.2의 최종 규칙을 한 위치에만 두어 개정 전 BEST PRACTICE·그림 상한이 다시 섞이지 않습니다.
 - **중간 상태 통합**: 사실·비교·방향·스토리라인·양식·그림 후보를 `work/ledger.md` 한 파일에서 관리하고, 요구하지 않은 긴 중간 분석은 출력하지 않습니다.
-- **도구 왕복 축소**: PDF 전체 페이지 연락판은 필요할 때만 `--pdf-pages`로 만들고, PDF·Word 생성과 점검을 `render_report.py` 한 번으로 묶었습니다.
+- **첨부 중복 분석 제거**: Claude가 이미 분석한 PDF·DOCX·XLSX 등의 텍스트를 다시 추출해 읽지 않습니다. HWP/HWPX·깨진 텍스트만 추출하고, 비PDF 내장 그림은 `--embedded-images-only`로 텍스트 없이 뽑습니다.
+- **도구 왕복·실패 축소**: PDF 전체 페이지 연락판은 필요할 때만 만들고, 압축 블록 스키마와 자동 JSON 검증을 추가했습니다. PDF·Word 생성과 점검은 `render_report.py` 한 번으로 실행하며, Playwright 브라우저 번들이 없으면 설치된 Chromium·Edge를 사용합니다.
 - **런타임 ZIP 분리**: Claude 업로드 ZIP에는 실행에 필요한 파일만 넣고 README·연구자료·예시·개발 도구는 제외합니다.
 - **v2.2 품질 정책 유지**: 첫 쪽 `제목 → 평가내용 → 핵심성과 → 대제목`, 최상단 BEST PRACTICE 금지·중제목 `B.P`, 원자료 그림 쪽당 2~4개(첫 쪽 0~1개, 최대 5개), `[이미지 삽입]` 표시, 사실·비교·지표·양식 규칙은 유지했습니다.
 
@@ -20,18 +21,18 @@
 
 ## 정적 경량화 결과
 
-아래는 `SKILL.md + 해당 조합에서 읽는 references + 작업 서식·content 템플릿`의 UTF-8 디코딩 문자 수입니다. A/B/C/D 원자료, 이미지, Claude의 시스템 프롬프트·도구 정의·대화 이력은 제외했습니다.
+아래는 실제 배포 ZIP 안의 `SKILL.md + 해당 조합에서 읽는 references + 작업 서식·content 템플릿`을 LF 줄바꿈으로 통일해 센 Unicode 문자 수입니다. A/B/C/D 원자료, 이미지, Claude의 시스템 프롬프트·도구 정의·대화 이력은 제외했습니다.
 
 | 입력 조합 | v2.2 문자 | v2.3 문자 | 감소 | 감소율 |
 |---|---:|---:|---:|---:|
-| A | 45,098 | 14,410 | 30,688 | 68.0% |
-| AB | 41,263 | 12,682 | 28,581 | 69.3% |
-| AC | 45,098 | 15,060 | 30,038 | 66.6% |
-| AD | 45,098 | 14,410 | 30,688 | 68.0% |
-| ABC | 41,263 | 13,332 | 27,931 | 67.7% |
-| ABD | 41,263 | 12,682 | 28,581 | 69.3% |
-| ACD | 45,098 | 15,060 | 30,038 | 66.6% |
-| ABCD | 41,263 | 13,332 | 27,931 | 67.7% |
+| A | 43,875 | 15,918 | 27,957 | 63.7% |
+| AB | 40,141 | 14,190 | 25,951 | 64.6% |
+| AC | 43,875 | 16,568 | 27,307 | 62.2% |
+| AD | 43,875 | 15,918 | 27,957 | 63.7% |
+| ABC | 40,141 | 14,840 | 25,301 | 63.0% |
+| ABD | 40,141 | 14,190 | 25,951 | 64.6% |
+| ACD | 43,875 | 16,568 | 27,307 | 62.2% |
+| ABCD | 40,141 | 14,840 | 25,301 | 63.0% |
 
 이 수치는 **정확한 문자 감소율**이지 Claude 토큰·전체 작업량 감소율이 아닙니다. Opus 5.5의 사전 입력 토큰은 Anthropic Token Counting API로, 전체 토큰·시간·턴과 품질은 동일 자료 전후 실행으로 검증해야 합니다. 현재 환경에는 API 키가 없어 실제 토큰 수를 기재하지 않았습니다. 계산 범위·공식 근거·검증 설계는 [토큰 경량화 연구 기록](research/TOKEN_EFFICIENCY_STUDY.md)에 있습니다.
 
@@ -71,7 +72,12 @@ ZIP 안의 최상위 폴더는 `performance-report-writer-v2-3/`이며 `SKILL.md
 ## 개발·검증
 
 ```bash
-python3 -I scripts/read_inputs.py work/inputs 자료1.pdf 자료2.docx
+# HWP/HWPX 또는 Claude에서 텍스트가 깨진 파일만 전체 추출
+python3 -I scripts/read_inputs.py work/inputs 자료.hwp 자료.hwpx
+
+# DOCX/PPTX/XLSX 내장 그림만 추출(텍스트는 Claude 첨부 원문 사용)
+python3 -I scripts/read_inputs.py work/inputs 자료.docx --embedded-images-only
+
 python3 scripts/render_report.py content.json report --format both
 python3 research/token_audit.py --skill-dir . --scenario ABCD --task report
 python3 tools/build_zip.py
