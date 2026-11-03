@@ -1,15 +1,5 @@
 # 경영평가보고서 자동 작성 스킬
 
-## v2.2.1 · performance-report-writer
-
-**[바로 다운로드 (.zip)](https://github.com/BrightAsh/management-evaluation-report-skill/releases/download/v2.2.1/performance-report-writer-v2-2-1.zip)** · [상세 문서](v2.2.1%20performance-report-writer/)
-
-- v2.2.0의 보고서 품질 규칙과 결과물 형식을 유지하면서 경량화했습니다.
-- 입력 조합과 작업 단계에 필요한 지침만 조건부로 읽도록 재구성했습니다.
-- Claude가 이미 읽은 첨부 본문의 중복 추출·재입력을 제거했습니다.
-- 작업 원장을 하나로 통합하고 필요한 행만 다시 찾도록 했습니다.
-- PDF·Word 생성, JSON 검증과 점검을 한 번의 실행으로 묶었습니다.
-
 ## v2.2.0 · performance-report-writer
 
 **[바로 다운로드 (.zip)](https://github.com/BrightAsh/management-evaluation-report-skill/releases/download/v2.2.0/performance-report-writer-v2-2-0.zip)** · [상세 문서](v2.2.0%20performance-report-writer/)
