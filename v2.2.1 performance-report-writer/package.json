@@ -1,0 +1,16 @@
+{
+  "name": "performance-report-writer-v2-2-1",
+  "version": "2.2.1",
+  "description": "v2.2.0의 보고서 품질 규칙을 유지하면서 조건부 지침과 통합 원장으로 경량화한 경영평가·성과보고서 작성 스킬",
+  "license": "CC-BY-NC-4.0",
+  "author": "KNOC",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/BrightAsh/management-evaluation-report-skill",
+    "directory": "v2.2.1 performance-report-writer"
+  },
+  "private": true,
+  "dependencies": {
+    "docx": "^9.0.0"
+  }
+}

@@ -1,0 +1,93 @@
+# 실적보고서 작성 스킬 (performance-report-writer v2.2.1)
+
+## 변경 이력
+
+### v2.2.1 (v2.2.0 대비)
+
+- **조건부 지침 로딩**: 모든 작업에서 01~09 참고문서를 거의 전부 읽던 구조를 공통 분석·성과지표·양식·기본 지면·시각자료·렌더링으로 나누고, 입력 조합과 요청 단계에 필요한 문서만 읽습니다.
+- **충돌 규칙 제거**: v2.2.0의 `SKILL.md가 오래된 references를 덮어쓰는 구조`를 없앴습니다. v2.2.0의 최종 규칙을 한 위치에만 두어 개정 전 BEST PRACTICE·그림 상한이 다시 섞이지 않습니다.
+- **중간 상태 통합**: 사실·비교·방향·스토리라인·양식·그림 후보를 `work/ledger.md` 한 파일에서 관리하고, 요구하지 않은 긴 중간 분석은 출력하지 않습니다.
+- **첨부 중복 분석 제거**: Claude가 이미 분석한 PDF·DOCX·XLSX 등의 텍스트를 다시 추출해 읽지 않습니다. HWP/HWPX·깨진 텍스트만 추출하고, 비PDF 내장 그림은 `--embedded-images-only`로 텍스트 없이 뽑습니다.
+- **도구 왕복·실패 축소**: PDF 전체 페이지 연락판은 필요할 때만 만들고, 압축 블록 스키마와 자동 JSON 검증을 추가했습니다. PDF·Word 생성과 점검은 `render_report.py` 한 번으로 실행하며, Playwright 브라우저 번들이 없으면 설치된 Chromium·Edge를 사용합니다.
+- **런타임 ZIP 분리**: Claude 업로드 ZIP에는 실행에 필요한 파일만 넣고 README·연구자료·예시·개발 도구는 제외합니다.
+- **v2.2.0 품질 정책 유지**: 첫 쪽 `제목 → 평가내용 → 핵심성과 → 대제목`, 최상단 BEST PRACTICE 금지·중제목 `B.P`, 원자료 그림 쪽당 2~4개(첫 쪽 0~1개, 최대 5개), `[이미지 삽입]` 표시, 사실·비교·지표·양식 규칙은 유지했습니다.
+
+## 다운로드
+
+**[performance-report-writer-v2-2-1.zip 바로 다운로드](https://raw.githubusercontent.com/BrightAsh/management-evaluation-report-skill/main/v2.2.1%20performance-report-writer/dist/performance-report-writer-v2-2-1.zip)**
+
+링크를 누르면 GitHub 파일 보기 페이지를 거치지 않고 Claude에 업로드할 ZIP을 바로 받습니다.
+
+## 정적 경량화 결과
+
+아래는 실제 배포 ZIP 안의 `SKILL.md + 해당 조합에서 읽는 references + 작업 서식·content 템플릿`을 LF 줄바꿈으로 통일해 센 Unicode 문자 수입니다. A/B/C/D 원자료, 이미지, Claude의 시스템 프롬프트·도구 정의·대화 이력은 제외했습니다.
+
+| 입력 조합 | v2.2.0 문자 | v2.2.1 문자 | 감소 | 감소율 |
+|---|---:|---:|---:|---:|
+| A | 43,881 | 15,920 | 27,961 | 63.7% |
+| AB | 40,147 | 14,192 | 25,955 | 64.6% |
+| AC | 43,881 | 16,570 | 27,311 | 62.2% |
+| AD | 43,881 | 15,920 | 27,961 | 63.7% |
+| ABC | 40,147 | 14,842 | 25,305 | 63.0% |
+| ABD | 40,147 | 14,192 | 25,955 | 64.6% |
+| ACD | 43,881 | 16,570 | 27,311 | 62.2% |
+| ABCD | 40,147 | 14,842 | 25,305 | 63.0% |
+
+이 수치는 **정확한 문자 감소율**이지 Claude 토큰·전체 작업량 감소율이 아닙니다. Opus 5.5의 사전 입력 토큰은 Anthropic Token Counting API로, 전체 토큰·시간·턴과 품질은 동일 자료 전후 실행으로 검증해야 합니다. 현재 환경에는 API 키가 없어 실제 토큰 수를 기재하지 않았습니다. 계산 범위·공식 근거·검증 설계는 [토큰 경량화 연구 기록](research/TOKEN_EFFICIENCY_STUDY.md)에 있습니다.
+
+## 역할
+
+흩어진 실적 자료를 끝까지 분석해 평가자가 한눈에 이해하는 흐름의 경영평가·성과보고서를 만듭니다. 양식을 채우기보다 무엇을 고르고 어떤 순서와 구조로 말할지 설계하는 데 초점을 둡니다.
+
+| 구분 | 첨부할 것 | 역할 |
+|---|---|---|
+| **A 필수** | 결과보고·계획·증빙·회의자료·과제 목록 등 | 사실·수치·사례·원자료 그림 |
+| B 선택 | 따라 할 보고서 양식 | 구조·말투·지면 |
+| C 선택 | 성과지표·편람·평가 기준 | 방향·목차·배점·지적사항 |
+| D 선택 | 작성요령 | 쪽수·글자 크기·필수·금지 규정 |
+
+양식이 없으면 기준 양식의 구조를 쓰고, 성과지표가 없으면 A를 분석해 핵심 메시지와 축을 도출합니다. 특정 기관·부서·AI 분야를 전제하지 않습니다.
+
+## Claude 설치
+
+1. **[performance-report-writer-v2-2-1.zip 바로 받기](https://raw.githubusercontent.com/BrightAsh/management-evaluation-report-skill/main/v2.2.1%20performance-report-writer/dist/performance-report-writer-v2-2-1.zip)** — 압축을 해제하지 않고 Claude의 스킬 메뉴에 업로드합니다.
+2. 코드 실행을 켜고 A와 필요한 B/C/D를 첨부합니다.
+3. 예: `첨부 자료로 경영평가 실적보고서 2쪽 써줘`.
+
+ZIP 안의 최상위 폴더는 `performance-report-writer-v2-2-1/`이며 `SKILL.md`, 조건부 참고문서, 스크립트, 서식만 들어 있습니다.
+
+## 동작 구조
+
+```text
+첨부 판별 → 사실·비교 추출 → 방향 → 스토리라인 → 양식·지면 → PDF·Word → 검증
+               └────────── work/ledger.md 한 파일 ──────────┘
+```
+
+- 원문에 없는 사실·수치를 만들지 않고 계획/진행/완료, 목표/실적을 구분합니다.
+- 비교는 두 값의 정의·단위·범위·기간과 출처가 맞을 때만 계산합니다.
+- 원자료 그림을 관련 칸에 적극 사용하고, 적합한 그림이 없으면 `[이미지 삽입]` 표시로 필요한 실제 사진·화면을 알립니다.
+- 양식은 구조·말투·지면만 따르며 다른 조직의 내용·수치·그림은 가져오지 않습니다.
+
+## 개발·검증
+
+```bash
+# HWP/HWPX 또는 Claude에서 텍스트가 깨진 파일만 전체 추출
+python3 -I scripts/read_inputs.py work/inputs 자료.hwp 자료.hwpx
+
+# DOCX/PPTX/XLSX 내장 그림만 추출(텍스트는 Claude 첨부 원문 사용)
+python3 -I scripts/read_inputs.py work/inputs 자료.docx --embedded-images-only
+
+python3 scripts/render_report.py content.json report --format both
+python3 research/token_audit.py --skill-dir . --scenario ABCD --task report
+python3 tools/build_zip.py
+```
+
+`research/token_audit.py --count-tokens`는 `ANTHROPIC_API_KEY`가 있을 때 공식 Token Counting API를 사용합니다. 키를 저장소나 명령 인수에 넣지 마세요.
+
+## 주의
+
+- AI가 만든 보고서는 사람이 원문과 대조한 뒤 제출해야 합니다.
+- 내부 자료를 외부 AI 서비스에 올릴 때는 소속 조직의 보안 규정을 따르세요.
+- 실제 기관의 양식 원본은 저장소·배포 ZIP에 넣지 않았고, 문서 구조만 지침과 렌더러로 옮겼습니다.
+
+라이선스: [CC BY-NC 4.0](LICENSE)
