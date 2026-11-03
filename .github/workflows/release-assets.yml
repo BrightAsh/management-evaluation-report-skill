@@ -1,0 +1,80 @@
+name: publish-release-assets
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - "v* template-report-builder/dist/**"
+      - "v* performance-report-writer/dist/**"
+      - ".github/workflows/release-assets.yml"
+
+permissions:
+  contents: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Publish versioned install files
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          publish_release() {
+            local tag="$1"
+            local target="$2"
+            local file="$3"
+            local latest="$4"
+
+            test -f "$file"
+
+            if gh release view "$tag" >/dev/null 2>&1; then
+              gh release upload "$tag" "$file" --clobber
+            else
+              gh release create "$tag" "$file" \
+                --target "$target" \
+                --title "$tag" \
+                --notes "설치 파일은 아래 Assets에서 바로 다운로드할 수 있습니다."
+            fi
+
+            if [[ "$latest" == "true" ]]; then
+              gh release edit "$tag" --latest
+            fi
+          }
+
+          publish_release \
+            "v1.0.0" \
+            "ce72dd2c568dbf0a715c34b6a1fa3a2b98456e0c" \
+            "v1.0 template-report-builder/dist/template-report-builder.skill" \
+            "false"
+
+          publish_release \
+            "v2.0.0" \
+            "7ea1d5ffbcf7c8bdcba03e4d4dfc159292a4759e" \
+            "v2.0.0 performance-report-writer/dist/performance-report-writer.zip" \
+            "false"
+
+          publish_release \
+            "v2.1.0" \
+            "3310968ee3545b5670e2339dfc9a3241908de60d" \
+            "v2.1.0 performance-report-writer/dist/performance-report-writer.zip" \
+            "false"
+
+          publish_release \
+            "v2.2.0" \
+            "0dc2477abc2858bd0513a96e3edf04a77f3ac894" \
+            "v2.2.0 performance-report-writer/dist/performance-report-writer-v2-2-0.zip" \
+            "false"
+
+          publish_release \
+            "v2.2.1" \
+            "$GITHUB_SHA" \
+            "v2.2.1 performance-report-writer/dist/performance-report-writer-v2-2-1.zip" \
+            "true"

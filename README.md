@@ -2,7 +2,7 @@
 
 ## v2.2.1 · performance-report-writer
 
-**[바로 다운로드 (.zip)](https://github.com/BrightAsh/management-evaluation-report-skill/raw/refs/heads/main/v2.2.1%20performance-report-writer/dist/performance-report-writer-v2-2-1.zip)** · [상세 문서](v2.2.1%20performance-report-writer/)
+**[바로 다운로드 (.zip)](https://github.com/BrightAsh/management-evaluation-report-skill/releases/download/v2.2.1/performance-report-writer-v2-2-1.zip)** · [상세 문서](v2.2.1%20performance-report-writer/)
 
 - v2.2.0의 보고서 품질 규칙과 결과물 형식을 유지하면서 경량화했습니다.
 - 입력 조합과 작업 단계에 필요한 지침만 조건부로 읽도록 재구성했습니다.
@@ -12,7 +12,7 @@
 
 ## v2.2.0 · performance-report-writer
 
-**[바로 다운로드 (.zip)](https://github.com/BrightAsh/management-evaluation-report-skill/raw/refs/heads/main/v2.2.0%20performance-report-writer/dist/performance-report-writer-v2-2-0.zip)** · [상세 문서](v2.2.0%20performance-report-writer/)
+**[바로 다운로드 (.zip)](https://github.com/BrightAsh/management-evaluation-report-skill/releases/download/v2.2.0/performance-report-writer-v2-2-0.zip)** · [상세 문서](v2.2.0%20performance-report-writer/)
 
 - 기준 양식에 맞춰 첫 쪽을 `제목 → 평가내용 → 핵심성과 → 대제목` 순서로 수정했습니다.
 - 최상단 BEST PRACTICE 상자를 제거하고 대표 사례는 중제목의 `B.P` 태그로 표시했습니다.
@@ -21,7 +21,7 @@
 
 ## v2.1.0 · performance-report-writer
 
-**[바로 다운로드 (.zip)](https://github.com/BrightAsh/management-evaluation-report-skill/raw/refs/heads/main/v2.1.0%20performance-report-writer/dist/performance-report-writer.zip)** · [상세 문서](v2.1.0%20performance-report-writer/)
+**[바로 다운로드 (.zip)](https://github.com/BrightAsh/management-evaluation-report-skill/releases/download/v2.1.0/performance-report-writer.zip)** · [상세 문서](v2.1.0%20performance-report-writer/)
 
 - 양식이 없을 때 사용할 기본 양식을 추가했습니다.
 - 원자료의 사진·그래프, 전년도 지적사항과 비교값 중 메시지에 필요한 것만 반영하도록 했습니다.
@@ -29,7 +29,7 @@
 
 ## v2.0.0 · performance-report-writer
 
-**[바로 다운로드 (.zip)](https://github.com/BrightAsh/management-evaluation-report-skill/raw/refs/heads/main/v2.0.0%20performance-report-writer/dist/performance-report-writer.zip)** · [상세 문서](v2.0.0%20performance-report-writer/)
+**[바로 다운로드 (.zip)](https://github.com/BrightAsh/management-evaluation-report-skill/releases/download/v2.0.0/performance-report-writer.zip)** · [상세 문서](v2.0.0%20performance-report-writer/)
 
 - 양식 채우기보다 방대한 자료에서 핵심 내용을 고르고 흐름과 구조를 설계하도록 개편했습니다.
 - 특정 기관·부서·분야에 한정된 표현을 제거했습니다.
@@ -37,7 +37,7 @@
 
 ## v1.0 · template-report-builder
 
-**[바로 다운로드 (.skill)](https://github.com/BrightAsh/management-evaluation-report-skill/raw/refs/heads/main/v1.0%20template-report-builder/dist/template-report-builder.skill)** · [상세 문서](v1.0%20template-report-builder/)
+**[바로 다운로드 (.skill)](https://github.com/BrightAsh/management-evaluation-report-skill/releases/download/v1.0.0/template-report-builder.skill)** · [상세 문서](v1.0%20template-report-builder/)
 
 - 최초 버전입니다.
 - 제공된 보고서의 문서 구조·콘텐츠 배치·색·간격·글꼴·크기를 분석해 같은 형식의 보고서를 작성하는 역할입니다.
