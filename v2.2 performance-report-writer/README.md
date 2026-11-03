@@ -17,7 +17,7 @@
 
 흩어진 실적 자료를 AI가 끝까지 읽고 분석해서, **평가자가 한눈에 이해하는 흐름**으로 엮은 실적보고서(PDF·Word)를 만들어 줍니다.
 
-**[스킬 zip 받기](https://github.com/BrightAsh/management-evaluation-report-skill/raw/main/v2.2%20performance-report-writer/dist/performance-report-writer-v2-2.zip)** · [PROMPT.md (다른 AI용)](PROMPT.md) · 라이선스 [CC BY-NC 4.0](LICENSE)
+**[스킬 zip 바로 받기](https://raw.githubusercontent.com/BrightAsh/management-evaluation-report-skill/main/v2.2%20performance-report-writer/dist/performance-report-writer-v2-2.zip)** · [PROMPT.md (다른 AI용)](PROMPT.md) · 라이선스 [CC BY-NC 4.0](LICENSE)
 
 양식을 채우는 도구가 아닙니다. 방대한 자료에서 **무엇을 고르고, 어떤 순서와 구조로 말해야 메시지가 잘 보이는지** 설계하는 데 초점을 둡니다. 경영평가 실적보고서, 내부 성과보고서, 사업 결과보고서 등 어느 조직·부서·주제에도 씁니다.
 
@@ -68,7 +68,7 @@
 ## 설치
 
 ### Claude (claude.ai 웹·앱)
-1. **[performance-report-writer-v2-2.zip 받기](https://github.com/BrightAsh/management-evaluation-report-skill/raw/main/v2.2%20performance-report-writer/dist/performance-report-writer-v2-2.zip)** — 압축을 풀지 말고 그대로 씁니다.
+1. **[performance-report-writer-v2-2.zip 바로 받기](https://raw.githubusercontent.com/BrightAsh/management-evaluation-report-skill/main/v2.2%20performance-report-writer/dist/performance-report-writer-v2-2.zip)** — 압축을 풀지 말고 그대로 씁니다.
 2. Claude 설정에서 **코드 실행**을 켜고, **스킬** 메뉴에서 zip을 업로드합니다.
 3. 자료를 첨부하고 요청하면 스킬이 자동으로 켜집니다.
 

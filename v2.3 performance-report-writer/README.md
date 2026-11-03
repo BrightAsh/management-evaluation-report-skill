@@ -19,6 +19,12 @@
 - 원자료 그림 목표를 쪽당 2~4개로 확대하고, 뺀 그림의 사유를 남기도록 했습니다.
 - 그림이 없지만 실제 사진·화면이 있으면 좋은 곳에 `[이미지 삽입]` 표시와 요청 목록을 추가했습니다.
 
+## 다운로드
+
+**[performance-report-writer-v2-3.zip 바로 다운로드](https://raw.githubusercontent.com/BrightAsh/management-evaluation-report-skill/main/v2.3%20performance-report-writer/dist/performance-report-writer-v2-3.zip)**
+
+링크를 누르면 GitHub 파일 보기 페이지를 거치지 않고 Claude에 업로드할 ZIP을 바로 받습니다.
+
 ## 정적 경량화 결과
 
 아래는 실제 배포 ZIP 안의 `SKILL.md + 해당 조합에서 읽는 references + 작업 서식·content 템플릿`을 LF 줄바꿈으로 통일해 센 Unicode 문자 수입니다. A/B/C/D 원자료, 이미지, Claude의 시스템 프롬프트·도구 정의·대화 이력은 제외했습니다.
@@ -51,7 +57,7 @@
 
 ## Claude 설치
 
-1. [`dist/performance-report-writer-v2-3.zip`](dist/performance-report-writer-v2-3.zip)을 압축 해제하지 않고 Claude의 스킬 메뉴에 업로드합니다.
+1. **[performance-report-writer-v2-3.zip 바로 받기](https://raw.githubusercontent.com/BrightAsh/management-evaluation-report-skill/main/v2.3%20performance-report-writer/dist/performance-report-writer-v2-3.zip)** — 압축을 해제하지 않고 Claude의 스킬 메뉴에 업로드합니다.
 2. 코드 실행을 켜고 A와 필요한 B/C/D를 첨부합니다.
 3. 예: `첨부 자료로 경영평가 실적보고서 2쪽 써줘`.
 
