@@ -230,4 +230,4 @@ examples/demo/           가상 기관 예시 (자료 → 사실 카드·비교 
 
 코드를 실행할 수 없는 환경이면 1~6단계를 그대로 하고, 결과는 `07_output.md` 3절의 Markdown 지면안으로 낸다.
 
-최신판·설치 안내: https://github.com/BrightAsh/performance-report-writer
+최신판·설치 안내: https://github.com/BrightAsh/management-evaluation-report-skill/tree/main/v2.2%20performance-report-writer

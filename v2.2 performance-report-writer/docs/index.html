@@ -161,9 +161,9 @@ footer a { color: var(--muted); }
       <div class="fact">읽는 형식 <b>PDF · HWP · HWPX · DOCX · XLSX · PPTX</b></div>
     </div>
     <nav class="links" aria-label="내려받기">
-      <a class="primary" href="https://github.com/BrightAsh/performance-report-writer/releases/latest/download/performance-report-writer.zip">스킬 zip 받기</a>
-      <a href="https://github.com/BrightAsh/performance-report-writer">깃허브 저장소</a>
-      <a href="https://github.com/BrightAsh/performance-report-writer/blob/main/PROMPT.md">PROMPT.md (다른 AI용)</a>
+      <a class="primary" href="https://github.com/BrightAsh/management-evaluation-report-skill/raw/main/v2.2%20performance-report-writer/dist/performance-report-writer-v2-2.zip">스킬 zip 받기</a>
+      <a href="https://github.com/BrightAsh/management-evaluation-report-skill/tree/main/v2.2%20performance-report-writer">깃허브 저장소</a>
+      <a href="https://github.com/BrightAsh/management-evaluation-report-skill/blob/main/v2.2%20performance-report-writer/PROMPT.md">PROMPT.md (다른 AI용)</a>
     </nav>
   </header>
 
@@ -268,15 +268,16 @@ footer a { color: var(--muted); }
       </div>
       <div class="panel" role="tabpanel" id="p-claude" aria-labelledby="t-claude">
         <ol>
-          <li><a href="https://github.com/BrightAsh/performance-report-writer/releases/latest/download/performance-report-writer.zip">performance-report-writer.zip</a>을 받습니다. 압축을 풀지 말고 그대로 씁니다. 회사망에서 막히면 <a href="https://github.com/BrightAsh/performance-report-writer/archive/refs/heads/main.zip">저장소 전체 zip</a>을 받아 풀고, 안의 <span class="mono">dist/performance-report-writer.zip</span>을 씁니다.</li>
+          <li><a href="https://github.com/BrightAsh/management-evaluation-report-skill/raw/main/v2.2%20performance-report-writer/dist/performance-report-writer-v2-2.zip">performance-report-writer-v2-2.zip</a>을 받습니다. 압축을 풀지 말고 그대로 씁니다. 회사망에서 막히면 <a href="https://github.com/BrightAsh/management-evaluation-report-skill/archive/refs/heads/main.zip">저장소 전체 zip</a>을 받아 풀고, 안의 <span class="mono">v2.2 performance-report-writer/dist/performance-report-writer-v2-2.zip</span>을 씁니다.</li>
           <li>Claude 설정에서 코드 실행을 켜고, 스킬 메뉴에서 zip을 업로드합니다.</li>
           <li>자료를 첨부하고 요청하면 스킬이 자동으로 켜집니다. "사용법 알려줘"라고 하면 안내가 나옵니다.</li>
         </ol>
       </div>
       <div class="panel" role="tabpanel" id="p-code" aria-labelledby="t-code" hidden>
         <ol>
-          <li>저장소를 개인 스킬 폴더에 받습니다. 프로젝트 전용이면 <span class="mono">.claude/skills/</span> 아래에 받습니다.
-            <code class="cmd">git clone https://github.com/BrightAsh/performance-report-writer ~/.claude/skills/performance-report-writer</code></li>
+          <li>저장소를 받아 v2.2 폴더를 개인 스킬 폴더에 복사합니다. 프로젝트 전용이면 <span class="mono">.claude/skills/</span> 아래에 복사합니다.
+            <code class="cmd">git clone --depth 1 https://github.com/BrightAsh/management-evaluation-report-skill</code>
+            <code class="cmd">cp -r "management-evaluation-report-skill/v2.2 performance-report-writer" ~/.claude/skills/performance-report-writer-v2-2</code></li>
           <li>Word 출력용으로 <span class="mono">npm install</span>, PDF 출력용으로 <span class="mono">pip install playwright</span>를 한 번 실행합니다.</li>
         </ol>
       </div>
@@ -288,9 +289,9 @@ footer a { color: var(--muted); }
           <table>
             <thead><tr><th>넣는 곳</th><th>쓰는 파일</th></tr></thead>
             <tbody>
-              <tr><td>대화창에 붙여넣기, 또는 원문 링크를 주고 "이 지침대로 해줘"</td><td class="mono"><a href="https://raw.githubusercontent.com/BrightAsh/performance-report-writer/main/PROMPT.md">PROMPT.md</a></td></tr>
-              <tr><td>맞춤형 GPT·Gem 지침 칸 (8,000자 이내)</td><td class="mono"><a href="https://raw.githubusercontent.com/BrightAsh/performance-report-writer/main/PROMPT.md">PROMPT.md</a></td></tr>
-              <tr><td>짧은 지침 칸 (4,000자 이내, 프로젝트 지침 등)</td><td class="mono"><a href="https://raw.githubusercontent.com/BrightAsh/performance-report-writer/main/PROMPT_SHORT.md">PROMPT_SHORT.md</a></td></tr>
+              <tr><td>대화창에 붙여넣기, 또는 원문 링크를 주고 "이 지침대로 해줘"</td><td class="mono"><a href="https://raw.githubusercontent.com/BrightAsh/management-evaluation-report-skill/main/v2.2%20performance-report-writer/PROMPT.md">PROMPT.md</a></td></tr>
+              <tr><td>맞춤형 GPT·Gem 지침 칸 (8,000자 이내)</td><td class="mono"><a href="https://raw.githubusercontent.com/BrightAsh/management-evaluation-report-skill/main/v2.2%20performance-report-writer/PROMPT.md">PROMPT.md</a></td></tr>
+              <tr><td>짧은 지침 칸 (4,000자 이내, 프로젝트 지침 등)</td><td class="mono"><a href="https://raw.githubusercontent.com/BrightAsh/management-evaluation-report-skill/main/v2.2%20performance-report-writer/PROMPT_SHORT.md">PROMPT_SHORT.md</a></td></tr>
             </tbody>
           </table>
         </div>
@@ -310,7 +311,7 @@ footer a { color: var(--muted); }
 
   <footer>
     <span>예시의 기관명과 수치는 모두 가상입니다. AI가 만든 보고서는 반드시 확인한 뒤 제출하세요.</span>
-    <span>제작: KNOC · <a href="https://creativecommons.org/licenses/by-nc/4.0/deed.ko">CC BY-NC 4.0</a> · <a href="https://github.com/BrightAsh/performance-report-writer">GitHub</a></span>
+    <span>제작: KNOC · <a href="https://creativecommons.org/licenses/by-nc/4.0/deed.ko">CC BY-NC 4.0</a> · <a href="https://github.com/BrightAsh/management-evaluation-report-skill/tree/main/v2.2%20performance-report-writer">GitHub</a></span>
   </footer>
 </div>
 

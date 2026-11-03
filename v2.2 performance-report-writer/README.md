@@ -1,13 +1,28 @@
-# 실적보고서 작성 스킬 (performance-report-writer)
+# 실적보고서 작성 스킬 (performance-report-writer v2.2)
+
+## 변경 이력
+
+### v2.2
+
+- **기본 양식 첫 쪽 수정**: 실제 양식에 맞춰 제목 → 평가내용 → 핵심성과 → 대제목 1 순서로 바로 시작합니다. 첫 쪽의 BEST PRACTICE·요약·KPI 상자를 없앴고, 대표 사례는 중제목 끝 `B.P` 태그로만 표시합니다(문서 전체 2~3개).
+- **기본 양식 명세 보강**: 머리말·바닥글·옆 탭 구성과, 양식 지면별로 쓸 블록 대응표를 SKILL.md에 넣었습니다.
+- **그림 사용 확대**: 쪽당 0~3개 → 2~4개(첫 쪽 0~1개, 최대 5개). 관련 칸이 있는 원자료 그림은 기본으로 넣고, 뺀 그림은 사유를 남깁니다.
+- **지면이 넘칠 때 순서 변경**: 그림부터 빼던 방식에서 그림 크기 줄이기 → 낮은 등급 문장 빼기 → 그림 빼기 순서로 바꿨습니다.
+- **'[이미지 삽입]' 표시 추가**: 자료에 그림은 없지만 있으면 좋은 자리(협약·수상 사진, 시스템 화면, 현장·교육 사진 등)에 표시 상자를 넣고, 답변에 표시 목록(쪽·위치·넣을 사진)을 함께 줍니다.
+- **SKILL.md 우선 규칙**: `references/`의 개정 전 문장(BEST PRACTICE 상자, 쪽당 0~3개 등)은 SKILL.md 맨 아래 'references 보정' 표의 규칙을 따릅니다.
+
+> 참고: `references/`, `PROMPT.md`, `PROMPT_SHORT.md`, `dist/SKILL_single_file.md`, `docs/`의 본문은 개정 전 내용이며, SKILL.md가 우선합니다. Word 결과물에서 '[이미지 삽입]' 표시는 회색 표로 나오므로, 표를 지우고 그 자리에 그림을 넣으세요.
+
+---
 
 흩어진 실적 자료를 AI가 끝까지 읽고 분석해서, **평가자가 한눈에 이해하는 흐름**으로 엮은 실적보고서(PDF·Word)를 만들어 줍니다.
 
-**[스킬 zip 받기](https://github.com/BrightAsh/performance-report-writer/releases/latest/download/performance-report-writer.zip)** · **[한 장 안내 페이지](https://brightash.github.io/performance-report-writer/)** · [PROMPT.md (다른 AI용)](PROMPT.md) · 라이선스 [CC BY-NC 4.0](LICENSE)
+**[스킬 zip 받기](https://github.com/BrightAsh/management-evaluation-report-skill/raw/main/v2.2%20performance-report-writer/dist/performance-report-writer-v2-2.zip)** · [PROMPT.md (다른 AI용)](PROMPT.md) · 라이선스 [CC BY-NC 4.0](LICENSE)
 
 양식을 채우는 도구가 아닙니다. 방대한 자료에서 **무엇을 고르고, 어떤 순서와 구조로 말해야 메시지가 잘 보이는지** 설계하는 데 초점을 둡니다. 경영평가 실적보고서, 내부 성과보고서, 사업 결과보고서 등 어느 조직·부서·주제에도 씁니다.
 
 - **양식이 없어도**: 공공기관 실적보고서에서 널리 쓰는 기본 양식(평가내용 → 핵심성과 → 대제목 → 왼쪽 라벨 칸 표)으로 씁니다.
-- **자료 속 그림**: 원자료에 있는 사진·그래프·시스템 화면 중 문장을 뒷받침하는 것만 골라 관련 칸 안에 작게 넣습니다. 새로 그리지 않습니다.
+- **자료 속 그림**: 원자료의 사진·그래프·시스템 화면 중 문장을 뒷받침하는 것을 관련 칸 안에 적극 넣습니다(쪽당 2~4개). 새로 그리지 않고, 그림이 없지만 있으면 좋은 자리에는 '[이미지 삽입]' 표시 상자를 둡니다.
 - **비교 값**: 전년 대비·도입 전후·목표 대비 값과 전년도 지적사항을 찾아, 메시지를 뒷받침하는 것만 계산해서 넣습니다.
 
 ![결과물 예시: 내용을 ○로 가린 2쪽 실적보고서 지면](examples/demo/preview.png)
@@ -33,7 +48,7 @@
 | 자료 + 성과지표 | 지표의 평가 항목을 목차 뼈대로 삼아 기본 양식으로 작성 |
 | 자료 + 양식 + 성과지표 | 지표로 '무엇을', 양식으로 '어떻게'를 정해 작성 |
 
-**받는 것:** PDF·Word 파일, 스토리라인(구성) 요약, 자료 사용 내역(무엇을 왜 넣고 뺐는지, 넣은 그림·비교 값의 출처), 확인이 필요한 사항
+**받는 것:** PDF·Word 파일, 스토리라인(구성) 요약, 자료 사용 내역(무엇을 왜 넣고 뺐는지, 넣은 그림·비교 값의 출처), 이미지 삽입 표시 목록(쪽·위치·넣을 사진), 확인이 필요한 사항
 
 ---
 
@@ -53,19 +68,20 @@
 ## 설치
 
 ### Claude (claude.ai 웹·앱)
-1. **[performance-report-writer.zip 받기](https://github.com/BrightAsh/performance-report-writer/releases/latest/download/performance-report-writer.zip)** — 압축을 풀지 말고 그대로 씁니다.
+1. **[performance-report-writer-v2-2.zip 받기](https://github.com/BrightAsh/management-evaluation-report-skill/raw/main/v2.2%20performance-report-writer/dist/performance-report-writer-v2-2.zip)** — 압축을 풀지 말고 그대로 씁니다.
 2. Claude 설정에서 **코드 실행**을 켜고, **스킬** 메뉴에서 zip을 업로드합니다.
 3. 자료를 첨부하고 요청하면 스킬이 자동으로 켜집니다.
 
-> **회사망에서 위 링크가 막히면**: [저장소 전체 zip](https://github.com/BrightAsh/performance-report-writer/archive/refs/heads/main.zip)을 받아 압축을 풀고, 안의 `dist/performance-report-writer.zip`을 업로드하세요. 저장소 전체 zip은 폴더 이름이 `performance-report-writer-main`이라 그대로 올리면 스킬로 인식되지 않습니다.
+> **회사망에서 위 링크가 막히면**: [저장소 전체 zip](https://github.com/BrightAsh/management-evaluation-report-skill/archive/refs/heads/main.zip)을 받아 압축을 풀고, 안의 `v2.2 performance-report-writer/dist/performance-report-writer-v2-2.zip`을 업로드하세요. 저장소 전체 zip이나 폴더를 그대로 올리면 스킬로 인식되지 않습니다.
 >
 > 파일 하나만 올릴 수 있는 환경이면 [`dist/SKILL_single_file.md`](dist/SKILL_single_file.md)를 쓰세요. 참고 문서와 스크립트가 한 파일에 들어 있습니다.
 
 ### Claude Code
 ```bash
-git clone https://github.com/BrightAsh/performance-report-writer ~/.claude/skills/performance-report-writer
+git clone --depth 1 https://github.com/BrightAsh/management-evaluation-report-skill
+cp -r "management-evaluation-report-skill/v2.2 performance-report-writer" ~/.claude/skills/performance-report-writer-v2-2
 ```
-프로젝트 전용으로 쓰려면 프로젝트의 `.claude/skills/` 아래에 받습니다.
+프로젝트 전용으로 쓰려면 프로젝트의 `.claude/skills/` 아래에 복사합니다.
 
 ### 그 밖의 스킬 지원 도구 (OpenAI Codex, Gemini CLI, Cursor, GitHub Copilot 등)
 이 스킬은 공개 표준인 **Agent Skills(SKILL.md) 형식**을 따릅니다. 각 도구의 스킬 폴더에 이 폴더를 넣으면 됩니다. 폴더 위치는 도구마다 다르니 해당 도구의 문서를 확인하세요.
@@ -73,9 +89,9 @@ git clone https://github.com/BrightAsh/performance-report-writer ~/.claude/skill
 ### 스킬을 지원하지 않는 AI (ChatGPT, Gemini 웹 등)
 | 방법 | 쓰는 파일 |
 |---|---|
-| 대화창에 붙여넣기, 또는 원문 링크를 주고 "이 지침대로 해줘" | [`PROMPT.md`](PROMPT.md) ([원문 링크](https://raw.githubusercontent.com/BrightAsh/performance-report-writer/main/PROMPT.md)) |
+| 대화창에 붙여넣기, 또는 원문 링크를 주고 "이 지침대로 해줘" | [`PROMPT.md`](PROMPT.md) ([원문 링크](https://raw.githubusercontent.com/BrightAsh/management-evaluation-report-skill/main/v2.2%20performance-report-writer/PROMPT.md)) |
 | 맞춤형 GPT·Gem의 지침 칸 (8,000자 이내) | [`PROMPT.md`](PROMPT.md) (약 6,600자) |
-| 짧은 지침 칸 (4,000자 이내, Claude 프로젝트 지침 등) | [`PROMPT_SHORT.md`](PROMPT_SHORT.md) (약 3천 자, [원문 링크](https://raw.githubusercontent.com/BrightAsh/performance-report-writer/main/PROMPT_SHORT.md)) |
+| 짧은 지침 칸 (4,000자 이내, Claude 프로젝트 지침 등) | [`PROMPT_SHORT.md`](PROMPT_SHORT.md) (약 3천 자, [원문 링크](https://raw.githubusercontent.com/BrightAsh/management-evaluation-report-skill/main/v2.2%20performance-report-writer/PROMPT_SHORT.md)) |
 
 코드를 실행할 수 없는 AI는 PDF·Word 대신 **Markdown 지면안**으로 결과를 줍니다. 한글·Word에 옮겨 쓰면 됩니다.
 
@@ -97,7 +113,7 @@ HWPX가 필요하면 Word 파일을 한글에서 열어 'HWPX로 저장'하세�
 | 방향 설정 | 지표가 있으면 평가 항목이 목차, 없으면 자료에서 도출 → 핵심 메시지 1문장 + 축 2~4개 |
 | **흐름·구조 설계** | 결론부터, 주장형 제목, 제목만 읽어도 이해되는 흐름, 문제와 성과 숫자의 짝, 비교 기준 있는 숫자 |
 | 문체·지면 | 양식이 있으면 말투·지면을 그대로, 없으면 기본 양식 |
-| 블록 | 내용 성격에 맞는 블록(라벨 칸 표, 흐름, 로드맵, 비교, 성과 띠 등). 그림은 관련 칸 안에 작게, 쪽당 0~3개 |
+| 블록 | 내용 성격에 맞는 블록(라벨 칸 표, 흐름, 로드맵, 비교, 성과 띠 등). 그림은 관련 칸 안에 쪽당 2~4개, 그림이 없으면 '[이미지 삽입]' 표시 |
 | 결과물 | PDF + Word, 지정 쪽수 정확히 맞춤 |
 | 점검 | 모든 수치를 원문과 대조, 계획과 완료 구분, 지어낸 내용 없음 |
 
@@ -108,7 +124,7 @@ HWPX가 필요하면 Word 파일을 한글에서 열어 'HWPX로 저장'하세�
 ## 폴더 구조
 
 ```
-performance-report-writer/
+v2.2 performance-report-writer/
 ├── SKILL.md            스킬 진입점 (AI가 읽음)
 ├── PROMPT.md           스킬 미지원 AI용 전체 지침 (8,000자 이내)
 ├── PROMPT_SHORT.md     짧은 지침 (4,000자 이내)
@@ -116,8 +132,8 @@ performance-report-writer/
 ├── scripts/            첨부 텍스트·그림 추출, PDF 영역 자르기, 비교 값 계산, PDF·Word 렌더러, 지면 점검
 ├── assets/             content.json 빈 틀, 작업 기록 서식
 ├── examples/demo/      가상 기관 예시 (원자료 → 사실 카드 → 스토리라인 → 마스킹한 결과 지면)
-├── docs/index.html     한 장짜리 시각 가이드 (GitHub Pages용)
-├── dist/               설치용 zip, 단일 파일판 SKILL (참고 문서·스크립트를 한 파일에 합침)
+├── docs/index.html     한 장짜리 시각 가이드 (내려받아 브라우저로 열기)
+├── dist/               설치용 zip(performance-report-writer-v2-2.zip), 단일 파일판 SKILL (참고 문서·스크립트를 한 파일에 합침)
 ├── tools/              설치용 zip·단일 파일판 생성, 공개용 마스킹 도구
 └── LICENSE             CC BY-NC 4.0
 ```
@@ -160,6 +176,6 @@ python3 tools/build_zip.py
 
 ## 라이선스
 
-[CC BY-NC 4.0](LICENSE) (저작자표시-비영리). 비영리 목적이라면 자유롭게 쓰고 고칠 수 있습니다. 공유할 때는 저작자(KNOC)와 라이선스를 표시하고, 고쳤다면 고쳤다고 밝혀 주세요. 상업적으로 쓰려면 먼저 [이슈](https://github.com/BrightAsh/performance-report-writer/issues)로 연락 주세요.
+[CC BY-NC 4.0](LICENSE) (저작자표시-비영리). 비영리 목적이라면 자유롭게 쓰고 고칠 수 있습니다. 공유할 때는 저작자(KNOC)와 라이선스를 표시하고, 고쳤다면 고쳤다고 밝혀 주세요. 상업적으로 쓰려면 먼저 [이슈](https://github.com/BrightAsh/management-evaluation-report-skill/issues)로 연락 주세요.
 
 제작: KNOC

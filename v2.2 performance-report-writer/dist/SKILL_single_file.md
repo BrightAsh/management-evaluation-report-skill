@@ -96,7 +96,7 @@ description: 흩어진 실적 자료(PDF·HWP·엑셀 등)로 경영평가·성�
 
 스크립트는 **부록 B**의 코드를 같은 이름의 파일로 저장해 쓴다. 코드를 실행할 수 없는 환경이면 1~6단계를 그대로 하고, 결과는 부록 A-07 3절의 Markdown 지면안으로 낸다.
 
-최신판·설치 안내: https://github.com/BrightAsh/performance-report-writer
+최신판·설치 안내: https://github.com/BrightAsh/management-evaluation-report-skill/tree/main/v2.2%20performance-report-writer
 
 ---
 
