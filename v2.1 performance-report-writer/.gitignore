@@ -1,7 +1,0 @@
-node_modules/
-__pycache__/
-*.pyc
-work/
-.DS_Store
-examples/demo/*.html
-package-lock.json
