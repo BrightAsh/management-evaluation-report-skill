@@ -5,3 +5,4 @@
 - [v1.0 · template-report-builder](v1.0%20template-report-builder/)
 - [v2.0 · performance-report-writer](v2.0%20performance-report-writer/)
 - [v2.1 · performance-report-writer](v2.1%20performance-report-writer/)
+- [v2.2 · performance-report-writer](v2.2%20performance-report-writer/)
